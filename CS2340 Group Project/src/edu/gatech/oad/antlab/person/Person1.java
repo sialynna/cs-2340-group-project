@@ -31,10 +31,17 @@ public class Person1 {
 	 */
 	private String calc(String input) {
 	  //Christopher's Person File
+		String newString = "";
 		
+		for (int i=2; i < input.length(); i++){
 		
+		newString = newString + input.charAt[i];
 		
-	  return null;
+		}
+		
+		newString = newString + input.charAt[0] + input.charAt[1];
+		
+			return newString;
 	}
 	
 	/**
