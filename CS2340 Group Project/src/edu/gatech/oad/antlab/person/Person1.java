@@ -35,11 +35,11 @@ public class Person1 {
 		
 		for (int i=2; i < input.length(); i++){
 		
-		newString = newString + input.charAt[i];
+		newString = newString + input.charAt(i);
 		
 		}
 		
-		newString = newString + input.charAt[0] + input.charAt[1];
+		newString = newString + input.charAt(0) + input.charAt(1);
 		
 			return newString;
 	}
