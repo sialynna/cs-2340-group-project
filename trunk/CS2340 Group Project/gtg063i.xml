@@ -1,0 +1,32 @@
+<project name="CS2340 Group Project" default="all" basedir=".">
+	<target name="init" description="Initialize properties">
+		<tstamp/>
+		<property name="sourceDir" value="./src"/>
+		<property name="outputDir" value="./build"/>
+		<property name="apidocDir" value="./apidoc"/>
+		<property name="libDir" value="./lib"/>
+	</target>
+
+	<target name="prepare" depends="init" description="Create directories">
+		<mkdir dir="outputDir"/>
+		<mkdir dir="apidoc"/>
+	</target>
+
+	<target name="compile" depends="prepare" description="Compile java files to build dir">
+		<javac srcdir="${sourceDir}" destdir="${outputDir}" classpath="${libDir}"/>
+	</target>
+
+	<target name="javadoc" depends="prepare" description="Create javadocs">
+		<javadoc 
+	</target>
+	
+	<target name="jar" depends="compile" description="Create jar file">
+		<jar destfile="AntLabRun.jar">
+			<include name="${outputDir}"
+		</jar>
+	</target>
+	
+	<target name="run" depends="jar" description="Runs the jar file">
+	
+	</target>
+</project>
