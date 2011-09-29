@@ -5,6 +5,7 @@
 		<property name="outputDir" value="./build"/>
 		<property name="apidocDir" value="./apidoc"/>
 		<property name="libDir" value="./lib"/>
+		<property name="user.name" value="gtg063i"/>
 	</target>
 
 	<target name="prepare" depends="init" description="Create directories">
@@ -17,16 +18,32 @@
 	</target>
 
 	<target name="javadoc" depends="prepare" description="Create javadocs">
-		<javadoc 
+		<javadoc sourcepath="${sourceDir}" access="public" destdir="${apidocDir}" packagenames="edu.gatech.oad.antlab.*"
+			bottom="Copyright Team C.A.K.E. 2011. All Rights Reserved."/>
 	</target>
 	
 	<target name="jar" depends="compile" description="Create jar file">
 		<jar destfile="AntLabRun.jar">
-			<include name="${outputDir}"
+			<include name="${outputDir}"/>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Main-Class" value="${outputDir}"/>
+				<attribute name="Class-Path" value="${libDir}" />
+			</manifest>
 		</jar>
 	</target>
 	
 	<target name="run" depends="jar" description="Runs the jar file">
-	
+		
 	</target>
+		
+	<target name="all" description="Runs all targets except clean">
+		
+	</target>
+	
+	<target name="clean" description="Cleans build files">
+		<delete dir="${outputDir}"/>
+		<delete dir="${apidocDir}"/>
+	</target>
+		
 </project>
