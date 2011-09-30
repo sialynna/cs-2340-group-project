@@ -9,8 +9,8 @@
 	</target>
 
 	<target name="prepare" depends="init" description="Create directories">
-		<mkdir dir="outputDir"/>
-		<mkdir dir="apidoc"/>
+		<mkdir dir="${outputDir}"/>
+		<mkdir dir="${apidocDir}"/>
 	</target>
 
 	<target name="compile" depends="prepare" description="Compile java files to build dir">
@@ -34,11 +34,22 @@
 	</target>
 	
 	<target name="run" depends="jar" description="Runs the jar file">
-		
+		<java jar="${outputDir}/AntLabRun.jar" fork = "true">
+		    <classpath>
+		        <pathelement location="${outputDir}"/>
+		        <pathelement location="${jdk_lib}/j2me.jar"/>
+		        <pathelement location="java.class.path"/>
+		    </classpath>
+		  </java>
 	</target>
 		
 	<target name="all" description="Runs all targets except clean">
-		
+		<antcall target="init"/>
+		<antcall target="prepare"/>
+		<antcall target="compile"/>
+		<antcall target="javadoc"/>
+		<antcall target="jar"/>
+		<antcall target="run"/>
 	</target>
 	
 	<target name="clean" description="Cleans build files">
