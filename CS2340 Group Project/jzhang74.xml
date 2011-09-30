@@ -1,0 +1,65 @@
+<project name="CS2340 Ant lab" default="all" basedir=".">
+	<target name="init" description="Set up properties">
+		<tstamp/>
+		<property name="myName" value="jzhang74"/>
+		<property name="src" value="./src"/>
+		<property name="build" value="./build"/>
+		<property name="apidoc" value="./apidoc"/>
+		<property name="lib" value="./lib"/>
+		
+	</target>
+
+	<target name="prepare" depends="init" description="Make directories">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${apidoc}"/>
+	</target>
+
+	<target name="compile" depends="prepare" description="Compile java files to build dir">
+		<javac srcdir="${src}" destdir="${build}" classpath="${lib}"/>
+	</target>
+
+	<target name="javadoc" depends="prepare" description="Generate javadocs">
+		<javadoc sourcepath="${src}" access="public" destdir="${apidoc}" packagenames="edu.gatech.oad.antlab.*"
+			bottom="Copyright 2011.Team C.A.K.E. CS2340. All Rights Reserved."/>
+	</target>
+	
+	
+	<target name="jar" depends="compile" description="Package the jar file">
+		<jar destfile="AntLabRun.jar">
+			<include name="${build}"/>
+			<manifest>
+				<attribute name="Main-Class" value="${build}"/>
+				<attribute name="Class-Path" value="${lib}" />
+				<attribute name="Built-By" value="${myName}"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	
+	<target name="run" depends="jar" description="Runs the jar file">
+		<java jar="${build}/AntLabRun.jar" fork = "true">
+		    <classpath>
+		        <pathelement location="${build}"/>
+		        <pathelement location="${jdk_lib}/j2me.jar"/>
+		        <pathelement location="java.class.path"/>
+		    </classpath>
+		  </java>
+	</target>
+	
+	
+	<target name="all" description="Runs all targets (except clean)">
+		<antcall target="init"/>
+		<antcall target="prepare"/>
+		<antcall target="compile"/>
+		<antcall target="javadoc"/>
+		<antcall target="jar"/>
+		<antcall target="run"/>
+	</target>
+	
+	
+	<target name="clean" description="removes compiled classes and jars and javadocs.">
+		<delete dir="${build}"/>
+		<delete dir="${apidoc}"/>
+	</target>
+		
+</project>
