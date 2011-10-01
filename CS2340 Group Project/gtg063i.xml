@@ -1,10 +1,10 @@
 <project name="CS2340 Group Project" default="all" basedir=".">
 	<target name="init" description="Initialize properties">
 		<tstamp/>
-		<property name="sourceDir" value="./src"/>
-		<property name="outputDir" value="./build"/>
-		<property name="apidocDir" value="./apidoc"/>
-		<property name="libDir" value="./lib"/>
+		<property name="sourceDir" value="src"/>
+		<property name="outputDir" value="build"/>
+		<property name="apidocDir" value="apidoc"/>
+		<property name="libDir" value="lib"/>
 		<property name="user.name" value="gtg063i"/>
 	</target>
 
@@ -14,31 +14,28 @@
 	</target>
 
 	<target name="compile" depends="prepare" description="Compile java files to build dir">
-		<javac srcdir="${sourceDir}" destdir="${outputDir}" classpath="${libDir}"/>
+		<javac srcdir="${sourceDir}" destdir="${outputDir}" classpath="lib/resources.jar"/>
 	</target>
 
-	<target name="javadoc" depends="prepare" description="Create javadocs">
-		<javadoc sourcepath="${sourceDir}" access="public" destdir="${apidocDir}" packagenames="edu.gatech.oad.antlab.*"
+	<target name="javadoc" depends="compile" description="Create javadocs">
+		<javadoc sourcepath="${sourceDir}" access="public" destdir="${apidocDir}" classpath="lib/resources.jar" packagenames="edu.gatech.oad.antlab.*"
 			bottom="Copyright Team C.A.K.E. 2011. All Rights Reserved."/>
 	</target>
 	
 	<target name="jar" depends="compile" description="Create jar file">
-		<jar destfile="AntLabRun.jar">
-			<include name="${outputDir}"/>
+		<jar destfile="AntLabRun.jar" basedir="${outputDir}">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}"/>
-				<attribute name="Main-Class" value="${outputDir}"/>
-				<attribute name="Class-Path" value="${libDir}" />
+				<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
+				<attribute name="Class-Path" value="lib/resources.jar"/>
 			</manifest>
 		</jar>
 	</target>
 	
 	<target name="run" depends="jar" description="Runs the jar file">
-		<java jar="${outputDir}/AntLabRun.jar" fork = "true">
+		<java jar="AntLabRun.jar" fork = "true">
 		    <classpath>
-		        <pathelement location="${outputDir}"/>
-		        <pathelement location="${jdk_lib}/j2me.jar"/>
-		        <pathelement location="java.class.path"/>
+		        <pathelement location="lib/resources.jar"/>
 		    </classpath>
 		  </java>
 	</target>
@@ -53,8 +50,9 @@
 	</target>
 	
 	<target name="clean" description="Cleans build files">
-		<delete dir="${outputDir}"/>
-		<delete dir="${apidocDir}"/>
+		<delete dir="build"/>
+		<delete dir="apidoc"/>
+		<delete file="AntLabRun.jar"/>
 	</target>
 		
 </project>
