@@ -2,10 +2,10 @@
 	<target name="init" description="Set up properties">
 		<tstamp/>
 		<property name="myName" value="jzhang74"/>
-		<property name="src" value="./src"/>
-		<property name="build" value="./build"/>
-		<property name="apidoc" value="./apidoc"/>
-		<property name="lib" value="./lib"/>
+		<property name="src" value="src"/>
+		<property name="build" value="build"/>
+		<property name="apidoc" value="apidoc"/>
+		<property name="lib" value="lib"/>
 		
 	</target>
 
@@ -15,21 +15,20 @@
 	</target>
 
 	<target name="compile" depends="prepare" description="Compile java files to build dir">
-		<javac srcdir="${src}" destdir="${build}" classpath="${lib}"/>
+		<javac srcdir="${src}" destdir="${build}" classpath="lib/resources.jar"/>
 	</target>
 
-	<target name="javadoc" depends="prepare" description="Generate javadocs">
+	<target name="javadoc" depends="compile" description="Generate javadocs">
 		<javadoc sourcepath="${src}" access="public" destdir="${apidoc}" packagenames="edu.gatech.oad.antlab.*"
 			bottom="Copyright 2011.Team C.A.K.E. CS2340. All Rights Reserved."/>
 	</target>
 	
 	
 	<target name="jar" depends="compile" description="Package the jar file">
-		<jar destfile="AntLabRun.jar">
-			<include name="${build}"/>
+		<jar destfile="AntLabRun.jar" basedir="${build}">
 			<manifest>
-				<attribute name="Main-Class" value="${build}"/>
-				<attribute name="Class-Path" value="${lib}" />
+				<attribute name="Main-Class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
+				<attribute name="Class-Path" value="lib/resources.jar" />
 				<attribute name="Built-By" value="${myName}"/>
 			</manifest>
 		</jar>
@@ -37,11 +36,9 @@
 	
 	
 	<target name="run" depends="jar" description="Runs the jar file">
-		<java jar="${build}/AntLabRun.jar" fork = "true">
+		<java jar="AntLabRun.jar" fork = "true">
 		    <classpath>
-		        <pathelement location="${build}"/>
-		        <pathelement location="${jdk_lib}/j2me.jar"/>
-		        <pathelement location="java.class.path"/>
+		    	<pathelement location="lib/resources.jar"/>
 		    </classpath>
 		  </java>
 	</target>
@@ -58,8 +55,9 @@
 	
 	
 	<target name="clean" description="removes compiled classes and jars and javadocs.">
-		<delete dir="${build}"/>
-		<delete dir="${apidoc}"/>
+		<delete dir="build"/>
+		<delete dir="apidoc"/>
+		<delete file="AntLabRun.jar"/>
 	</target>
 		
 </project>
