@@ -12,10 +12,14 @@ import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+import java.awt.Color;
 
 public class StartPage {
 
-	private JFrame frame;
+	private JFrame frmApocalypseTrail;
 
 	/**
 	 * Launch the application.
@@ -25,7 +29,7 @@ public class StartPage {
 			public void run() {
 				try {
 					StartPage window = new StartPage();
-					window.frame.setVisible(true);
+					window.frmApocalypseTrail.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,26 +48,34 @@ public class StartPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmApocalypseTrail = new JFrame();
+		frmApocalypseTrail.setTitle("Apocalypse Trail");
+		frmApocalypseTrail.setResizable(false);
+		frmApocalypseTrail.setBounds(100, 100, 450, 300);
+		frmApocalypseTrail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton exitGame = new JButton("Exit Game");
+		exitGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.exit(0);
+			}
+		});
 		exitGame.setBounds(26, 109, 110, 53);
 		exitGame.setAlignmentY(Component.TOP_ALIGNMENT);
 		exitGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		frame.getContentPane().setLayout(null);
+		frmApocalypseTrail.getContentPane().setLayout(null);
 		
 		JButton newGame = new JButton("New Game");
 		newGame.setBounds(26, 37, 110, 53);
-		frame.getContentPane().add(newGame);
-		frame.getContentPane().add(exitGame);
+		frmApocalypseTrail.getContentPane().add(newGame);
+		frmApocalypseTrail.getContentPane().add(exitGame);
 		
 		JButton btnNewButton = new JButton("About...");
 		btnNewButton.setBounds(26, 183, 110, 53);
-		frame.getContentPane().add(btnNewButton);
+		frmApocalypseTrail.getContentPane().add(btnNewButton);
 	}
 }
