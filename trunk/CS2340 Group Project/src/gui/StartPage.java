@@ -53,29 +53,27 @@ public class StartPage {
 		frmApocalypseTrail.setResizable(false);
 		frmApocalypseTrail.setBounds(100, 100, 450, 300);
 		frmApocalypseTrail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JButton exitGame = new JButton("Exit Game");
-		exitGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				System.exit(0);
-			}
-		});
-		exitGame.setBounds(26, 109, 110, 53);
-		exitGame.setAlignmentY(Component.TOP_ALIGNMENT);
-		exitGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		frmApocalypseTrail.getContentPane().setLayout(null);
 		
 		JButton newGame = new JButton("New Game");
-		newGame.setBounds(26, 37, 110, 53);
+		newGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		newGame.setBounds(26, 25, 110, 50);
 		frmApocalypseTrail.getContentPane().add(newGame);
-		frmApocalypseTrail.getContentPane().add(exitGame);
 		
 		JButton btnNewButton = new JButton("About...");
-		btnNewButton.setBounds(26, 183, 110, 53);
+		btnNewButton.setBounds(26, 175, 110, 50);
 		frmApocalypseTrail.getContentPane().add(btnNewButton);
+		
+		JButton button = new JButton("Exit Game");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		button.setBounds(26, 100, 110, 50);
+		frmApocalypseTrail.getContentPane().add(button);
 	}
 }
