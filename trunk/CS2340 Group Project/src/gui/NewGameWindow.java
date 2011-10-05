@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JSeparator;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class NewGameWindow {
 
@@ -25,6 +27,8 @@ public class NewGameWindow {
 	JLabel lblMember_2;
 	JLabel lblMember_3;
 	JLabel lblMember_4;
+	private JLabel startscreen;
+	private JButton btnStartGame;
 	
 	/**
 	 * Launch the application.
@@ -57,6 +61,10 @@ public class NewGameWindow {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		btnStartGame = new JButton("Start Game!");
+		btnStartGame.setBounds(306, 187, 117, 67);
+		frame.getContentPane().add(btnStartGame);
 		
 		JLabel lblNewLabel = new JLabel("Player Name:");
 		lblNewLabel.setBounds(6, 19, 115, 22);
@@ -106,7 +114,7 @@ public class NewGameWindow {
 			}
 		});
 		partySizeChoice.setForeground(Color.LIGHT_GRAY);
-		partySizeChoice.setBackground(Color.LIGHT_GRAY);
+		partySizeChoice.setBackground(Color.DARK_GRAY);
 		partySizeChoice.setBounds(238, 56, 43, 26);
 		partySizeChoice.add("1");
 		partySizeChoice.add("2");
@@ -161,23 +169,41 @@ public class NewGameWindow {
 		frame.getContentPane().add(lblMember_4);
 		
 		Choice initialPaceChoice = new Choice();
+		initialPaceChoice.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				
+			}
+		});
 		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
-		initialPaceChoice.setBackground(Color.LIGHT_GRAY);
-		initialPaceChoice.setBounds(325, 126, 115, 26);
+		initialPaceChoice.setBackground(Color.DARK_GRAY);
+		initialPaceChoice.setBounds(308, 56, 115, 26);
+		initialPaceChoice.add("Stopped");
+		initialPaceChoice.add("Easy");
+		initialPaceChoice.add("Normal");
+		initialPaceChoice.add("Grueling");
 		frame.getContentPane().add(initialPaceChoice);
 		
 		Choice initialRationsChoice = new Choice();
 		initialRationsChoice.setForeground(Color.LIGHT_GRAY);
-		initialRationsChoice.setBackground(Color.LIGHT_GRAY);
-		initialRationsChoice.setBounds(325, 217, 115, 26);
+		initialRationsChoice.setBackground(Color.DARK_GRAY);
+		initialRationsChoice.setBounds(308, 136, 115, 26);
+		initialRationsChoice.add("Filling");
+		initialRationsChoice.add("Normal");
+		initialRationsChoice.add("Meager");
+		initialRationsChoice.add("Starvation");
 		frame.getContentPane().add(initialRationsChoice);
 		
 		JLabel lblInitialPace = new JLabel("Initial Pace:");
-		lblInitialPace.setBounds(325, 94, 88, 16);
+		lblInitialPace.setBounds(308, 22, 88, 16);
 		frame.getContentPane().add(lblInitialPace);
 		
 		JLabel lblInitialRations = new JLabel("Initial Rations:");
-		lblInitialRations.setBounds(325, 185, 98, 16);
+		lblInitialRations.setBounds(308, 104, 98, 16);
 		frame.getContentPane().add(lblInitialRations);
+		
+		startscreen = new JLabel("startscreen");
+		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
+		startscreen.setBounds(0, 0, 450, 278);
+		frame.getContentPane().add(startscreen);
 	}
 }
