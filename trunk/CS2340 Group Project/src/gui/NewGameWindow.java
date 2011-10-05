@@ -8,16 +8,24 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Choice;
 import java.awt.Color;
+import javax.swing.JSeparator;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class NewGameWindow {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-
+	private JTextField leaderName;
+	private JTextField member1;
+	private JTextField member2;
+	private JTextField member3;
+	private JTextField member4;
+	
+	JLabel lblMember_1;
+	JLabel lblMember_2;
+	JLabel lblMember_3;
+	JLabel lblMember_4;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,55 +62,122 @@ public class NewGameWindow {
 		lblNewLabel.setBounds(6, 19, 115, 22);
 		frame.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(103, 16, 178, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		leaderName = new JTextField();
+		leaderName.setBounds(103, 16, 178, 28);
+		frame.getContentPane().add(leaderName);
+		leaderName.setColumns(10);
 		
-		Choice choice = new Choice();
-		choice.setForeground(Color.LIGHT_GRAY);
-		choice.setBackground(Color.LIGHT_GRAY);
-		choice.setBounds(249, 50, 32, 26);
-		frame.getContentPane().add(choice);
+		Choice partySizeChoice = new Choice();
+		partySizeChoice.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				String choice = (String)arg0.getItem();
+				if (choice == "1"){
+					member2.setVisible(false);
+					lblMember_2.setVisible(false);
+					member3.setVisible(false);
+					lblMember_3.setVisible(false);
+					member4.setVisible(false);
+					lblMember_4.setVisible(false);
+				}
+				else if(choice == "2"){
+					member2.setVisible(true);
+					lblMember_2.setVisible(true);
+					member3.setVisible(false);
+					lblMember_3.setVisible(false);
+					member4.setVisible(false);
+					lblMember_4.setVisible(false);
+				}
+				else if (choice == "3"){
+					member2.setVisible(true);
+					lblMember_2.setVisible(true);
+					member3.setVisible(true);
+					lblMember_3.setVisible(true);
+					member4.setVisible(false);
+					lblMember_4.setVisible(false);
+				}
+				else if (choice == "4"){
+					member2.setVisible(true);
+					lblMember_2.setVisible(true);
+					member3.setVisible(true);
+					lblMember_3.setVisible(true);
+					member4.setVisible(true);
+					lblMember_4.setVisible(true);
+				}
+			}
+		});
+		partySizeChoice.setForeground(Color.LIGHT_GRAY);
+		partySizeChoice.setBackground(Color.LIGHT_GRAY);
+		partySizeChoice.setBounds(238, 56, 43, 26);
+		partySizeChoice.add("1");
+		partySizeChoice.add("2");
+		partySizeChoice.add("3");
+		partySizeChoice.add("4");
+		frame.getContentPane().add(partySizeChoice);
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
-		lblHowManyOther.setBounds(6, 50, 367, 26);
+		lblHowManyOther.setBounds(6, 56, 367, 26);
 		frame.getContentPane().add(lblHowManyOther);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(103, 104, 178, 30);
-		frame.getContentPane().add(textField_1);
+		member1 = new JTextField();
+		member1.setColumns(10);
+		member1.setBounds(103, 104, 178, 30);
+		frame.getContentPane().add(member1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(103, 146, 178, 30);
-		frame.getContentPane().add(textField_2);
+		member2 = new JTextField();
+		member2.setVisible(false);
+		member2.setColumns(10);
+		member2.setBounds(103, 143, 178, 30);
+		frame.getContentPane().add(member2);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(103, 185, 178, 30);
-		frame.getContentPane().add(textField_3);
+		member3 = new JTextField();
+		member3.setVisible(false);
+		member3.setColumns(10);
+		member3.setBounds(103, 185, 178, 30);
+		frame.getContentPane().add(member3);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(103, 224, 178, 30);
-		frame.getContentPane().add(textField_4);
+		member4 = new JTextField();
+		member4.setVisible(false);
+		member4.setColumns(10);
+		member4.setBounds(103, 224, 178, 30);
+		frame.getContentPane().add(member4);
 		
-		JLabel lblMember = new JLabel("Member 1:");
-		lblMember.setBounds(6, 104, 115, 30);
-		frame.getContentPane().add(lblMember);
-		
-		JLabel lblMember_1 = new JLabel("Member 2:");
-		lblMember_1.setBounds(6, 146, 115, 30);
+		lblMember_1 = new JLabel("Member 1:");
+		lblMember_1.setBounds(6, 104, 115, 30);
 		frame.getContentPane().add(lblMember_1);
 		
-		JLabel lblMember_2 = new JLabel("Member 3:");
-		lblMember_2.setBounds(6, 185, 115, 30);
+		lblMember_2 = new JLabel("Member 2:");
+		lblMember_2.setVisible(false);
+		lblMember_2.setBounds(6, 143, 115, 30);
 		frame.getContentPane().add(lblMember_2);
 		
-		JLabel lblMember_3 = new JLabel("Member 4:");
-		lblMember_3.setBounds(6, 224, 115, 30);
+		lblMember_3 = new JLabel("Member 3:");
+		lblMember_3.setVisible(false);
+		lblMember_3.setBounds(6, 185, 115, 30);
 		frame.getContentPane().add(lblMember_3);
+		
+		lblMember_4 = new JLabel("Member 4:");
+		lblMember_4.setVisible(false);
+		lblMember_4.setBounds(6, 224, 115, 30);
+		frame.getContentPane().add(lblMember_4);
+		
+		Choice initialPaceChoice = new Choice();
+		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
+		initialPaceChoice.setBackground(Color.LIGHT_GRAY);
+		initialPaceChoice.setBounds(325, 126, 115, 26);
+		frame.getContentPane().add(initialPaceChoice);
+		
+		Choice initialRationsChoice = new Choice();
+		initialRationsChoice.setForeground(Color.LIGHT_GRAY);
+		initialRationsChoice.setBackground(Color.LIGHT_GRAY);
+		initialRationsChoice.setBounds(325, 217, 115, 26);
+		frame.getContentPane().add(initialRationsChoice);
+		
+		JLabel lblInitialPace = new JLabel("Initial Pace:");
+		lblInitialPace.setBounds(325, 94, 88, 16);
+		frame.getContentPane().add(lblInitialPace);
+		
+		JLabel lblInitialRations = new JLabel("Initial Rations:");
+		lblInitialRations.setBounds(325, 185, 98, 16);
+		frame.getContentPane().add(lblInitialRations);
 	}
 }
