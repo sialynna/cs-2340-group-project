@@ -84,9 +84,9 @@ public class StartPage {
 		button.setBounds(26, 100, 110, 50);
 		frmApocalypseTrail.getContentPane().add(button);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("/Users/Christopher/Documents/workspace/CS2340 Group Project/images/830px-Capitol_m.jpg"));
-		lblNewLabel.setBounds(0, 0, 450, 278);
-		frmApocalypseTrail.getContentPane().add(lblNewLabel);
+		JLabel background = new JLabel("background");
+		background.setIcon(new ImageIcon(StartPage.class.getResource("/gui/resources/startscreen.jpg")));
+		background.setBounds(0, 0, 450, 278);
+		frmApocalypseTrail.getContentPane().add(background);
 	}
 }
