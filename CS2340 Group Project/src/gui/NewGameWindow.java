@@ -175,7 +175,7 @@ public class NewGameWindow {
 			}
 		});
 		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
-		initialPaceChoice.setBackground(Color.DARK_GRAY);
+		initialPaceChoice.setBackground(Color.LIGHT_GRAY);
 		initialPaceChoice.setBounds(308, 56, 115, 26);
 		initialPaceChoice.add("Stopped");
 		initialPaceChoice.add("Easy");
