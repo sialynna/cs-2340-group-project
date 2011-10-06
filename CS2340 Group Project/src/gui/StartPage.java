@@ -60,7 +60,8 @@ public class StartPage {
 		JButton newGame = new JButton("New Game");
 		newGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				NewGameWindow newgamewindow = new NewGameWindow();
+				frmApocalypseTrail.dispose();
 			}
 		});
 		newGame.setBounds(26, 25, 110, 50);
@@ -69,7 +70,7 @@ public class StartPage {
 		JButton btnNewButton = new JButton("About...");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				AboutWindow about = new AboutWindow();
 			}
 		});
 		btnNewButton.setBounds(26, 175, 110, 50);
