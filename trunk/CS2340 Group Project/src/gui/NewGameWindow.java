@@ -37,6 +37,9 @@ public class NewGameWindow {
 	private JLabel mem_2_back;
 	private JLabel mem_3_back;
 	private JLabel mem_4_back;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 	
 	/**
 	 * Launch the application.
@@ -72,8 +75,21 @@ public class NewGameWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		label_1 = new JLabel("Profession:");
+		label_1.setForeground(Color.GREEN);
+		label_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		label_1.setBounds(321, 16, 96, 30);
+		frame.getContentPane().add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
+		label_2.setForeground(Color.GREEN);
+		label_2.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		label_2.setBounds(311, 16, 115, 30);
+		frame.getContentPane().add(label_2);
+		
 		btnStartGame = new JButton("Start Game!");
-		btnStartGame.setBounds(306, 187, 117, 67);
+		btnStartGame.setBounds(306, 242, 117, 30);
 		frame.getContentPane().add(btnStartGame);
 		
 		JLabel lblNewLabel = new JLabel("Player Name:");
@@ -83,7 +99,7 @@ public class NewGameWindow {
 		frame.getContentPane().add(lblNewLabel);
 		
 		leaderName = new JTextField();
-		leaderName.setBounds(118, 16, 178, 30);
+		leaderName.setBounds(118, 16, 168, 30);
 		leaderName.setForeground(Color.LIGHT_GRAY);
 		leaderName.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(leaderName);
@@ -139,7 +155,7 @@ public class NewGameWindow {
 				}
 			}
 		});
-		partySizeChoice.setBounds(262, 56, 43, 26);
+		partySizeChoice.setBounds(241, 56, 43, 30);
 		partySizeChoice.add("1");
 		partySizeChoice.add("2");
 		partySizeChoice.add("3");
@@ -149,9 +165,9 @@ public class NewGameWindow {
 		frame.getContentPane().add(partySizeChoice);
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
-		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		lblHowManyOther.setForeground(Color.GREEN);
-		lblHowManyOther.setBounds(6, 56, 250, 30);
+		lblHowManyOther.setBounds(6, 56, 229, 30);
 		frame.getContentPane().add(lblHowManyOther);
 		
 		member1 = new JTextField();
@@ -220,7 +236,7 @@ public class NewGameWindow {
 		});
 		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
 		initialPaceChoice.setBackground(Color.DARK_GRAY);
-		initialPaceChoice.setBounds(325, 56, 115, 26);
+		initialPaceChoice.setBounds(306, 130, 115, 26);
 		initialPaceChoice.add("Stopped");
 		initialPaceChoice.add("Easy");
 		initialPaceChoice.add("Normal");
@@ -230,7 +246,7 @@ public class NewGameWindow {
 		Choice initialRationsChoice = new Choice();
 		initialRationsChoice.setForeground(Color.LIGHT_GRAY);
 		initialRationsChoice.setBackground(Color.DARK_GRAY);
-		initialRationsChoice.setBounds(325, 136, 115, 26);
+		initialRationsChoice.setBounds(306, 210, 115, 26);
 		initialRationsChoice.add("Filling");
 		initialRationsChoice.add("Normal");
 		initialRationsChoice.add("Meager");
@@ -240,13 +256,13 @@ public class NewGameWindow {
 		JLabel lblInitialPace = new JLabel("Initial Pace:");
 		lblInitialPace.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		lblInitialPace.setForeground(Color.GREEN);
-		lblInitialPace.setBounds(335, 23, 96, 30);
+		lblInitialPace.setBounds(316, 97, 96, 30);
 		frame.getContentPane().add(lblInitialPace);
 		
 		JLabel lblInitialRations = new JLabel("Initial Rations:");
 		lblInitialRations.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		lblInitialRations.setForeground(Color.GREEN);
-		lblInitialRations.setBounds(330, 104, 115, 30);
+		lblInitialRations.setBounds(311, 178, 115, 30);
 		frame.getContentPane().add(lblInitialRations);
 		
 		namelabelBackground = new JLabel("");
@@ -260,21 +276,21 @@ public class NewGameWindow {
 		memberselectBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/memberselectLabelBackground.jpg")));
 		memberselectBack.setForeground(Color.GREEN);
 		memberselectBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		memberselectBack.setBounds(4, 56, 250, 30);
+		memberselectBack.setBounds(4, 56, 229, 30);
 		frame.getContentPane().add(memberselectBack);
 		
 		paceBack = new JLabel("");
 		paceBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
 		paceBack.setForeground(Color.GREEN);
 		paceBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		paceBack.setBounds(325, 23, 115, 30);
+		paceBack.setBounds(306, 97, 115, 30);
 		frame.getContentPane().add(paceBack);
 		
 		rationsBack = new JLabel("");
 		rationsBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
 		rationsBack.setForeground(Color.GREEN);
 		rationsBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		rationsBack.setBounds(325, 104, 115, 30);
+		rationsBack.setBounds(306, 178, 115, 30);
 		frame.getContentPane().add(rationsBack);
 		
 		mem_1_back = new JLabel("");
@@ -312,5 +328,9 @@ public class NewGameWindow {
 		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
 		startscreen.setBounds(0, 0, 450, 278);
 		frame.getContentPane().add(startscreen);
+		
+		label = new JLabel("New label");
+		label.setBounds(316, 23, 61, 16);
+		frame.getContentPane().add(label);
 	}
 }
