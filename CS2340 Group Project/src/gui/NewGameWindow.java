@@ -84,6 +84,8 @@ public class NewGameWindow {
 		
 		leaderName = new JTextField();
 		leaderName.setBounds(118, 16, 178, 30);
+		leaderName.setForeground(Color.LIGHT_GRAY);
+		leaderName.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(leaderName);
 		leaderName.setColumns(10);
 		
@@ -142,6 +144,8 @@ public class NewGameWindow {
 		partySizeChoice.add("2");
 		partySizeChoice.add("3");
 		partySizeChoice.add("4");
+		partySizeChoice.setForeground(Color.LIGHT_GRAY);
+		partySizeChoice.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(partySizeChoice);
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
@@ -153,24 +157,32 @@ public class NewGameWindow {
 		member1 = new JTextField();
 		member1.setColumns(10);
 		member1.setBounds(103, 104, 178, 30);
+		member1.setForeground(Color.LIGHT_GRAY);
+		member1.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member1);
 		
 		member2 = new JTextField();
 		member2.setVisible(false);
 		member2.setColumns(10);
 		member2.setBounds(103, 143, 178, 30);
+		member2.setForeground(Color.LIGHT_GRAY);
+		member2.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member2);
 		
 		member3 = new JTextField();
 		member3.setVisible(false);
 		member3.setColumns(10);
 		member3.setBounds(103, 185, 178, 30);
+		member3.setForeground(Color.LIGHT_GRAY);
+		member3.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member3);
 		
 		member4 = new JTextField();
 		member4.setVisible(false);
 		member4.setColumns(10);
 		member4.setBounds(103, 224, 178, 30);
+		member4.setForeground(Color.LIGHT_GRAY);
+		member4.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member4);
 		
 		lblMember_1 = new JLabel("Member 1:");
@@ -206,8 +218,8 @@ public class NewGameWindow {
 				
 			}
 		});
-		initialPaceChoice.setForeground(Color.BLACK);
-		initialPaceChoice.setBackground(Color.BLACK);
+		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
+		initialPaceChoice.setBackground(Color.DARK_GRAY);
 		initialPaceChoice.setBounds(325, 56, 115, 26);
 		initialPaceChoice.add("Stopped");
 		initialPaceChoice.add("Easy");
