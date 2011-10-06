@@ -78,14 +78,14 @@ public class NewGameWindow {
 		label_1 = new JLabel("Profession:");
 		label_1.setForeground(Color.GREEN);
 		label_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		label_1.setBounds(321, 16, 96, 30);
+		label_1.setBounds(316, 16, 96, 30);
 		frame.getContentPane().add(label_1);
 		
 		label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
 		label_2.setForeground(Color.GREEN);
 		label_2.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		label_2.setBounds(311, 16, 115, 30);
+		label_2.setBounds(306, 16, 115, 30);
 		frame.getContentPane().add(label_2);
 		
 		btnStartGame = new JButton("Start Game!");
@@ -324,13 +324,19 @@ public class NewGameWindow {
 		mem_4_back.setBounds(2, 224, 85, 30);
 		frame.getContentPane().add(mem_4_back);
 		
-		startscreen = new JLabel("startscreen");
-		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
-		startscreen.setBounds(0, 0, 450, 278);
-		frame.getContentPane().add(startscreen);
+		Choice choice = new Choice();
+		choice.setForeground(Color.LIGHT_GRAY);
+		choice.setBackground(Color.DARK_GRAY);
+		choice.setBounds(306, 52, 115, 26);
+		frame.getContentPane().add(choice);
 		
 		label = new JLabel("New label");
 		label.setBounds(316, 23, 61, 16);
 		frame.getContentPane().add(label);
+		
+		startscreen = new JLabel("startscreen");
+		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
+		startscreen.setBounds(0, 0, 450, 278);
+		frame.getContentPane().add(startscreen);
 	}
 }
