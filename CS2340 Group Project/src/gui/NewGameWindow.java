@@ -325,6 +325,9 @@ public class NewGameWindow {
 		frame.getContentPane().add(mem_4_back);
 		
 		Choice choice = new Choice();
+		choice.add("Carpenter");
+		choice.add("Banker");
+		choice.add("Doctor");
 		choice.setForeground(Color.LIGHT_GRAY);
 		choice.setBackground(Color.DARK_GRAY);
 		choice.setBounds(306, 52, 115, 26);
