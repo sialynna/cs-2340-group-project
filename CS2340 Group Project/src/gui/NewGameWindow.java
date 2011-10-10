@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.EventQueue;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -45,6 +46,9 @@ public class NewGameWindow {
 	private JLabel label;
 	private JLabel label_1;
 	private JLabel label_2;
+	private JComboBox profSelect;
+	private JComboBox paceSelect;
+	private JComboBox rationSelect;
 	
 	/**
 	 * Launch the application.
@@ -80,38 +84,13 @@ public class NewGameWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		label_1 = new JLabel("Profession:");
-		label_1.setForeground(Color.GREEN);
-		label_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		label_1.setBounds(316, 16, 96, 30);
-		frame.getContentPane().add(label_1);
+		String[] memberNo = {"1", "2", "3", "4"};
+		String[] profs = {"Carpenter", "Banker", "Doctor"};
+		String[] paces = {"Stopped", "Easy", "Normal", "Grueling"};
+		String[] rations = {"Filling", "Normal", "Meager", "Starvation"};
 		
-		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
-		label_2.setForeground(Color.GREEN);
-		label_2.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		label_2.setBounds(306, 16, 115, 30);
-		frame.getContentPane().add(label_2);
-		
-		btnStartGame = new JButton("Start Game!");
-		btnStartGame.setBounds(306, 242, 117, 30);
-		frame.getContentPane().add(btnStartGame);
-		
-		JLabel lblNewLabel = new JLabel("Player Name:");
-		lblNewLabel.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		lblNewLabel.setForeground(Color.GREEN);
-		lblNewLabel.setBounds(10, 16, 115, 30);
-		frame.getContentPane().add(lblNewLabel);
-		
-		leaderName = new JTextField();
-		leaderName.setBounds(118, 16, 168, 30);
-		leaderName.setForeground(Color.LIGHT_GRAY);
-		leaderName.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(leaderName);
-		leaderName.setColumns(10);
-		
-		Choice partySizeChoice = new Choice();
-		partySizeChoice.addItemListener(new ItemListener() {
+		JComboBox memberSelect = new JComboBox(memberNo);
+		memberSelect.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String choice = (String)arg0.getItem();
 				if (choice == "1"){
@@ -160,12 +139,50 @@ public class NewGameWindow {
 				}
 			}
 		});
-		partySizeChoice.setBounds(241, 56, 43, 30);
-		partySizeChoice.add("1");
-		partySizeChoice.add("2");
-		partySizeChoice.add("3");
-		partySizeChoice.add("4");
-		frame.getContentPane().add(partySizeChoice);
+		
+		rationSelect = new JComboBox(rations);
+		rationSelect.setBounds(306, 174, 115, 27);
+		frame.getContentPane().add(rationSelect);
+		
+		paceSelect = new JComboBox(paces);
+		paceSelect.setBounds(306, 112, 115, 27);
+		frame.getContentPane().add(paceSelect);
+		
+		profSelect = new JComboBox(profs);
+		profSelect.setBounds(306, 49, 115, 27);
+		frame.getContentPane().add(profSelect);
+		memberSelect.setBounds(234, 58, 60, 27);
+		frame.getContentPane().add(memberSelect);
+		
+		label_1 = new JLabel("Profession:");
+		label_1.setForeground(Color.GREEN);
+		label_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		label_1.setBounds(322, 15, 96, 30);
+		frame.getContentPane().add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
+		label_2.setForeground(Color.GREEN);
+		label_2.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		label_2.setBounds(306, 16, 115, 30);
+		frame.getContentPane().add(label_2);
+		
+		btnStartGame = new JButton("Start Game!");
+		btnStartGame.setBounds(306, 218, 117, 54);
+		frame.getContentPane().add(btnStartGame);
+		
+		JLabel lblNewLabel = new JLabel("Player Name:");
+		lblNewLabel.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		lblNewLabel.setForeground(Color.GREEN);
+		lblNewLabel.setBounds(10, 16, 115, 30);
+		frame.getContentPane().add(lblNewLabel);
+		
+		leaderName = new JTextField();
+		leaderName.setBounds(118, 16, 168, 30);
+		leaderName.setForeground(Color.LIGHT_GRAY);
+		leaderName.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(leaderName);
+		leaderName.setColumns(10);
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
 		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 12));
@@ -231,41 +248,16 @@ public class NewGameWindow {
 		lblMember_4.setBounds(8, 224, 85, 30);
 		frame.getContentPane().add(lblMember_4);
 		
-		Choice initialPaceChoice = new Choice();
-		initialPaceChoice.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				
-			}
-		});
-		initialPaceChoice.setForeground(Color.LIGHT_GRAY);
-		initialPaceChoice.setBackground(Color.DARK_GRAY);
-		initialPaceChoice.setBounds(306, 130, 115, 26);
-		initialPaceChoice.add("Stopped");
-		initialPaceChoice.add("Easy");
-		initialPaceChoice.add("Normal");
-		initialPaceChoice.add("Grueling");
-		frame.getContentPane().add(initialPaceChoice);
-		
-		Choice initialRationsChoice = new Choice();
-		initialRationsChoice.setForeground(Color.LIGHT_GRAY);
-		initialRationsChoice.setBackground(Color.DARK_GRAY);
-		initialRationsChoice.setBounds(306, 210, 115, 26);
-		initialRationsChoice.add("Filling");
-		initialRationsChoice.add("Normal");
-		initialRationsChoice.add("Meager");
-		initialRationsChoice.add("Starvation");
-		frame.getContentPane().add(initialRationsChoice);
-		
 		JLabel lblInitialPace = new JLabel("Initial Pace:");
 		lblInitialPace.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		lblInitialPace.setForeground(Color.GREEN);
-		lblInitialPace.setBounds(316, 97, 96, 30);
+		lblInitialPace.setBounds(319, 78, 96, 30);
 		frame.getContentPane().add(lblInitialPace);
 		
 		JLabel lblInitialRations = new JLabel("Initial Rations:");
 		lblInitialRations.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		lblInitialRations.setForeground(Color.GREEN);
-		lblInitialRations.setBounds(311, 178, 115, 30);
+		lblInitialRations.setBounds(311, 141, 115, 30);
 		frame.getContentPane().add(lblInitialRations);
 		
 		namelabelBackground = new JLabel("");
@@ -279,21 +271,21 @@ public class NewGameWindow {
 		memberselectBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/memberselectLabelBackground.jpg")));
 		memberselectBack.setForeground(Color.GREEN);
 		memberselectBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		memberselectBack.setBounds(4, 56, 229, 30);
+		memberselectBack.setBounds(4, 56, 233, 30);
 		frame.getContentPane().add(memberselectBack);
 		
 		paceBack = new JLabel("");
 		paceBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
 		paceBack.setForeground(Color.GREEN);
 		paceBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		paceBack.setBounds(306, 97, 115, 30);
+		paceBack.setBounds(306, 79, 115, 30);
 		frame.getContentPane().add(paceBack);
 		
 		rationsBack = new JLabel("");
 		rationsBack.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/nameLabelBackground.jpg")));
 		rationsBack.setForeground(Color.GREEN);
 		rationsBack.setFont(new Font("American Typewriter", Font.BOLD, 14));
-		rationsBack.setBounds(306, 178, 115, 30);
+		rationsBack.setBounds(306, 142, 115, 30);
 		frame.getContentPane().add(rationsBack);
 		
 		mem_1_back = new JLabel("");
@@ -326,15 +318,6 @@ public class NewGameWindow {
 		mem_4_back.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		mem_4_back.setBounds(2, 224, 85, 30);
 		frame.getContentPane().add(mem_4_back);
-		
-		Choice choice = new Choice();
-		choice.add("Carpenter");
-		choice.add("Banker");
-		choice.add("Doctor");
-		choice.setForeground(Color.LIGHT_GRAY);
-		choice.setBackground(Color.DARK_GRAY);
-		choice.setBounds(306, 52, 115, 26);
-		frame.getContentPane().add(choice);
 		
 		label = new JLabel("New label");
 		label.setBounds(316, 23, 61, 16);
