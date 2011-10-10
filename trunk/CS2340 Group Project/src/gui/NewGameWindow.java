@@ -160,8 +160,6 @@ public class NewGameWindow {
 		partySizeChoice.add("2");
 		partySizeChoice.add("3");
 		partySizeChoice.add("4");
-		partySizeChoice.setForeground(Color.LIGHT_GRAY);
-		partySizeChoice.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(partySizeChoice);
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
