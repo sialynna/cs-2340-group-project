@@ -167,7 +167,7 @@ public class NewGameWindow {
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
 		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		lblHowManyOther.setForeground(Color.GREEN);
-		lblHowManyOther.setBounds(6, 56, 229, 30);
+		lblHowManyOther.setBounds(14, 56, 223, 30);
 		frame.getContentPane().add(lblHowManyOther);
 		
 		member1 = new JTextField();
