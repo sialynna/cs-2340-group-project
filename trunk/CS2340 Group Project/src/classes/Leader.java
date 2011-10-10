@@ -12,7 +12,7 @@ public class Leader extends Member {
 	public String getProfession(){
 		return profession;
 	}
-	public void setProfession(){
+	public void setProfession(String profession){
 		this.profession = profession;
 	}
 	public String getName(){
