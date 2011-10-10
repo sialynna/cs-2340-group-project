@@ -14,6 +14,11 @@ import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import org.jdesktop.beansbinding.ELProperty;
+import org.jdesktop.beansbinding.BeanProperty;
+import org.jdesktop.beansbinding.AutoBinding;
+import org.jdesktop.beansbinding.Bindings;
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 
 public class NewGameWindow {
 
@@ -339,5 +344,8 @@ public class NewGameWindow {
 		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
 		startscreen.setBounds(0, 0, 450, 278);
 		frame.getContentPane().add(startscreen);
+		initDataBindings();
+	}
+	protected void initDataBindings() {
 	}
 }
