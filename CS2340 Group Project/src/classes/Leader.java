@@ -8,7 +8,6 @@ public class Leader extends Member {
 		this.profession = profession;
 	}
 	
-	
 	public String getProfession(){
 		return profession;
 	}
