@@ -1,7 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
-
+import classes.*;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 import java.awt.Choice;
 import java.awt.Color;
 import javax.swing.JSeparator;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
@@ -49,6 +52,11 @@ public class NewGameWindow {
 	private JComboBox profSelect;
 	private JComboBox paceSelect;
 	private JComboBox rationSelect;
+	private Leader ld;
+	private Pace pacee;
+	private Rations ration;
+	private Supplies sup;
+	private Member[] mem;
 	
 	/**
 	 * Launch the application.
@@ -89,6 +97,7 @@ public class NewGameWindow {
 		String[] paces = {"Stopped", "Easy", "Normal", "Grueling"};
 		String[] rations = {"Filling", "Normal", "Meager", "Starvation"};
 		
+		
 		JComboBox memberSelect = new JComboBox(memberNo);
 		memberSelect.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
@@ -103,6 +112,7 @@ public class NewGameWindow {
 					member4.setVisible(false);
 					lblMember_4.setVisible(false);
 					mem_4_back.setVisible(false);
+					 
 				}
 				else if(choice == "2"){
 					member2.setVisible(true);
@@ -143,16 +153,72 @@ public class NewGameWindow {
 		rationSelect = new JComboBox(rations);
 		rationSelect.setBounds(306, 174, 115, 27);
 		frame.getContentPane().add(rationSelect);
+		rationSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JComboBox rat=(JComboBox)e.getSource();
+				String ratval=(String)rat.getSelectedItem();
+				if(ratval.equals("Filling"))
+				{
+					ration=new Rations(0);
+				}
+				else if(ratval.equals("Normal"))
+				{
+					ration=new Rations(1);
+				}
+				else if(ratval.equals("Meager"))
+				{
+					ration=new Rations(2);
+				}
+				else if(ratval.equals("Starvation"))
+				{
+					ration=new Rations(3);
+				}
+			}
+		});
 		
 		paceSelect = new JComboBox(paces);
 		paceSelect.setBounds(306, 112, 115, 27);
 		frame.getContentPane().add(paceSelect);
+		paceSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JComboBox pc=(JComboBox)e.getSource();
+				String paceval=(String)pc.getSelectedItem();
+				if(paceval.equals("Stopped"))
+				{
+					pacee=new Pace(0);
+				}
+				else if(paceval.equals("Easy"))
+				{
+					pacee=new Pace(1);
+				}
+				else if(paceval.equals("Normal"))
+				{
+					pacee=new Pace(2);
+				}
+				else if(paceval.equals("Grueling"))
+				{
+					pacee=new Pace(3);
+				}
+			}
+		});
 		
 		profSelect = new JComboBox(profs);
 		profSelect.setBounds(306, 49, 115, 27);
 		frame.getContentPane().add(profSelect);
+		
+		profSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JComboBox prof=(JComboBox)e.getSource();
+				String profval=(String)prof.getSelectedItem();
+				ld.setProfession(profval);
+			}
+		});
 		memberSelect.setBounds(234, 58, 60, 27);
 		frame.getContentPane().add(memberSelect);
+		
 		
 		label_1 = new JLabel("Profession:");
 		label_1.setForeground(Color.GREEN);
@@ -183,6 +249,13 @@ public class NewGameWindow {
 		leaderName.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(leaderName);
 		leaderName.setColumns(10);
+		leaderName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				String text = leaderName.getText();
+				ld.setName(text);
+			}
+		});
 		
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
 		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 12));
@@ -196,6 +269,13 @@ public class NewGameWindow {
 		member1.setForeground(Color.LIGHT_GRAY);
 		member1.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member1);
+		member1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				mem[0]=new Member(member1.getText());
+			}
+		});
+		
 		
 		member2 = new JTextField();
 		member2.setVisible(false);
@@ -204,6 +284,12 @@ public class NewGameWindow {
 		member2.setForeground(Color.LIGHT_GRAY);
 		member2.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member2);
+		member2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				mem[1]=new Member(member2.getText());
+			}
+		});
 		
 		member3 = new JTextField();
 		member3.setVisible(false);
@@ -212,6 +298,12 @@ public class NewGameWindow {
 		member3.setForeground(Color.LIGHT_GRAY);
 		member3.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member3);
+		member3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				mem[2]=new Member(member3.getText());
+			}
+		});
 		
 		member4 = new JTextField();
 		member4.setVisible(false);
@@ -220,6 +312,12 @@ public class NewGameWindow {
 		member4.setForeground(Color.LIGHT_GRAY);
 		member4.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member4);
+		member4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				mem[3]=new Member(member4.getText());
+			}
+		});
 		
 		lblMember_1 = new JLabel("Member 1:");
 		lblMember_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
