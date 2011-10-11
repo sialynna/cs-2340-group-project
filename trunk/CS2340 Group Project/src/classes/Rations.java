@@ -2,20 +2,21 @@ package classes;
 
 public class Rations 
 {
-	private int val;
+	private int rationsPerDay;
+	
 	public Rations(int val)
 	{
-		this.val=val;
+		this.rationsPerDay=val;
 	}
 	
 	public int getRations()
 	{
-		return val;
+		return rationsPerDay;
 	}
 	
 	public void setRations(int val)
 	{
-		this.val=val;
+		this.rationsPerDay=val;
 	}
 	
 }

@@ -1,17 +1,21 @@
 package classes;
 
-public class Member {
+public class Member 
+{
 	private String name;
 	
 	
-	public Member(String name){
+	public Member(String name)
+	{
 		this.name = name;
 	}
 	
-	public void setName(String name){
+	public void setName(String name)
+	{
 		this.name = name;
 	}
-	public String getName(){
+	public String getName()
+	{
 		return name;
 	}
 
