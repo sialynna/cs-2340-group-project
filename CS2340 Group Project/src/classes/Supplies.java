@@ -1,12 +1,12 @@
 package classes;
 
 public class Supplies {
-	private int rations;
+	private int rations = 0;
+	private int ammo = 0;
+	private int cloths = 0;
 	
-	public Supplies(int rations){
-		this.rations = rations;
+	public Supplies(){
 	}
-	
 	
 	public void setRations(int rations){
 		this.rations = rations;

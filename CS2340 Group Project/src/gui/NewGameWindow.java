@@ -59,6 +59,7 @@ public class NewGameWindow {
 	private Member[] mem= new Member[3];
 	private String name;
 	private String profession;
+	private String choice;
 	/**
 	 * Launch the application.
 	 */
@@ -102,7 +103,7 @@ public class NewGameWindow {
 		JComboBox memberSelect = new JComboBox(memberNo);
 		memberSelect.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				String choice = (String)arg0.getItem();
+				choice = (String)arg0.getItem();
 				if (choice == "1"){
 					member2.setVisible(false);
 					lblMember_2.setVisible(false);
@@ -241,6 +242,7 @@ public class NewGameWindow {
 			public void actionPerformed(ActionEvent e) 
 			{
 				ld=new Leader(name,profession);
+				
 			}
 		});
 		
