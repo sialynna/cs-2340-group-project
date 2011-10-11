@@ -56,8 +56,9 @@ public class NewGameWindow {
 	private Pace pacee;
 	private Rations ration;
 	private Supplies sup;
-	private Member[] mem;
-	
+	private Member[] mem= new Member[3];
+	private String name;
+	private String profession;
 	/**
 	 * Launch the application.
 	 */
@@ -213,7 +214,7 @@ public class NewGameWindow {
 			{
 				JComboBox prof=(JComboBox)e.getSource();
 				String profval=(String)prof.getSelectedItem();
-				ld.setProfession(profval);
+				profession = profval;
 			}
 		});
 		memberSelect.setBounds(234, 58, 60, 27);
@@ -236,6 +237,12 @@ public class NewGameWindow {
 		btnStartGame = new JButton("Start Game!");
 		btnStartGame.setBounds(306, 218, 117, 54);
 		frame.getContentPane().add(btnStartGame);
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				ld=new Leader(name,profession);
+			}
+		});
 		
 		JLabel lblNewLabel = new JLabel("Player Name:");
 		lblNewLabel.setFont(new Font("American Typewriter", Font.BOLD, 14));
@@ -253,7 +260,7 @@ public class NewGameWindow {
 			public void actionPerformed(ActionEvent e) 
 			{
 				String text = leaderName.getText();
-				ld.setName(text);
+				name=text;
 			}
 		});
 		
