@@ -23,15 +23,17 @@ import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class NewGameWindow {
 
 	private JFrame frame;
 	private JTextField leaderName;
-	private JTextField member1;
-	private JTextField member2;
-	private JTextField member3;
-	private JTextField member4;
+	private JTextField member1name;
+	private JTextField member2name;
+	private JTextField member3name;
+	private JTextField member4name;
 	
 	private JLabel lblMember_1;
 	private JLabel lblMember_2;
@@ -62,6 +64,10 @@ public class NewGameWindow {
 	private String choice;
 	private String paceval;
 	private String ratval;
+	public Member member;
+	public Member member1;
+	public Member member2;
+	public Member member3;
 	/**
 	 * Launch the application.
 	 */
@@ -107,47 +113,47 @@ public class NewGameWindow {
 			public void itemStateChanged(ItemEvent arg0) {
 				choice = (String)arg0.getItem();
 				if (choice == "1"){
-					member2.setVisible(false);
+					member2name.setVisible(false);
 					lblMember_2.setVisible(false);
 					mem_2_back.setVisible(false);
-					member3.setVisible(false);
+					member3name.setVisible(false);
 					lblMember_3.setVisible(false);
 					mem_3_back.setVisible(false);
-					member4.setVisible(false);
+					member4name.setVisible(false);
 					lblMember_4.setVisible(false);
 					mem_4_back.setVisible(false);
 					 
 				}
 				else if(choice == "2"){
-					member2.setVisible(true);
+					member2name.setVisible(true);
 					lblMember_2.setVisible(true);
 					mem_2_back.setVisible(true);
-					member3.setVisible(false);
+					member3name.setVisible(false);
 					lblMember_3.setVisible(false);
 					mem_3_back.setVisible(false);
-					member4.setVisible(false);
+					member4name.setVisible(false);
 					lblMember_4.setVisible(false);
 					mem_4_back.setVisible(false);
 				}
 				else if (choice == "3"){
-					member2.setVisible(true);
+					member2name.setVisible(true);
 					lblMember_2.setVisible(true);
 					mem_2_back.setVisible(true);
-					member3.setVisible(true);
+					member3name.setVisible(true);
 					lblMember_3.setVisible(true);
 					mem_3_back.setVisible(true);
-					member4.setVisible(false);
+					member4name.setVisible(false);
 					lblMember_4.setVisible(false);
 					mem_4_back.setVisible(false);
 				}
 				else if (choice == "4"){
-					member2.setVisible(true);
+					member2name.setVisible(true);
 					lblMember_2.setVisible(true);
 					mem_2_back.setVisible(true);
-					member3.setVisible(true);
+					member3name.setVisible(true);
 					lblMember_3.setVisible(true);
 					mem_3_back.setVisible(true);
-					member4.setVisible(true);
+					member4name.setVisible(true);
 					lblMember_4.setVisible(true);
 					mem_4_back.setVisible(true);
 				}
@@ -249,27 +255,32 @@ public class NewGameWindow {
 				
 				if (mem[1] == null)
 				{
-					Member member0 = new Member(mem[0]);
+					member = new Member(mem[0]);
 				} 
 				else if (mem[2] == null)
 				{
-					Member member0 = new Member(mem[0]);
-					Member member1 = new Member(mem[1]);
+					member = new Member(mem[0]);
+					member1 = new Member(mem[1]);
 				} 
 				else if (mem[3] == null)
 				{
-					Member member0 = new Member(mem[0]);
-					Member member1 = new Member(mem[1]);
-					Member member2 = new Member(mem[2]);
+					member = new Member(mem[0]);
+					member1 = new Member(mem[1]);
+					member2 = new Member(mem[2]);
 				} 
 				else 
 				{
-					Member member0 = new Member(mem[0]);
-					Member member1 = new Member(mem[1]);
-					Member member2 = new Member(mem[2]);
-					Member member3 = new Member(mem[3]);
+					member = new Member(mem[0]);
+					member1 = new Member(mem[1]);
+					member2 = new Member(mem[2]);
+					member3 = new Member(mem[3]);
 				}
-				
+				System.out.println(ld.getName());
+				System.out.println(ld.getProfession());
+			System.out.println(ration.getRations());
+			System.out.println(member.getName());
+			System.out.println(member1.getName());
+			System.out.println(pacee.getPace());
 			}
 		});
 		
@@ -299,59 +310,56 @@ public class NewGameWindow {
 		lblHowManyOther.setBounds(14, 56, 223, 30);
 		frame.getContentPane().add(lblHowManyOther);
 		
-		member1 = new JTextField();
-		member1.setColumns(10);
-		member1.setBounds(103, 104, 178, 30);
-		member1.setForeground(Color.LIGHT_GRAY);
-		member1.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(member1);
-		member1.addActionListener(new ActionListener() {
+		member1name = new JTextField();
+		member1name.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				mem[0]=member1name.getText();
+			}
+		});
+		member1name.setColumns(10);
+		member1name.setBounds(103, 104, 178, 30);
+		member1name.setForeground(Color.LIGHT_GRAY);
+		member1name.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(member1name);
+		
+		member2name = new JTextField();
+		member2name.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				mem[1]=member2name.getText();
+			}
+		});
+		member2name.setVisible(false);
+		member2name.setColumns(10);
+		member2name.setBounds(103, 143, 178, 30);
+		member2name.setForeground(Color.LIGHT_GRAY);
+		member2name.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(member2name);
+		
+		member3name = new JTextField();
+		member3name.setVisible(false);
+		member3name.setColumns(10);
+		member3name.setBounds(103, 185, 178, 30);
+		member3name.setForeground(Color.LIGHT_GRAY);
+		member3name.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(member3name);
+		member3name.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[0]=member1.getText();
+				mem[2]=member3name.getText();
 			}
 		});
 		
-		
-		member2 = new JTextField();
-		member2.setVisible(false);
-		member2.setColumns(10);
-		member2.setBounds(103, 143, 178, 30);
-		member2.setForeground(Color.LIGHT_GRAY);
-		member2.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(member2);
-		member2.addActionListener(new ActionListener() {
+		member4name = new JTextField();
+		member4name.setVisible(false);
+		member4name.setColumns(10);
+		member4name.setBounds(103, 224, 178, 30);
+		member4name.setForeground(Color.LIGHT_GRAY);
+		member4name.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(member4name);
+		member4name.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[1]=member2.getText();
-			}
-		});
-		
-		member3 = new JTextField();
-		member3.setVisible(false);
-		member3.setColumns(10);
-		member3.setBounds(103, 185, 178, 30);
-		member3.setForeground(Color.LIGHT_GRAY);
-		member3.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(member3);
-		member3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				mem[2]=member3.getText();
-			}
-		});
-		
-		member4 = new JTextField();
-		member4.setVisible(false);
-		member4.setColumns(10);
-		member4.setBounds(103, 224, 178, 30);
-		member4.setForeground(Color.LIGHT_GRAY);
-		member4.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(member4);
-		member4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				mem[3]=member4.getText();
+				mem[3]=member4name.getText();
 			}
 		});
 		
