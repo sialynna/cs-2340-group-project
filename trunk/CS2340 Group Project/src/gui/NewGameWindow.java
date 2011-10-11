@@ -56,10 +56,12 @@ public class NewGameWindow {
 	private Pace pacee;
 	private Rations ration;
 	private Supplies sup;
-	private Member[] mem= new Member[3];
-	private String name;
+	private String[] mem = new String[3];
+ 	private String name;
 	private String profession;
 	private String choice;
+	private String paceval;
+	private String ratval;
 	/**
 	 * Launch the application.
 	 */
@@ -159,23 +161,7 @@ public class NewGameWindow {
 			public void actionPerformed(ActionEvent e) 
 			{
 				JComboBox rat=(JComboBox)e.getSource();
-				String ratval=(String)rat.getSelectedItem();
-				if(ratval.equals("Filling"))
-				{
-					ration=new Rations(0);
-				}
-				else if(ratval.equals("Normal"))
-				{
-					ration=new Rations(1);
-				}
-				else if(ratval.equals("Meager"))
-				{
-					ration=new Rations(2);
-				}
-				else if(ratval.equals("Starvation"))
-				{
-					ration=new Rations(3);
-				}
+				ratval=(String)rat.getSelectedItem();
 			}
 		});
 		
@@ -186,23 +172,7 @@ public class NewGameWindow {
 			public void actionPerformed(ActionEvent e) 
 			{
 				JComboBox pc=(JComboBox)e.getSource();
-				String paceval=(String)pc.getSelectedItem();
-				if(paceval.equals("Stopped"))
-				{
-					pacee=new Pace(0);
-				}
-				else if(paceval.equals("Easy"))
-				{
-					pacee=new Pace(1);
-				}
-				else if(paceval.equals("Normal"))
-				{
-					pacee=new Pace(2);
-				}
-				else if(paceval.equals("Grueling"))
-				{
-					pacee=new Pace(3);
-				}
+				paceval=(String)pc.getSelectedItem();
 			}
 		});
 		
@@ -243,6 +213,63 @@ public class NewGameWindow {
 			{
 				ld=new Leader(name,profession);
 				
+				if(ratval.equals("Filling"))
+				{
+					ration=new Rations(0);
+				}
+				else if(ratval.equals("Normal"))
+				{
+					ration=new Rations(1);
+				}
+				else if(ratval.equals("Meager"))
+				{
+					ration=new Rations(2);
+				}
+				else if(ratval.equals("Starvation"))
+				{
+					ration=new Rations(3);
+				}
+				
+				if(paceval.equals("Stopped"))
+				{
+					pacee=new Pace(0);
+				}
+				else if(paceval.equals("Easy"))
+				{
+					pacee=new Pace(1);
+				}
+				else if(paceval.equals("Normal"))
+				{
+					pacee=new Pace(2);
+				}
+				else if(paceval.equals("Grueling"))
+				{
+					pacee=new Pace(3);
+				}
+				
+				if (mem[1] == null)
+				{
+					Member member0 = new Member(mem[0]);
+				} 
+				else if (mem[2] == null)
+				{
+					Member member0 = new Member(mem[0]);
+					Member member1 = new Member(mem[1]);
+				} 
+				else if (mem[3] == null)
+				{
+					Member member0 = new Member(mem[0]);
+					Member member1 = new Member(mem[1]);
+					Member member2 = new Member(mem[2]);
+				} 
+				else 
+				{
+					Member member0 = new Member(mem[0]);
+					Member member1 = new Member(mem[1]);
+					Member member2 = new Member(mem[2]);
+					Member member3 = new Member(mem[3]);
+				}
+				
 			}
 		});
 		
@@ -281,7 +308,7 @@ public class NewGameWindow {
 		member1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[0]=new Member(member1.getText());
+				mem[0]=member1.getText();
 			}
 		});
 		
@@ -296,7 +323,7 @@ public class NewGameWindow {
 		member2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[1]=new Member(member2.getText());
+				mem[1]=member2.getText();
 			}
 		});
 		
@@ -310,7 +337,7 @@ public class NewGameWindow {
 		member3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[2]=new Member(member3.getText());
+				mem[2]=member3.getText();
 			}
 		});
 		
@@ -324,7 +351,7 @@ public class NewGameWindow {
 		member4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				mem[3]=new Member(member4.getText());
+				mem[3]=member4.getText();
 			}
 		});
 		
