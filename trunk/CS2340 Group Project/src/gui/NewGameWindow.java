@@ -29,6 +29,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Component;
 
+/**
+ * This class creates the New Game Window which gives the player the
+ * options to enter their name, the number of other wagon members,
+ * their starting profession, pace, and rations per day.
+ * 
+ * @author Team C.A.K.E
+ *
+ */
 public class NewGameWindow {
 
 	private JFrame frame;
