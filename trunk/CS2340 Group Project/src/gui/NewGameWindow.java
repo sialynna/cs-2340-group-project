@@ -25,6 +25,9 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Component;
 
 public class NewGameWindow {
 
@@ -40,6 +43,7 @@ public class NewGameWindow {
 	private JLabel lblMember_3;
 	private JLabel lblMember_4;
 	private JLabel startscreen;
+	private JLabel noname;
 	private JButton btnStartGame;
 	private JLabel namelabelBackground;
 	private JLabel paceBack;
@@ -55,19 +59,14 @@ public class NewGameWindow {
 	private JComboBox paceSelect;
 	private JComboBox rationSelect;
 	private Leader ld;
-	private Pace pacee;
+	private Pace pace;
 	private Rations ration;
 	private Supplies sup;
-	private String[] mem = new String[3];
- 	private String name;
-	private String profession;
+	private String profession = "Carpenter";
 	private String choice;
-	private String paceval;
-	private String ratval;
-	public Member member;
-	public Member member1;
-	public Member member2;
-	public Member member3;
+	private String paceval = "Stopped";
+	private String ratval = "Filling";
+	
 	/**
 	 * Launch the application.
 	 */
@@ -109,6 +108,8 @@ public class NewGameWindow {
 		
 		
 		JComboBox memberSelect = new JComboBox(memberNo);
+		memberSelect.setForeground(Color.BLACK);
+		memberSelect.setBackground(Color.WHITE);
 		memberSelect.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				choice = (String)arg0.getItem();
@@ -212,75 +213,114 @@ public class NewGameWindow {
 		frame.getContentPane().add(label_2);
 		
 		btnStartGame = new JButton("Start Game!");
-		btnStartGame.setBounds(306, 218, 117, 54);
+		btnStartGame.setBackground(Color.GRAY);
+		btnStartGame.setBounds(305, 218, 117, 54);
 		frame.getContentPane().add(btnStartGame);
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				ld=new Leader(name,profession);
-				
-				if(ratval.equals("Filling"))
+				if (leaderName.getText().equals("") || leaderName.getText().equals(null))
 				{
-					ration=new Rations(0);
-				}
-				else if(ratval.equals("Normal"))
-				{
-					ration=new Rations(1);
-				}
-				else if(ratval.equals("Meager"))
-				{
-					ration=new Rations(2);
-				}
-				else if(ratval.equals("Starvation"))
-				{
-					ration=new Rations(3);
-				}
-				
-				if(paceval.equals("Stopped"))
-				{
-					pacee=new Pace(0);
-				}
-				else if(paceval.equals("Easy"))
-				{
-					pacee=new Pace(1);
-				}
-				else if(paceval.equals("Normal"))
-				{
-					pacee=new Pace(2);
-				}
-				else if(paceval.equals("Grueling"))
-				{
-					pacee=new Pace(3);
-				}
-				
-				if (mem[1] == null)
-				{
-					member = new Member(mem[0]);
+					leaderName.setBackground(Color.red);
+					noname.setVisible(true);
 				} 
-				else if (mem[2] == null)
+				else if (member1name.getText().equals(""))
 				{
-					member = new Member(mem[0]);
-					member1 = new Member(mem[1]);
-				} 
-				else if (mem[3] == null)
-				{
-					member = new Member(mem[0]);
-					member1 = new Member(mem[1]);
-					member2 = new Member(mem[2]);
-				} 
-				else 
-				{
-					member = new Member(mem[0]);
-					member1 = new Member(mem[1]);
-					member2 = new Member(mem[2]);
-					member3 = new Member(mem[3]);
+					member1name.setBackground(Color.red);
+					noname.setVisible(true);
 				}
+				else if (member2name.isVisible() && member2name.getText().equals(""))
+				{
+					member2name.setBackground(Color.red);
+					noname.setVisible(true);
+				}
+				else if (member3name.isVisible() && member3name.getText().equals(""))
+				{
+					member3name.setBackground(Color.red);
+					noname.setVisible(true);
+				}
+				else if (member4name.isVisible() && member4name.getText().equals(""))
+				{
+					member4name.setBackground(Color.red);
+					noname.setVisible(true);
+				}
+				else
+				{
+					ld = new Leader(leaderName.getText(),profession);
+					
+					if(ratval.equals("Filling"))
+					{
+						ration=new Rations(3);
+					}
+					else if(ratval.equals("Normal"))
+					{
+						ration=new Rations(2);
+					}
+					else if(ratval.equals("Meager"))
+					{
+							ration=new Rations(1);
+					}
+					else if(ratval.equals("Starvation"))
+					{
+						ration=new Rations(0);
+					}
+					
+					if(paceval.equals("Stopped"))
+					{
+						pace=new Pace(0);
+					}
+					else if(paceval.equals("Easy"))
+					{
+						pace=new Pace(1);
+					}
+					else if(paceval.equals("Normal"))
+					{
+						pace=new Pace(2);
+					}
+					else if(paceval.equals("Grueling"))
+					{
+						pace=new Pace(3);
+					}
+					
+					if (member2name.isVisible() == false && member3name.isVisible() == false && member4name.isVisible() == false)
+					{
+						Member member1 = new Member(member1name.getText());
+						System.out.println(member1.getName());  // for debugging
+					} 
+					else if (member3name.isVisible() == false && member4name.isVisible() == false)
+					{
+						Member member1 = new Member(member1name.getText());
+						Member member2 = new Member(member2name.getText());
+						System.out.println(member1.getName());
+						System.out.println(member2.getName());
+					} 
+					else if (member4name.isVisible() == false)
+					{
+						Member member1 = new Member(member1name.getText());
+						Member member2 = new Member(member2name.getText());
+						Member member3 = new Member(member3name.getText());
+						System.out.println(member1.getName());
+						System.out.println(member2.getName());
+						System.out.println(member3.getName());
+					} 
+					else 
+					{
+						Member member1 = new Member(member1name.getText());
+						Member member2 = new Member(member2name.getText());
+						Member member3 = new Member(member3name.getText());
+						Member member4 = new Member(member4name.getText());
+						System.out.println(member1.getName());
+						System.out.println(member2.getName());
+						System.out.println(member3.getName());
+						System.out.println(member4.getName());
+					}
+					
 				System.out.println(ld.getName());
 				System.out.println(ld.getProfession());
-			System.out.println(ration.getRations());
-			System.out.println(member.getName());
-			System.out.println(member1.getName());
-			System.out.println(pacee.getPace());
+				System.out.println(ration.getRations());
+				System.out.println(pace.getPace());
+				
+				}
 			}
 		});
 		
@@ -291,19 +331,19 @@ public class NewGameWindow {
 		frame.getContentPane().add(lblNewLabel);
 		
 		leaderName = new JTextField();
+		leaderName.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				leaderName.setBackground(Color.DARK_GRAY);
+				noname.setVisible(false);
+			}
+		});
 		leaderName.setBounds(118, 16, 168, 30);
 		leaderName.setForeground(Color.LIGHT_GRAY);
 		leaderName.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(leaderName);
 		leaderName.setColumns(10);
-		leaderName.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				String text = leaderName.getText();
-				name=text;
-			}
-		});
-		
+
 		JLabel lblHowManyOther = new JLabel("How many other wagon members?");
 		lblHowManyOther.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		lblHowManyOther.setForeground(Color.GREEN);
@@ -311,9 +351,11 @@ public class NewGameWindow {
 		frame.getContentPane().add(lblHowManyOther);
 		
 		member1name = new JTextField();
-		member1name.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-				mem[0]=member1name.getText();
+		member1name.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				member1name.setBackground(Color.DARK_GRAY);
+				noname.setVisible(false);
 			}
 		});
 		member1name.setColumns(10);
@@ -323,9 +365,11 @@ public class NewGameWindow {
 		frame.getContentPane().add(member1name);
 		
 		member2name = new JTextField();
-		member2name.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-				mem[1]=member2name.getText();
+		member2name.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				member2name.setBackground(Color.DARK_GRAY);
+				noname.setVisible(false);
 			}
 		});
 		member2name.setVisible(false);
@@ -336,33 +380,35 @@ public class NewGameWindow {
 		frame.getContentPane().add(member2name);
 		
 		member3name = new JTextField();
+		member3name.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				member3name.setBackground(Color.DARK_GRAY);
+				noname.setVisible(false);
+			}
+		});
 		member3name.setVisible(false);
 		member3name.setColumns(10);
 		member3name.setBounds(103, 185, 178, 30);
 		member3name.setForeground(Color.LIGHT_GRAY);
 		member3name.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member3name);
-		member3name.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				mem[2]=member3name.getText();
-			}
-		});
 		
 		member4name = new JTextField();
+		member4name.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				member4name.setBackground(Color.DARK_GRAY);
+				noname.setVisible(false);
+			}
+		});
 		member4name.setVisible(false);
 		member4name.setColumns(10);
 		member4name.setBounds(103, 224, 178, 30);
 		member4name.setForeground(Color.LIGHT_GRAY);
 		member4name.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(member4name);
-		member4name.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				mem[3]=member4name.getText();
-			}
-		});
-		
+
 		lblMember_1 = new JLabel("Member 1:");
 		lblMember_1.setFont(new Font("American Typewriter", Font.BOLD, 14));
 		lblMember_1.setForeground(Color.GREEN);
@@ -464,6 +510,16 @@ public class NewGameWindow {
 		label = new JLabel("New label");
 		label.setBounds(316, 23, 61, 16);
 		frame.getContentPane().add(label);
+		
+		noname = new JLabel(" Please enter a name!");
+		noname.setAlignmentX(Component.CENTER_ALIGNMENT);
+		noname.setVisible(false);
+		noname.setOpaque(true);
+		noname.setBackground(Color.DARK_GRAY);
+		noname.setFont(new Font("Lucida Grande", Font.BOLD, 10));
+		noname.setForeground(Color.RED);
+		noname.setBounds(306, 199, 115, 16);
+		frame.getContentPane().add(noname);
 		
 		startscreen = new JLabel("startscreen");
 		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
