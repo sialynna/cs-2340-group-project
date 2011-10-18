@@ -5,7 +5,7 @@
 package classes;
 public class Supplies {
 	public enum Item{
-		RATIONS, AMMO, CLOTHES, WHEELS
+		MOXEN, CLOTHES, AMMO, MEDS, AXLES, WHEELS, YOKES, RATIONS, ITEMS
 	}
 	
 	private int[] items;
