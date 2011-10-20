@@ -20,11 +20,6 @@ import java.awt.Font;
 import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import net.miginfocom.swing.MigLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
 
 public class InitialTradeWindow {
 
@@ -136,11 +131,11 @@ public class InitialTradeWindow {
 		StorePanel.add(BuyMoxen);
 		BuyMoxen.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Moxen:");
-		lblNewLabel_2.setForeground(Color.GREEN);
-		lblNewLabel_2.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(6, 74, 55, 25);
-		StorePanel.add(lblNewLabel_2);
+		JLabel StMoxenLbl = new JLabel("Moxen:");
+		StMoxenLbl.setForeground(Color.GREEN);
+		StMoxenLbl.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		StMoxenLbl.setBounds(6, 74, 55, 25);
+		StorePanel.add(StMoxenLbl);
 		
 		JLabel label = new JLabel("Cloths:");
 		label.setForeground(Color.GREEN);
@@ -289,23 +284,23 @@ public class InitialTradeWindow {
 		RationsMax.setBounds(98, 284, 50, 25);
 		StorePanel.add(RationsMax);
 		
-		JLabel label_35 = new JLabel("0");
-		label_35.setHorizontalTextPosition(SwingConstants.CENTER);
-		label_35.setHorizontalAlignment(SwingConstants.CENTER);
-		label_35.setForeground(Color.GREEN);
-		label_35.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		label_35.setAlignmentX(0.5f);
-		label_35.setBounds(98, 314, 50, 25);
-		StorePanel.add(label_35);
+		JLabel ItemsMax = new JLabel("0");
+		ItemsMax.setHorizontalTextPosition(SwingConstants.CENTER);
+		ItemsMax.setHorizontalAlignment(SwingConstants.CENTER);
+		ItemsMax.setForeground(Color.GREEN);
+		ItemsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ItemsMax.setAlignmentX(0.5f);
+		ItemsMax.setBounds(98, 314, 50, 25);
+		StorePanel.add(ItemsMax);
 		
-		JLabel label_9 = new JLabel("0");
-		label_9.setHorizontalTextPosition(SwingConstants.CENTER);
-		label_9.setHorizontalAlignment(SwingConstants.CENTER);
-		label_9.setForeground(Color.GREEN);
-		label_9.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		label_9.setAlignmentX(0.5f);
-		label_9.setBounds(56, 105, 50, 25);
-		StorePanel.add(label_9);
+		JLabel ClothsCost = new JLabel("0");
+		ClothsCost.setHorizontalTextPosition(SwingConstants.CENTER);
+		ClothsCost.setHorizontalAlignment(SwingConstants.CENTER);
+		ClothsCost.setForeground(Color.GREEN);
+		ClothsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ClothsCost.setAlignmentX(0.5f);
+		ClothsCost.setBounds(56, 105, 50, 25);
+		StorePanel.add(ClothsCost);
 		
 		JLabel MoxenCost = new JLabel("0");
 		MoxenCost.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -388,7 +383,7 @@ public class InitialTradeWindow {
 		CostLabel.setBounds(56, 43, 50, 25);
 		StorePanel.add(CostLabel);
 		
-		JLabel storeback = new JLabel("New label");
+		JLabel storeback = new JLabel("");
 		storeback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
 		storeback.setIcon(new ImageIcon(InitialTradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
 		storeback.setBounds(0, 0, 200, 370);
