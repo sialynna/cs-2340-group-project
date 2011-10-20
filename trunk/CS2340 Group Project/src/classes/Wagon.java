@@ -1,27 +1,52 @@
 package classes;
 /**
- * NOT FINISHED
- * @author tom
+ * Represents a wagon that is responsible for holding items.
  *
  */
 public class Wagon {
-	private static final int MAX_WEIGHT = 300; //total wagon capacity in pounds
-	private static int weight;
+	private final int MAX_WEIGHT = 3500; //total wagon capacity in pounds
+	private int weight;
+	private Supplies supplies;
 	
+	/**
+	 * Initializes weight
+	 */
 	public Wagon(){ 
 		weight = 0;
 	}
-	
-	public static void setWagonWeight(int weight){
-		Wagon.weight = weight;
-		if(checkWeight() == false){
-			
-			
-		}
+	/**
+	 * adds an item to the wagon.
+	 */
+	public void addItem(){
+		
+	}
+	/**
+	 * removes an item from the wagon.
+	 */
+	public void removeItem(){
+		
+	}
+	/**
+	 * weight setter
+	 * @param weight
+	 */
+	public void setWeight(int weight){
+		this.weight = weight;
+	}
+	/**
+	 * gets weight
+	 * @return
+	 */
+	public int getWeight(){
+		return weight;
 	}
 	
-	public static boolean checkWeight(){
-		return weight <= MAX_WEIGHT;
+	/**
+	 * getter for weight limit
+	 * @return
+	 */
+	public int getWeightLimit(){
+		return MAX_WEIGHT;
 	}
 	
 }
