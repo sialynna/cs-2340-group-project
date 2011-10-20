@@ -68,4 +68,12 @@ public class Supplies {
 	public void addItem(Item item, int addition){
 		items[item.ordinal()] += addition;
 	}
+	/**
+	 * Adds up all of the items contained inside of the wagon and returns it.
+	 * Used in wagon class to check if MAX_WEIGHT has been reached.
+	 * @return weight of all the items in the wagon (doesn't inlcude moxen)
+	 */
+	public int getWeight(){
+		return (items[1] * 2) + (items[2] * 1) + (items[3] * 1) + (items[4] * 20)+(items[5] * 5) +(items[6] *4)+(items[7]*1);
+	}
 }
