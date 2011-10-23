@@ -21,7 +21,7 @@ import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class InitialTradeWindow {
+public class TradeWindow {
 
 	private JFrame frame;
 	private JTextField BuyMoxen;
@@ -41,7 +41,7 @@ public class InitialTradeWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InitialTradeWindow window = new InitialTradeWindow();
+					TradeWindow window = new TradeWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class InitialTradeWindow {
 	/**
 	 * Create the application.
 	 */
-	public InitialTradeWindow() {
+	public TradeWindow() {
 		initialize();
 	}
 
@@ -78,7 +78,7 @@ public class InitialTradeWindow {
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(0, 0, 275, 194);
 		lblNewLabel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		lblNewLabel.setIcon(new ImageIcon(InitialTradeWindow.class.getResource("/gui/resources/TransactionBack.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TransactionBack.jpg")));
 		TransactionPanel.add(lblNewLabel);
 		
 		JPanel StorePanel = new JPanel();
@@ -133,55 +133,55 @@ public class InitialTradeWindow {
 		
 		JLabel StMoxenLbl = new JLabel("Moxen:");
 		StMoxenLbl.setForeground(Color.GREEN);
-		StMoxenLbl.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		StMoxenLbl.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		StMoxenLbl.setBounds(6, 74, 55, 25);
 		StorePanel.add(StMoxenLbl);
 		
 		JLabel label = new JLabel("Cloths:");
 		label.setForeground(Color.GREEN);
-		label.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label.setBounds(6, 104, 55, 25);
 		StorePanel.add(label);
 		
 		JLabel label_1 = new JLabel("Ammo:");
 		label_1.setForeground(Color.GREEN);
-		label_1.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_1.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_1.setBounds(6, 134, 55, 25);
 		StorePanel.add(label_1);
 		
 		JLabel label_2 = new JLabel("Meds:");
 		label_2.setForeground(Color.GREEN);
-		label_2.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_2.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_2.setBounds(6, 164, 55, 25);
 		StorePanel.add(label_2);
 		
 		JLabel label_3 = new JLabel("Axles:");
 		label_3.setForeground(Color.GREEN);
-		label_3.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_3.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_3.setBounds(6, 194, 55, 25);
 		StorePanel.add(label_3);
 		
 		JLabel label_4 = new JLabel("Wheels:");
 		label_4.setForeground(Color.GREEN);
-		label_4.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_4.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_4.setBounds(6, 224, 55, 25);
 		StorePanel.add(label_4);
 		
 		JLabel label_5 = new JLabel("Yokes:");
 		label_5.setForeground(Color.GREEN);
-		label_5.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_5.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_5.setBounds(6, 254, 55, 25);
 		StorePanel.add(label_5);
 		
 		JLabel label_6 = new JLabel("Rations:");
 		label_6.setForeground(Color.GREEN);
-		label_6.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_6.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_6.setBounds(6, 284, 65, 25);
 		StorePanel.add(label_6);
 		
 		JLabel label_7 = new JLabel("Items:");
 		label_7.setForeground(Color.GREEN);
-		label_7.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		label_7.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_7.setBounds(6, 314, 55, 25);
 		StorePanel.add(label_7);
 		
@@ -216,7 +216,7 @@ public class InitialTradeWindow {
 		MoxenMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		MoxenMax.setHorizontalAlignment(SwingConstants.CENTER);
 		MoxenMax.setForeground(Color.GREEN);
-		MoxenMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		MoxenMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		MoxenMax.setAlignmentX(0.5f);
 		MoxenMax.setBounds(98, 74, 50, 25);
 		StorePanel.add(MoxenMax);
@@ -225,7 +225,7 @@ public class InitialTradeWindow {
 		ClothsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		ClothsMax.setForeground(Color.GREEN);
-		ClothsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ClothsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		ClothsMax.setAlignmentX(0.5f);
 		ClothsMax.setBounds(98, 104, 50, 25);
 		StorePanel.add(ClothsMax);
@@ -234,7 +234,7 @@ public class InitialTradeWindow {
 		AmmoMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		AmmoMax.setHorizontalAlignment(SwingConstants.CENTER);
 		AmmoMax.setForeground(Color.GREEN);
-		AmmoMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		AmmoMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		AmmoMax.setAlignmentX(0.5f);
 		AmmoMax.setBounds(98, 134, 50, 25);
 		StorePanel.add(AmmoMax);
@@ -243,7 +243,7 @@ public class InitialTradeWindow {
 		MedsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		MedsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		MedsMax.setForeground(Color.GREEN);
-		MedsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		MedsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		MedsMax.setAlignmentX(0.5f);
 		MedsMax.setBounds(98, 164, 50, 25);
 		StorePanel.add(MedsMax);
@@ -252,7 +252,7 @@ public class InitialTradeWindow {
 		AxlesMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		AxlesMax.setHorizontalAlignment(SwingConstants.CENTER);
 		AxlesMax.setForeground(Color.GREEN);
-		AxlesMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		AxlesMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		AxlesMax.setAlignmentX(0.5f);
 		AxlesMax.setBounds(98, 194, 50, 25);
 		StorePanel.add(AxlesMax);
@@ -261,7 +261,7 @@ public class InitialTradeWindow {
 		WheelsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		WheelsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		WheelsMax.setForeground(Color.GREEN);
-		WheelsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		WheelsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		WheelsMax.setAlignmentX(0.5f);
 		WheelsMax.setBounds(98, 224, 50, 25);
 		StorePanel.add(WheelsMax);
@@ -270,7 +270,7 @@ public class InitialTradeWindow {
 		YokesMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesMax.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesMax.setForeground(Color.GREEN);
-		YokesMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		YokesMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		YokesMax.setAlignmentX(0.5f);
 		YokesMax.setBounds(98, 254, 50, 25);
 		StorePanel.add(YokesMax);
@@ -279,7 +279,7 @@ public class InitialTradeWindow {
 		RationsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		RationsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		RationsMax.setForeground(Color.GREEN);
-		RationsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		RationsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		RationsMax.setAlignmentX(0.5f);
 		RationsMax.setBounds(98, 284, 50, 25);
 		StorePanel.add(RationsMax);
@@ -288,7 +288,7 @@ public class InitialTradeWindow {
 		ItemsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		ItemsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		ItemsMax.setForeground(Color.GREEN);
-		ItemsMax.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ItemsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		ItemsMax.setAlignmentX(0.5f);
 		ItemsMax.setBounds(98, 314, 50, 25);
 		StorePanel.add(ItemsMax);
@@ -297,7 +297,7 @@ public class InitialTradeWindow {
 		ClothsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		ClothsCost.setForeground(Color.GREEN);
-		ClothsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ClothsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		ClothsCost.setAlignmentX(0.5f);
 		ClothsCost.setBounds(56, 105, 50, 25);
 		StorePanel.add(ClothsCost);
@@ -306,7 +306,7 @@ public class InitialTradeWindow {
 		MoxenCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MoxenCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MoxenCost.setForeground(Color.GREEN);
-		MoxenCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		MoxenCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		MoxenCost.setAlignmentX(0.5f);
 		MoxenCost.setBounds(56, 75, 50, 25);
 		StorePanel.add(MoxenCost);
@@ -315,7 +315,7 @@ public class InitialTradeWindow {
 		MedsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MedsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MedsCost.setForeground(Color.GREEN);
-		MedsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		MedsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		MedsCost.setAlignmentX(0.5f);
 		MedsCost.setBounds(56, 165, 50, 25);
 		StorePanel.add(MedsCost);
@@ -324,7 +324,7 @@ public class InitialTradeWindow {
 		AmmoCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AmmoCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AmmoCost.setForeground(Color.GREEN);
-		AmmoCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		AmmoCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		AmmoCost.setAlignmentX(0.5f);
 		AmmoCost.setBounds(56, 135, 50, 25);
 		StorePanel.add(AmmoCost);
@@ -333,7 +333,7 @@ public class InitialTradeWindow {
 		WheelsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		WheelsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		WheelsCost.setForeground(Color.GREEN);
-		WheelsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		WheelsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		WheelsCost.setAlignmentX(0.5f);
 		WheelsCost.setBounds(56, 225, 50, 25);
 		StorePanel.add(WheelsCost);
@@ -342,7 +342,7 @@ public class InitialTradeWindow {
 		AxlesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AxlesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AxlesCost.setForeground(Color.GREEN);
-		AxlesCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		AxlesCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		AxlesCost.setAlignmentX(0.5f);
 		AxlesCost.setBounds(56, 195, 50, 25);
 		StorePanel.add(AxlesCost);
@@ -351,7 +351,7 @@ public class InitialTradeWindow {
 		RationsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		RationsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		RationsCost.setForeground(Color.GREEN);
-		RationsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		RationsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		RationsCost.setAlignmentX(0.5f);
 		RationsCost.setBounds(56, 285, 50, 25);
 		StorePanel.add(RationsCost);
@@ -360,7 +360,7 @@ public class InitialTradeWindow {
 		YokesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesCost.setForeground(Color.GREEN);
-		YokesCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		YokesCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		YokesCost.setAlignmentX(0.5f);
 		YokesCost.setBounds(56, 255, 50, 25);
 		StorePanel.add(YokesCost);
@@ -369,7 +369,7 @@ public class InitialTradeWindow {
 		ItemsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		ItemsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		ItemsCost.setForeground(Color.GREEN);
-		ItemsCost.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		ItemsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		ItemsCost.setAlignmentX(0.5f);
 		ItemsCost.setBounds(56, 315, 50, 25);
 		StorePanel.add(ItemsCost);
@@ -385,7 +385,7 @@ public class InitialTradeWindow {
 		
 		JLabel storeback = new JLabel("");
 		storeback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		storeback.setIcon(new ImageIcon(InitialTradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
+		storeback.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
 		storeback.setBounds(0, 0, 200, 370);
 		StorePanel.add(storeback);
 		
@@ -404,61 +404,61 @@ public class InitialTradeWindow {
 		JLabel PlayerMoney = new JLabel("Money:");
 		PlayerMoney.setForeground(Color.GREEN);
 		PlayerMoney.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerMoney.setBounds(36, 43, 100, 25);
+		PlayerMoney.setBounds(36, 43, 71, 25);
 		PlayerPanel.add(PlayerMoney);
 		
 		JLabel PlayerMoxen = new JLabel("Moxen:");
 		PlayerMoxen.setForeground(Color.GREEN);
 		PlayerMoxen.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerMoxen.setBounds(36, 74, 100, 25);
+		PlayerMoxen.setBounds(36, 74, 71, 25);
 		PlayerPanel.add(PlayerMoxen);
 		
 		JLabel PlayerCloths = new JLabel("Cloths:");
 		PlayerCloths.setForeground(Color.GREEN);
 		PlayerCloths.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerCloths.setBounds(36, 104, 100, 25);
+		PlayerCloths.setBounds(36, 104, 71, 25);
 		PlayerPanel.add(PlayerCloths);
 		
 		JLabel PlayerAmmo = new JLabel("Ammo:");
 		PlayerAmmo.setForeground(Color.GREEN);
 		PlayerAmmo.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerAmmo.setBounds(36, 134, 100, 25);
+		PlayerAmmo.setBounds(36, 134, 71, 25);
 		PlayerPanel.add(PlayerAmmo);
 		
 		JLabel PlayerMeds = new JLabel("Meds:");
 		PlayerMeds.setForeground(Color.GREEN);
 		PlayerMeds.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerMeds.setBounds(36, 164, 100, 25);
+		PlayerMeds.setBounds(36, 164, 71, 25);
 		PlayerPanel.add(PlayerMeds);
 		
 		JLabel PlayerAxles = new JLabel("Axles:");
 		PlayerAxles.setForeground(Color.GREEN);
 		PlayerAxles.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerAxles.setBounds(36, 194, 100, 25);
+		PlayerAxles.setBounds(36, 194, 71, 25);
 		PlayerPanel.add(PlayerAxles);
 		
 		JLabel PlayerWheels = new JLabel("Wheels:");
 		PlayerWheels.setForeground(Color.GREEN);
 		PlayerWheels.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerWheels.setBounds(36, 224, 100, 25);
+		PlayerWheels.setBounds(36, 224, 71, 25);
 		PlayerPanel.add(PlayerWheels);
 		
 		JLabel PlayerYokes = new JLabel("Yokes:");
 		PlayerYokes.setForeground(Color.GREEN);
 		PlayerYokes.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerYokes.setBounds(36, 254, 100, 25);
+		PlayerYokes.setBounds(36, 254, 71, 25);
 		PlayerPanel.add(PlayerYokes);
 		
 		JLabel PlayerRations = new JLabel("Rations:");
 		PlayerRations.setForeground(Color.GREEN);
 		PlayerRations.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerRations.setBounds(36, 284, 100, 25);
+		PlayerRations.setBounds(36, 284, 71, 25);
 		PlayerPanel.add(PlayerRations);
 		
 		JLabel PlayerItems = new JLabel("Items:");
 		PlayerItems.setForeground(Color.GREEN);
 		PlayerItems.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		PlayerItems.setBounds(36, 314, 100, 25);
+		PlayerItems.setBounds(36, 314, 71, 25);
 		PlayerPanel.add(PlayerItems);
 		
 		JLabel PlayerInventory = new JLabel("Player Inventory");
@@ -535,12 +535,12 @@ public class InitialTradeWindow {
 		
 		JLabel playerback = new JLabel("New label");
 		playerback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		playerback.setIcon(new ImageIcon(InitialTradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
+		playerback.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
 		playerback.setBounds(0, 0, 200, 370);
 		PlayerPanel.add(playerback);
 		
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon(InitialTradeWindow.class.getResource("/gui/resources/TradeBackground.jpg")));
+		background.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TradeBackground.jpg")));
 		background.setBounds(0, 0, 720, 480);
 		frame.getContentPane().add(background);
 	}

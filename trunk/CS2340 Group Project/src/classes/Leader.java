@@ -1,11 +1,12 @@
 package classes;
 
 /**
- * leader class
+ * Leader class
  * 
  *
  */
 public class Leader extends Member {
+	
 	private String profession;
 	
 	/**

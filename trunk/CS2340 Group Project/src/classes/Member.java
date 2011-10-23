@@ -8,6 +8,16 @@ package classes;
 public class Member 
 {
 	private String name;
+	private int health = 100;
+	private int stamina = 100;
+	private boolean isSick = false;
+	private boolean isDead = false;
+	private enum Health{
+		GOOD, FAIR, POOR, DEAD
+	}
+	private enum Stamina{
+		RESTED, TIRED, WEARY, EXHAUSTED
+	}
 	
 	/**
 	 * constructor

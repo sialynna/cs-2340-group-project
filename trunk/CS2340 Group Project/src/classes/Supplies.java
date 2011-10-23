@@ -4,7 +4,7 @@
 
 package classes;
 public class Supplies {
-	public enum Item{
+	private enum Item{
 		MOXEN, CLOTHES, AMMO, MEDS, AXLES, WHEELS, YOKES, RATIONS, ITEMS
 	}
 	
@@ -44,6 +44,9 @@ public class Supplies {
 		money += addition;
 	}
 	
+	public void subMoney(int subtraction) {
+		money -= subtraction;
+	}
 	/**
 	 * getter for specific item
 	 * @param item the item value
