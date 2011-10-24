@@ -20,6 +20,9 @@ import java.awt.Font;
 import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import javax.swing.JButton;
 
 public class TradeWindow {
 
@@ -75,11 +78,45 @@ public class TradeWindow {
 		frame.getContentPane().add(TransactionPanel);
 		TransactionPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 275, 194);
-		lblNewLabel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		lblNewLabel.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TransactionBack.jpg")));
-		TransactionPanel.add(lblNewLabel);
+		JButton btnBuyItems = new JButton("Buy Items");
+		btnBuyItems.setBounds(35, 115, 100, 50);
+		TransactionPanel.add(btnBuyItems);
+		
+		JLabel PurchaseWt = new JLabel("0");
+		PurchaseWt.setForeground(Color.GREEN);
+		PurchaseWt.setFont(new Font("American Typewriter", Font.BOLD, 15));
+		PurchaseWt.setAlignmentX(1.0f);
+		PurchaseWt.setBounds(172, 62, 75, 25);
+		TransactionPanel.add(PurchaseWt);
+		
+		JLabel TransAmtLbl = new JLabel("Purchase Amount:");
+		TransAmtLbl.setForeground(Color.GREEN);
+		TransAmtLbl.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		TransAmtLbl.setBounds(35, 25, 125, 25);
+		TransactionPanel.add(TransAmtLbl);
+		
+		JLabel TransWtLbl = new JLabel("Purchase Weight:");
+		TransWtLbl.setForeground(Color.GREEN);
+		TransWtLbl.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		TransWtLbl.setBounds(35, 62, 125, 25);
+		TransactionPanel.add(TransWtLbl);
+		
+		JLabel PurchaseAmt = new JLabel("0");
+		PurchaseAmt.setForeground(Color.GREEN);
+		PurchaseAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
+		PurchaseAmt.setAlignmentX(1.0f);
+		PurchaseAmt.setBounds(172, 25, 75, 25);
+		TransactionPanel.add(PurchaseAmt);
+		
+		JButton button = new JButton("Exit Store");
+		button.setBounds(147, 115, 100, 50);
+		TransactionPanel.add(button);
+		
+		JLabel transBackground = new JLabel("");
+		transBackground.setBounds(0, 0, 275, 194);
+		transBackground.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
+		transBackground.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TransactionBack.jpg")));
+		TransactionPanel.add(transBackground);
 		
 		JPanel StorePanel = new JPanel();
 		StorePanel.setBounds(12, 40, 200, 370);
@@ -87,46 +124,82 @@ public class TradeWindow {
 		StorePanel.setLayout(null);
 		
 		textField = new JTextField();
+		textField.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		textField.setColumns(10);
 		textField.setBounds(144, 312, 50, 28);
 		StorePanel.add(textField);
 		
 		BuyRations = new JTextField();
+		BuyRations.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyRations.setColumns(10);
 		BuyRations.setBounds(144, 282, 50, 28);
 		StorePanel.add(BuyRations);
 		
 		BuyYokes = new JTextField();
+		BuyYokes.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyYokes.setColumns(10);
 		BuyYokes.setBounds(144, 252, 50, 28);
 		StorePanel.add(BuyYokes);
 		
 		BuyWheels = new JTextField();
+		BuyWheels.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyWheels.setColumns(10);
 		BuyWheels.setBounds(144, 222, 50, 28);
 		StorePanel.add(BuyWheels);
 		
 		BuyAxles = new JTextField();
+		BuyAxles.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyAxles.setColumns(10);
 		BuyAxles.setBounds(144, 192, 50, 28);
 		StorePanel.add(BuyAxles);
 		
 		BuyMeds = new JTextField();
+		BuyMeds.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyMeds.setColumns(10);
 		BuyMeds.setBounds(144, 162, 50, 28);
 		StorePanel.add(BuyMeds);
 		
 		BuyAmmo = new JTextField();
+		BuyAmmo.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyAmmo.setColumns(10);
 		BuyAmmo.setBounds(144, 132, 50, 28);
 		StorePanel.add(BuyAmmo);
 		
 		BuyCloths = new JTextField();
+		BuyCloths.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyCloths.setColumns(10);
 		BuyCloths.setBounds(144, 102, 50, 28);
 		StorePanel.add(BuyCloths);
 		
 		BuyMoxen = new JTextField();
+		BuyMoxen.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+			}
+		});
 		BuyMoxen.setBounds(144, 72, 50, 28);
 		StorePanel.add(BuyMoxen);
 		BuyMoxen.setColumns(10);
@@ -179,7 +252,7 @@ public class TradeWindow {
 		label_6.setBounds(6, 284, 65, 25);
 		StorePanel.add(label_6);
 		
-		JLabel label_7 = new JLabel("Items:");
+		JLabel label_7 = new JLabel("?s:");
 		label_7.setForeground(Color.GREEN);
 		label_7.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		label_7.setBounds(6, 314, 55, 25);
@@ -455,7 +528,7 @@ public class TradeWindow {
 		PlayerRations.setBounds(36, 284, 71, 25);
 		PlayerPanel.add(PlayerRations);
 		
-		JLabel PlayerItems = new JLabel("Items:");
+		JLabel PlayerItems = new JLabel("Weight:");
 		PlayerItems.setForeground(Color.GREEN);
 		PlayerItems.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		PlayerItems.setBounds(36, 314, 71, 25);
