@@ -66,13 +66,11 @@ public class NewGameWindow {
 	private JComboBox profSelect;
 	private JComboBox paceSelect;
 	private JComboBox rationSelect;
-	private Leader ld;
-	private Pace pace;
-	private Rations ration;
 	private String profession = "Carpenter";
 	private String choice;
 	private String paceval = "Stopped";
 	private String ratval = "Filling";
+	public static GameEngine Engine;
 	
 	/**
 	 * Launch the application.
@@ -257,19 +255,19 @@ public class NewGameWindow {
 
 					if (member2name.isVisible() == false && member3name.isVisible() == false && member4name.isVisible() == false)
 					{
-						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText());
+						Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText());
 					} 
 					else if (member3name.isVisible() == false && member4name.isVisible() == false)
 					{
-						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText());
+						Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText());
 					} 
 					else if (member4name.isVisible() == false)
 					{
-						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText());
+						Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText());
 					} 
 					else 
 					{
-						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText(), member4name.getText());
+						Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText(), member4name.getText());
 					}
 				}
 			}
