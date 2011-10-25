@@ -38,11 +38,20 @@ public class Supplies {
 	/**
 	 * initializes Supplies.
 	 */
-	public Supplies(){
+	public Supplies(String profession){
 		items = new int[Item.values().length];
 		for(int i=0; i<items.length; i++)
 		{
 			items[i] = 0;
+		}
+		if (profession.equals("Banker")){
+			this.money = 1600;
+		}
+		else if (profession.equals("Farmer")){
+			this.money = 750;
+		}
+		else if (profession.equals("Carpenter")){
+			this.money = 900;
 		}
 	}
 	

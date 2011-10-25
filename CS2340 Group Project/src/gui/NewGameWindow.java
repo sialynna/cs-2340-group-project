@@ -69,7 +69,6 @@ public class NewGameWindow {
 	private Leader ld;
 	private Pace pace;
 	private Rations ration;
-	private Supplies sup;
 	private String profession = "Carpenter";
 	private String choice;
 	private String paceval = "Stopped";
@@ -255,80 +254,23 @@ public class NewGameWindow {
 				}
 				else
 				{
-					ld = new Leader(leaderName.getText(),profession);
-					
-					if(ratval.equals("Filling"))
-					{
-						ration=new Rations(3);
-					}
-					else if(ratval.equals("Normal"))
-					{
-						ration=new Rations(2);
-					}
-					else if(ratval.equals("Meager"))
-					{
-							ration=new Rations(1);
-					}
-					else if(ratval.equals("Starvation"))
-					{
-						ration=new Rations(0);
-					}
-					
-					if(paceval.equals("Stopped"))
-					{
-						pace=new Pace(0);
-					}
-					else if(paceval.equals("Easy"))
-					{
-						pace=new Pace(1);
-					}
-					else if(paceval.equals("Normal"))
-					{
-						pace=new Pace(2);
-					}
-					else if(paceval.equals("Grueling"))
-					{
-						pace=new Pace(3);
-					}
-					
+
 					if (member2name.isVisible() == false && member3name.isVisible() == false && member4name.isVisible() == false)
 					{
-						Member member1 = new Member(member1name.getText());
-						System.out.println(member1.getName());  // for debugging
+						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText());
 					} 
 					else if (member3name.isVisible() == false && member4name.isVisible() == false)
 					{
-						Member member1 = new Member(member1name.getText());
-						Member member2 = new Member(member2name.getText());
-						System.out.println(member1.getName());
-						System.out.println(member2.getName());
+						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText());
 					} 
 					else if (member4name.isVisible() == false)
 					{
-						Member member1 = new Member(member1name.getText());
-						Member member2 = new Member(member2name.getText());
-						Member member3 = new Member(member3name.getText());
-						System.out.println(member1.getName());
-						System.out.println(member2.getName());
-						System.out.println(member3.getName());
+						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText());
 					} 
 					else 
 					{
-						Member member1 = new Member(member1name.getText());
-						Member member2 = new Member(member2name.getText());
-						Member member3 = new Member(member3name.getText());
-						Member member4 = new Member(member4name.getText());
-						System.out.println(member1.getName());
-						System.out.println(member2.getName());
-						System.out.println(member3.getName());
-						System.out.println(member4.getName());
+						GameEngine Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText(), member4name.getText());
 					}
-					
-				System.out.println(ld.getName());
-				System.out.println(ld.getProfession());
-				System.out.println(ration.getRations());
-				System.out.println(pace.getPace());
-				
 				}
 			}
 		});
