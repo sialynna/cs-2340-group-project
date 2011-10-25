@@ -7,6 +7,32 @@ public class Supplies {
 	
 	private int[] items;
 	private int money = 0;
+	private int[] prices = {150, 50, 80, 200, 120, 20, 50, 10, 0};
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + money;
+		return result;
+	}
+
+	public int[] getPrices() {
+		return prices;
+	}
+
+	public void setPrices(int[] prices) {
+		this.prices = prices;
+	}
+
+	public int[] getWeights() {
+		return weights;
+	}
+
+	public void setWeights(int[] weights) {
+		this.weights = weights;
+	}
+
+	private int[] weights = {0, 20, 50, 20, 100, 150, 80, 20, 20};
 	
 	/**
 	 * initializes Supplies.
