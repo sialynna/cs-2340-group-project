@@ -4,9 +4,6 @@
 
 package classes;
 public class Supplies {
-	private enum Item{
-		MOXEN, CLOTHES, AMMO, MEDS, AXLES, WHEELS, YOKES, RATIONS, ITEMS
-	}
 	
 	private int[] items;
 	private int money = 0;
@@ -72,4 +69,7 @@ public class Supplies {
 		items[item.ordinal()] += addition;
 	}
 
+	public void subItem(Item item, int subtraction){
+		items[item.ordinal()] -= subtraction;
+	}
 }

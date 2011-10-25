@@ -15,18 +15,6 @@ public class Wagon {
 		weight = 0;
 	}
 	/**
-	 * adds an item to the wagon.
-	 */
-	public void addItem(){
-		
-	}
-	/**
-	 * removes an item from the wagon.
-	 */
-	public void removeItem(){
-		
-	}
-	/**
 	 * weight setter
 	 * @param weight
 	 */
