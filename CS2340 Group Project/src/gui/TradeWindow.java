@@ -366,7 +366,7 @@ public class TradeWindow {
 		ItemsMax.setBounds(98, 314, 50, 25);
 		StorePanel.add(ItemsMax);
 		
-		JLabel ClothsCost = new JLabel("0");
+		JLabel ClothsCost = new JLabel("50");
 		ClothsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		ClothsCost.setForeground(Color.GREEN);
@@ -375,7 +375,7 @@ public class TradeWindow {
 		ClothsCost.setBounds(56, 105, 50, 25);
 		StorePanel.add(ClothsCost);
 		
-		JLabel MoxenCost = new JLabel("0");
+		JLabel MoxenCost = new JLabel("150");
 		MoxenCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MoxenCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MoxenCost.setForeground(Color.GREEN);
@@ -384,7 +384,7 @@ public class TradeWindow {
 		MoxenCost.setBounds(56, 75, 50, 25);
 		StorePanel.add(MoxenCost);
 		
-		JLabel MedsCost = new JLabel("0");
+		JLabel MedsCost = new JLabel("200");
 		MedsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MedsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MedsCost.setForeground(Color.GREEN);
@@ -393,7 +393,7 @@ public class TradeWindow {
 		MedsCost.setBounds(56, 165, 50, 25);
 		StorePanel.add(MedsCost);
 		
-		JLabel AmmoCost = new JLabel("0");
+		JLabel AmmoCost = new JLabel("80");
 		AmmoCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AmmoCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AmmoCost.setForeground(Color.GREEN);
@@ -402,7 +402,7 @@ public class TradeWindow {
 		AmmoCost.setBounds(56, 135, 50, 25);
 		StorePanel.add(AmmoCost);
 		
-		JLabel WheelsCost = new JLabel("0");
+		JLabel WheelsCost = new JLabel("200");
 		WheelsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		WheelsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		WheelsCost.setForeground(Color.GREEN);
@@ -411,7 +411,7 @@ public class TradeWindow {
 		WheelsCost.setBounds(56, 225, 50, 25);
 		StorePanel.add(WheelsCost);
 		
-		JLabel AxlesCost = new JLabel("0");
+		JLabel AxlesCost = new JLabel("120");
 		AxlesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AxlesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AxlesCost.setForeground(Color.GREEN);
@@ -420,7 +420,7 @@ public class TradeWindow {
 		AxlesCost.setBounds(56, 195, 50, 25);
 		StorePanel.add(AxlesCost);
 		
-		JLabel RationsCost = new JLabel("0");
+		JLabel RationsCost = new JLabel("10");
 		RationsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		RationsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		RationsCost.setForeground(Color.GREEN);
@@ -429,7 +429,7 @@ public class TradeWindow {
 		RationsCost.setBounds(56, 285, 50, 25);
 		StorePanel.add(RationsCost);
 		
-		JLabel YokesCost = new JLabel("0");
+		JLabel YokesCost = new JLabel("50");
 		YokesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesCost.setForeground(Color.GREEN);
