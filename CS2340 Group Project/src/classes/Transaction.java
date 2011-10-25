@@ -27,13 +27,13 @@ public class Transaction
 	}
 	public boolean checkWeight()
 	{
-		if(supplies.)
+		return true;
 	}
 	
 	public void transact(Item bob, int amt)
 	{
-		wagon.subItem(bob,amt);
-		wagon.addItem(bob,amt);
+		supplies.subItem(bob,amt);
+		supplies.addItem(bob,amt);
 	}
 	
 }
