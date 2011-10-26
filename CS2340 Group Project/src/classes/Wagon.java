@@ -30,6 +30,23 @@ public class Wagon {
 	}
 	
 	/**
+	 * gets the remaining weight. 
+	 * @return remaining.
+	 */
+	public int getWeightRemaining()
+	{
+		return MAX_WEIGHT-weight;
+	}
+	
+	/**
+	 * adds weight
+	 * @param addition the amount
+	 */
+	public void addWeight(int addition)
+	{
+		weight+=addition;
+	}
+	/**
 	 * getter for weight limit
 	 * @return
 	 */
