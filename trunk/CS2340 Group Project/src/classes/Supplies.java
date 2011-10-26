@@ -5,48 +5,15 @@
 package classes;
 public class Supplies {
 	
-	private int[] itemAmts;
 	private int money = 0;
 	private final int MAX_WEIGHT = 3500; //total wagon capacity in pounds
-	private int weight;
-	private int[] weights = {0, 20, 50, 20, 100, 150, 80, 20, 20};
-	
-	public int getWeight(Item item){
-		return weights[item.ordinal()];
-	}	
-
-	public int[] getWeights() {
-		return weights;
-	}
-
-	public void setWeights(int[] weights) {
-		this.weights = weights;
-	}
-	/**
-	 * gets the remaining weight. 
-	 * @return remaining.
-	 */
-	public int getWeightRemaining()
-	{
-		return MAX_WEIGHT-weight;
-	}
-	
-	public void addWeight(int addition)
-	{
-		weight+=addition;
-	}
-
-
+	private int totalWeight;
 	
 	/**
 	 * initializes Supplies.
 	 */
 	public Supplies(String profession){
-		itemAmts = new int[Item.values().length];
-		for(int i=0; i<itemAmts.length; i++)
-		{
-			itemAmts[i] = 0;
-		}
+		
 		if (profession.equals("Banker")){
 			this.money = 1600;
 		}
@@ -58,10 +25,33 @@ public class Supplies {
 		}
 	}
 	
-/**
- * getter for money
- * @return money
- */
+	private void calcWeight(){
+		int total = 0;
+		for(Item i: Item.values())
+		{
+			total += i.weight;
+		}
+		
+		totalWeight = total;
+	}
+	
+	public int getWeight(Item item){
+		return item.weight;
+	}	
+
+	/**
+	 * gets the remaining weight. 
+	 * @return remaining.
+	 */
+	public int getWeightRemaining()
+	{
+		return MAX_WEIGHT-totalWeight;
+	}
+	
+	/**
+	 * getter for money
+	 * @return money
+	 */
 	public int getMoney() {
 		return money;
 	}
@@ -89,26 +79,21 @@ public class Supplies {
 	 * @return the item
 	 */
 	public int getItem(Item item){
-		return itemAmts[item.ordinal()];
+		return item.getNum();
 	}
-	/**
-	 * setter for item
-	 * @param item the item slot
-	 * @param amt how much.
-	 */
-	public void setItem(Item item, int amt){
-		itemAmts[item.ordinal()] = amt;
-	}
+	
 	/**
 	 * adds item value
 	 * @param item the item
 	 * @param addition the specific amount to add. 
 	 */
 	public void addItem(Item item, int addition){
-		itemAmts[item.ordinal()] += addition;
+		item.add(addition);
+		calcWeight();
 	}
 
 	public void subItem(Item item, int subtraction){
-		itemAmts[item.ordinal()] -= subtraction;
+		item.sub(subtraction);
+		calcWeight();
 	}
 }
