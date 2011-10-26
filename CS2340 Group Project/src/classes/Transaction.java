@@ -11,6 +11,8 @@ public class Transaction
 
 	Wagon wagon;
 	Supplies supplies;
+	int totalWeight;
+	int totalCost;
 	public Transaction (Wagon wagon, Supplies supplies)
 	{
 		this.wagon=wagon;
@@ -32,7 +34,7 @@ public class Transaction
 	
 	public void transact(Item bob, int amt)
 	{
-		supplies.subItem(bob,amt);
+		wagon.subItem(bob,amt);
 		supplies.addItem(bob,amt);
 	}
 	
