@@ -69,7 +69,6 @@ public class Transaction
 	public Supplies updateSupplies()
 	{
 		supplies.subMoney(totalCost);
-		supplies.addWeight(totalWeight);
 		return supplies;
 	}
 	/**
