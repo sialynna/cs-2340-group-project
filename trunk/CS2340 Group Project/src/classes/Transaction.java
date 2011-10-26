@@ -1,7 +1,8 @@
 package classes;
+import gui.TradeWindow;
 
 /**
- * does all the moving between wagon and store. 
+ * Does all the moving between Supplies and Store. 
  * @author JeffZ
  *
  */
@@ -11,17 +12,16 @@ public class Transaction
 
 	Store store;
 	Supplies supplies;
-	Wagon wagon;
 	int totalWeight;
 	int totalCost;
 	
 	/**
-	 * initializes it.
+	 * Initialize transaction
 	 * @param store the store
 	 * @param supplies the supplies
 	 * @param wagon the wagon
 	 */
-	public Transaction (Store store, Supplies supplies,Wagon wagon)
+	public Transaction (Store store, Supplies supplies)
 	{
 		this.store=store;
 		this.supplies=supplies;
@@ -35,7 +35,7 @@ public class Transaction
 	 */
 	public boolean checkLegit()
 	{
-		if((supplies.getMoney()>totalCost)&&wagon.getWeightRemaining()>totalWeight)
+		if((supplies.getMoney() > totalCost) && supplies.getWeightRemaining() > totalWeight)
 		{
 			return true;
 		}
@@ -48,12 +48,12 @@ public class Transaction
 	 */
 	public void addItem(Item item, int amt)
 	{
-		if(store.getAmount(item)>amt)
+		if(store.getQuantity(item) > amt)
 		{
-			supplies.addItem(item,amt);
-			store.subItem(item,amt);
+			supplies.addItem(item, amt);
+			store.subItem(item, amt);
 			totalWeight += supplies.getWeight(item)*amt;
-			totalCost += supplies.getPrice(item)*amt;
+			totalCost += store.getPrice(item)*amt;
 		}
 		else
 		{
@@ -69,19 +69,11 @@ public class Transaction
 	public Supplies updateSupplies()
 	{
 		supplies.subMoney(totalCost);
+		supplies.addWeight(totalWeight);
 		return supplies;
 	}
 	/**
-	 * updates the wagon. Use if checkLEgit works!
-	 * @return updated wagon.
-	 */
-	public Wagon updateWagon()
-	{
-		wagon.addWeight(totalWeight);
-		return wagon;
-	}
-	/**
-	 * updates the store. Use if checkLEgit works!
+	 * updates the store. Use if checkLegit works!
 	 * @return updated store.
 	 */
 	public Store updateStore()

@@ -1,5 +1,7 @@
 package classes;
 
+import gui.TradeWindow;
+
 public class GameEngine {
 	
 	private static int gameDay;
@@ -9,6 +11,9 @@ public class GameEngine {
 	private Pace pace;
 	private Supplies supplies;
 	private Leader ld;
+	
+	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
+	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
 	
 	public GameEngine(String leader, String profession, String rations, String pace, String ...membernames) {
 		gameDay = 0;
@@ -55,36 +60,43 @@ public class GameEngine {
 		
 		if (membernames.length == 1)
 		{
-			Member member1 = new Member(membernames[1]);
+			Member member1 = new Member(membernames[0]);
 			System.out.println(member1.getName());  // for debugging
 		} 
 		else if (membernames.length == 2)
 		{
-			Member member1 = new Member(membernames[1]);
-			Member member2 = new Member(membernames[2]);
-			System.out.println(member1.getName());
+			Member member1 = new Member(membernames[0]);
+			Member member2 = new Member(membernames[1]);
+			System.out.println(member1.getName()); // for debugging
 			System.out.println(member2.getName());
 		} 
 		else if (membernames.length == 2)
 		{
-			Member member1 = new Member(membernames[1]);
-			Member member2 = new Member(membernames[2]);
-			Member member3 = new Member(membernames[3]);
-			System.out.println(member1.getName());
+			Member member1 = new Member(membernames[0]);
+			Member member2 = new Member(membernames[1]);
+			Member member3 = new Member(membernames[2]);
+			System.out.println(member1.getName()); // for debugging
 			System.out.println(member2.getName());
 			System.out.println(member3.getName());
 		} 
 		else 
 		{
-			Member member1 = new Member(membernames[1]);
-			Member member2 = new Member(membernames[2]);
-			Member member3 = new Member(membernames[3]);
-			Member member4 = new Member(membernames[4]);
-			System.out.println(member1.getName());
+			Member member1 = new Member(membernames[0]);
+			Member member2 = new Member(membernames[1]);
+			Member member3 = new Member(membernames[2]);
+			Member member4 = new Member(membernames[3]);
+			System.out.println(member1.getName()); // for debugging
 			System.out.println(member2.getName());
 			System.out.println(member3.getName());
 			System.out.println(member4.getName());
 		}
+		System.out.println(ld.getName());
+		System.out.println(ld.getProfession());
+		
+		Store iniStore = new Store(iniPrices, iniQuant);
+		Transaction initialTrans = new Transaction(iniStore, supplies);
+		TradeWindow initialTrade = new TradeWindow();
+		
 	}
 	
 }

@@ -2,27 +2,30 @@ package classes;
 
 public class Store {
 	
-	private String[] products;
 	private int[] prices, quantity;
 	
-	public String[] getProducts() {
-		return products;
+	public Store(int[] prices, int[] quantity){
+		this.prices = prices;
+		this.quantity = quantity;
 	}
-	public void setProducts(String[] products) {
-		this.products = products;
-	}
+
 	public int[] getPrices() {
 		return prices;
 	}
-	public void setPrices(int[] prices) {
-		this.prices = prices;
-	}
-	public int[] getQuantity() {
+	
+	public int[] getQuantities(){
 		return quantity;
 	}
-	public void setQuantity(int[] quantity) {
-		this.quantity = quantity;
+
+	public int getQuantity(Item item) {
+		return quantity[item.ordinal()];
 	}
 	
-
+	public int getPrice(Item item){
+		return prices[item.ordinal()];
+	}
+	
+	public void subItem(Item item, int amount){
+		quantity[item.ordinal()] -= amount;
+	}
 }
