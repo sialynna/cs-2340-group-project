@@ -9,12 +9,12 @@ public class Supplies {
 	private int money = 0;
 	private int[] prices = {150, 50, 80, 200, 120, 20, 50, 10, 0};
 
-	public int getWeight(int index){
-		return weights[index];
+	public int getWeight(Item item){
+		return weights[item.ordinal()];
 	}	
 	
-	public int getPrice(int index){
-		return prices[index];
+	public int getPrice(Item item){
+		return prices[item.ordinal()];
 	}
 	
 	public int[] getPrices() {
