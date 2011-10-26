@@ -23,7 +23,12 @@ import javax.swing.SwingConstants;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JButton;
-
+/**
+ * Creates a window to trade items between a player Supplies and a Store
+ * 
+ * @author Christopher
+ *
+ */
 public class TradeWindow {
 
 	private JFrame frame;
@@ -35,7 +40,45 @@ public class TradeWindow {
 	private JTextField BuyWheels;
 	private JTextField BuyYokes;
 	private JTextField BuyRations;
-
+	
+	private JLabel PurchaseWt;
+	private JLabel TransAmtLbl;
+	
+	private JLabel MoxenMax;
+	private JLabel ClothsMax;
+	private JLabel AmmoMax;
+	private JLabel MedsMax;
+	private JLabel AxlesMax;
+	private JLabel WheelsMax;
+	private JLabel YokesMax;
+	private JLabel RationsMax;
+	
+	private JLabel MoxenCost;
+	private JLabel ClothsCost;
+	private JLabel AmmoCost;
+	private JLabel MedsCost;
+	private JLabel AxlesCost;
+	private JLabel WheelsCost;
+	private JLabel YokesCost;
+	private JLabel RationsCost;
+	
+	private JLabel PlayerMoneyAmt;
+	
+	private JLabel PlayerMoxenAmt;
+	private JLabel PlayerClothsAmt;
+	private JLabel PlayerAmmoAmt;
+	private JLabel PlayerMedsAmt;
+	private JLabel PlayerAxlesAmt;
+	private JLabel PlayerWheelsAmt;
+	private JLabel PlayerYokesAmt;
+	private JLabel PlayerRationsAmt;
+	
+	private JLabel playerTotalWeight;
+	
+	private JLabel[] costs = new JLabel[8];
+	private JLabel[] stAmts = new JLabel[8];
+	private JLabel[] plAmts = new JLabel[8];
+	
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +101,33 @@ public class TradeWindow {
 	public TradeWindow() {
 		initialize();
 		this.frame.setVisible(true);
+		
+		costs[0] = MoxenCost;
+		costs[1] = ClothsCost;
+		costs[2] = AmmoCost;
+		costs[3] = MedsCost;
+		costs[4] = AxlesCost;
+		costs[5] = WheelsCost;
+		costs[6] = YokesCost;
+		costs[7] = RationsCost;
+		
+		stAmts[0] = MoxenMax;
+		stAmts[1] = ClothsMax;
+		stAmts[2] = AmmoMax;
+		stAmts[3] = MedsMax;
+		stAmts[4] = AxlesMax;
+		stAmts[5] = WheelsMax;
+		stAmts[6] = YokesMax;
+		stAmts[7] = RationsMax;
+		
+		plAmts[0] = PlayerMoxenAmt;
+		plAmts[1] = PlayerClothsAmt;
+		plAmts[2] = PlayerAmmoAmt;
+		plAmts[3] = PlayerMedsAmt;
+		plAmts[4] = PlayerAxlesAmt;
+		plAmts[5] = PlayerWheelsAmt;
+		plAmts[6] = PlayerYokesAmt;
+		plAmts[7] = PlayerRationsAmt;
 	}
 
 	/**
@@ -82,14 +152,14 @@ public class TradeWindow {
 		btnBuyItems.setBounds(35, 115, 100, 50);
 		TransactionPanel.add(btnBuyItems);
 		
-		JLabel PurchaseWt = new JLabel("0");
+		PurchaseWt = new JLabel("0");
 		PurchaseWt.setForeground(Color.GREEN);
 		PurchaseWt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PurchaseWt.setAlignmentX(1.0f);
 		PurchaseWt.setBounds(172, 62, 75, 25);
 		TransactionPanel.add(PurchaseWt);
 		
-		JLabel TransAmtLbl = new JLabel("Purchase Amount:");
+		TransAmtLbl = new JLabel("Purchase Amount:");
 		TransAmtLbl.setForeground(Color.GREEN);
 		TransAmtLbl.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		TransAmtLbl.setBounds(35, 25, 125, 25);
@@ -270,7 +340,7 @@ public class TradeWindow {
 		MaxLabel.setBounds(98, 43, 50, 25);
 		StorePanel.add(MaxLabel);
 		
-		JLabel MoxenMax = new JLabel("0");
+		MoxenMax = new JLabel("0");
 		MoxenMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		MoxenMax.setHorizontalAlignment(SwingConstants.CENTER);
 		MoxenMax.setForeground(Color.GREEN);
@@ -279,7 +349,7 @@ public class TradeWindow {
 		MoxenMax.setBounds(98, 74, 50, 25);
 		StorePanel.add(MoxenMax);
 		
-		JLabel ClothsMax = new JLabel("0");
+		ClothsMax = new JLabel("0");
 		ClothsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		ClothsMax.setForeground(Color.GREEN);
@@ -288,7 +358,7 @@ public class TradeWindow {
 		ClothsMax.setBounds(98, 104, 50, 25);
 		StorePanel.add(ClothsMax);
 		
-		JLabel AmmoMax = new JLabel("0");
+		AmmoMax = new JLabel("0");
 		AmmoMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		AmmoMax.setHorizontalAlignment(SwingConstants.CENTER);
 		AmmoMax.setForeground(Color.GREEN);
@@ -297,7 +367,7 @@ public class TradeWindow {
 		AmmoMax.setBounds(98, 134, 50, 25);
 		StorePanel.add(AmmoMax);
 		
-		JLabel MedsMax = new JLabel("0");
+		MedsMax = new JLabel("0");
 		MedsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		MedsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		MedsMax.setForeground(Color.GREEN);
@@ -306,7 +376,7 @@ public class TradeWindow {
 		MedsMax.setBounds(98, 164, 50, 25);
 		StorePanel.add(MedsMax);
 		
-		JLabel AxlesMax = new JLabel("0");
+		AxlesMax = new JLabel("0");
 		AxlesMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		AxlesMax.setHorizontalAlignment(SwingConstants.CENTER);
 		AxlesMax.setForeground(Color.GREEN);
@@ -315,7 +385,7 @@ public class TradeWindow {
 		AxlesMax.setBounds(98, 194, 50, 25);
 		StorePanel.add(AxlesMax);
 		
-		JLabel WheelsMax = new JLabel("0");
+		WheelsMax = new JLabel("0");
 		WheelsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		WheelsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		WheelsMax.setForeground(Color.GREEN);
@@ -324,7 +394,7 @@ public class TradeWindow {
 		WheelsMax.setBounds(98, 224, 50, 25);
 		StorePanel.add(WheelsMax);
 		
-		JLabel YokesMax = new JLabel("0");
+		YokesMax = new JLabel("0");
 		YokesMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesMax.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesMax.setForeground(Color.GREEN);
@@ -333,7 +403,7 @@ public class TradeWindow {
 		YokesMax.setBounds(98, 254, 50, 25);
 		StorePanel.add(YokesMax);
 		
-		JLabel RationsMax = new JLabel("0");
+		RationsMax = new JLabel("0");
 		RationsMax.setHorizontalTextPosition(SwingConstants.CENTER);
 		RationsMax.setHorizontalAlignment(SwingConstants.CENTER);
 		RationsMax.setForeground(Color.GREEN);
@@ -342,7 +412,7 @@ public class TradeWindow {
 		RationsMax.setBounds(98, 284, 50, 25);
 		StorePanel.add(RationsMax);
 		
-		JLabel ClothsCost = new JLabel("50");
+		ClothsCost = new JLabel("0");
 		ClothsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		ClothsCost.setForeground(Color.GREEN);
@@ -351,7 +421,7 @@ public class TradeWindow {
 		ClothsCost.setBounds(56, 105, 50, 25);
 		StorePanel.add(ClothsCost);
 		
-		JLabel MoxenCost = new JLabel("150");
+		MoxenCost = new JLabel("0");
 		MoxenCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MoxenCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MoxenCost.setForeground(Color.GREEN);
@@ -360,7 +430,7 @@ public class TradeWindow {
 		MoxenCost.setBounds(56, 75, 50, 25);
 		StorePanel.add(MoxenCost);
 		
-		JLabel MedsCost = new JLabel("200");
+		MedsCost = new JLabel("0");
 		MedsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		MedsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		MedsCost.setForeground(Color.GREEN);
@@ -369,7 +439,7 @@ public class TradeWindow {
 		MedsCost.setBounds(56, 165, 50, 25);
 		StorePanel.add(MedsCost);
 		
-		JLabel AmmoCost = new JLabel("80");
+		AmmoCost = new JLabel("0");
 		AmmoCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AmmoCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AmmoCost.setForeground(Color.GREEN);
@@ -378,7 +448,7 @@ public class TradeWindow {
 		AmmoCost.setBounds(56, 135, 50, 25);
 		StorePanel.add(AmmoCost);
 		
-		JLabel WheelsCost = new JLabel("200");
+		WheelsCost = new JLabel("0");
 		WheelsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		WheelsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		WheelsCost.setForeground(Color.GREEN);
@@ -387,7 +457,7 @@ public class TradeWindow {
 		WheelsCost.setBounds(56, 225, 50, 25);
 		StorePanel.add(WheelsCost);
 		
-		JLabel AxlesCost = new JLabel("120");
+		AxlesCost = new JLabel("0");
 		AxlesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		AxlesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		AxlesCost.setForeground(Color.GREEN);
@@ -396,7 +466,7 @@ public class TradeWindow {
 		AxlesCost.setBounds(56, 195, 50, 25);
 		StorePanel.add(AxlesCost);
 		
-		JLabel RationsCost = new JLabel("10");
+		RationsCost = new JLabel("0");
 		RationsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		RationsCost.setHorizontalAlignment(SwingConstants.CENTER);
 		RationsCost.setForeground(Color.GREEN);
@@ -405,7 +475,7 @@ public class TradeWindow {
 		RationsCost.setBounds(56, 285, 50, 25);
 		StorePanel.add(RationsCost);
 		
-		JLabel YokesCost = new JLabel("100");
+		YokesCost = new JLabel("0");
 		YokesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesCost.setForeground(Color.GREEN);
@@ -434,7 +504,7 @@ public class TradeWindow {
 		frame.getContentPane().add(PlayerPanel);
 		PlayerPanel.setLayout(null);
 		
-		JLabel PlayerMoneyAmt = new JLabel("0");
+		PlayerMoneyAmt = new JLabel("0");
 		PlayerMoneyAmt.setForeground(Color.GREEN);
 		PlayerMoneyAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerMoneyAmt.setAlignmentX(1.0f);
@@ -510,68 +580,68 @@ public class TradeWindow {
 		PlayerInventory.setBounds(6, 6, 188, 25);
 		PlayerPanel.add(PlayerInventory);
 		
-		JLabel PlayerMoxenAmt = new JLabel("0");
+		PlayerMoxenAmt = new JLabel("0");
 		PlayerMoxenAmt.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		PlayerMoxenAmt.setForeground(Color.GREEN);
 		PlayerMoxenAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerMoxenAmt.setBounds(118, 74, 75, 25);
 		PlayerPanel.add(PlayerMoxenAmt);
 		
-		JLabel PlayerClothsAmt = new JLabel("0");
+		PlayerClothsAmt = new JLabel("0");
 		PlayerClothsAmt.setForeground(Color.GREEN);
 		PlayerClothsAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerClothsAmt.setAlignmentX(1.0f);
 		PlayerClothsAmt.setBounds(118, 104, 75, 25);
 		PlayerPanel.add(PlayerClothsAmt);
 		
-		JLabel PlayerAmmoAmt = new JLabel("0");
+		PlayerAmmoAmt = new JLabel("0");
 		PlayerAmmoAmt.setForeground(Color.GREEN);
 		PlayerAmmoAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerAmmoAmt.setAlignmentX(1.0f);
 		PlayerAmmoAmt.setBounds(118, 134, 75, 25);
 		PlayerPanel.add(PlayerAmmoAmt);
 		
-		JLabel PlayerMedsAmt = new JLabel("0");
+		PlayerMedsAmt = new JLabel("0");
 		PlayerMedsAmt.setForeground(Color.GREEN);
 		PlayerMedsAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerMedsAmt.setAlignmentX(1.0f);
 		PlayerMedsAmt.setBounds(118, 164, 75, 25);
 		PlayerPanel.add(PlayerMedsAmt);
 		
-		JLabel PlayerAxlesAmt = new JLabel("0");
+		PlayerAxlesAmt = new JLabel("0");
 		PlayerAxlesAmt.setForeground(Color.GREEN);
 		PlayerAxlesAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerAxlesAmt.setAlignmentX(1.0f);
 		PlayerAxlesAmt.setBounds(118, 194, 75, 25);
 		PlayerPanel.add(PlayerAxlesAmt);
 		
-		JLabel PlayerWheelsAmt = new JLabel("0");
+		PlayerWheelsAmt = new JLabel("0");
 		PlayerWheelsAmt.setForeground(Color.GREEN);
 		PlayerWheelsAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerWheelsAmt.setAlignmentX(1.0f);
 		PlayerWheelsAmt.setBounds(118, 224, 75, 25);
 		PlayerPanel.add(PlayerWheelsAmt);
 		
-		JLabel PlayerYokesAmt = new JLabel("0");
+		PlayerYokesAmt = new JLabel("0");
 		PlayerYokesAmt.setForeground(Color.GREEN);
 		PlayerYokesAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerYokesAmt.setAlignmentX(1.0f);
 		PlayerYokesAmt.setBounds(118, 254, 75, 25);
 		PlayerPanel.add(PlayerYokesAmt);
 		
-		JLabel PlayerRationsAmt = new JLabel("0");
+		PlayerRationsAmt = new JLabel("0");
 		PlayerRationsAmt.setForeground(Color.GREEN);
 		PlayerRationsAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PlayerRationsAmt.setAlignmentX(1.0f);
 		PlayerRationsAmt.setBounds(118, 284, 75, 25);
 		PlayerPanel.add(PlayerRationsAmt);
 		
-		JLabel label_24 = new JLabel("0");
-		label_24.setForeground(Color.GREEN);
-		label_24.setFont(new Font("American Typewriter", Font.BOLD, 15));
-		label_24.setAlignmentX(1.0f);
-		label_24.setBounds(118, 314, 75, 25);
-		PlayerPanel.add(label_24);
+		playerTotalWeight = new JLabel("0");
+		playerTotalWeight.setForeground(Color.GREEN);
+		playerTotalWeight.setFont(new Font("American Typewriter", Font.BOLD, 15));
+		playerTotalWeight.setAlignmentX(1.0f);
+		playerTotalWeight.setBounds(118, 314, 75, 25);
+		PlayerPanel.add(playerTotalWeight);
 		
 		JLabel playerback = new JLabel("New label");
 		playerback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
@@ -583,5 +653,18 @@ public class TradeWindow {
 		background.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TradeBackground.jpg")));
 		background.setBounds(0, 0, 720, 480);
 		frame.getContentPane().add(background);
+	}
+
+	public void setStore(int[] prices, int[] quants) {
+		for (int i=0; i < 8; i++){
+			costs[i].setText(Integer.toString(prices[i]));
+			stAmts[i].setText(Integer.toString(quants[i]));
+			}
+	}
+	
+	public void setPlayer(int[] quants){
+		for (int i=0; i < 8; i++){
+			plAmts[i].setText(Integer.toString(quants[i]));
+		}
 	}
 }

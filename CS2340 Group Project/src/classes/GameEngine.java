@@ -93,9 +93,10 @@ public class GameEngine {
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
 		
-		Store iniStore = new Store(iniPrices, iniQuant);
-		Transaction initialTrans = new Transaction(iniStore, supplies);
+
 		TradeWindow initialTrade = new TradeWindow();
+		Store iniStore = new Store(iniPrices, iniQuant);
+		Transaction initialTrans = new Transaction(iniStore, supplies, initialTrade);
 		
 	}
 	
