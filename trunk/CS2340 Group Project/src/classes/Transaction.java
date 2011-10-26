@@ -12,8 +12,10 @@ public class Transaction
 
 	Store store;
 	Supplies supplies;
+	TradeWindow window;
 	int totalWeight;
 	int totalCost;
+	int[] playerAmts;
 	
 	/**
 	 * Initialize transaction
@@ -21,14 +23,34 @@ public class Transaction
 	 * @param supplies the supplies
 	 * @param wagon the wagon
 	 */
-	public Transaction (Store store, Supplies supplies)
+	public Transaction (Store store, Supplies supplies, TradeWindow window)
 	{
-		this.store=store;
-		this.supplies=supplies;
-		totalWeight=0;
-		totalCost=0;
+		this.store = store;
+		this.supplies = supplies;
+		this.window = window;
+		totalWeight = 0;
+		totalCost = 0;
+		updateWindow();
 	}
 	
+	private void updateWindow(){
+		updateWindowStore();
+		updateWindowPlayer();
+	}
+	
+	private void updateWindowStore(){
+		window.setStore(store.getPrices(), store.getQuantities());
+	}
+	private void updateWindowTotals(){
+		
+	}
+	private void updateWindowPlayer(){
+		Item[] items = Item.values();
+		for (int i=0; i < Item.values().length; i++){
+			playerAmts[i] = items[i].getNum();
+		}
+		window.setPlayer(playerAmts);
+	}
 	/**
 	 * checks to see if there is enough money for transaction and enough weight.
 	 * @return true/false

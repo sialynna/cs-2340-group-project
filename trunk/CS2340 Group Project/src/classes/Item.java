@@ -1,5 +1,11 @@
 package classes;
 
+/**
+ * Enumeration for game items: Name(weight, player quantity)
+ * 
+ * @author Christopher
+ *
+ */
 public enum Item {
 	MOXEN(0,0),
 	CLOTHES(20,0),
