@@ -1,5 +1,6 @@
 /**
  * Supply class.
+ * @author Jay Zuerndorfer
  */
 
 package classes;
@@ -25,6 +26,9 @@ public class Supplies {
 		}
 	}
 	
+	/**
+	 * Totals the weight of all current items. Should be called after any item update.
+	 */
 	private void calcWeight(){
 		int total = 0;
 		for(Item i: Item.values())
@@ -40,7 +44,7 @@ public class Supplies {
 	}	
 
 	/**
-	 * gets the remaining weight. 
+	 * Gets how much weight is available before reaching maximum. 
 	 * @return remaining.
 	 */
 	public int getWeightRemaining()
@@ -69,14 +73,17 @@ public class Supplies {
 	public void addMoney(int addition) {
 		money += addition;
 	}
-	
+	/**
+	 * subtracts money
+	 * @param subtraction amount of money to subtract.
+	 */
 	public void subMoney(int subtraction) {
 		money -= subtraction;
 	}
 	/**
-	 * getter for specific item
+	 * Gets how many of an item the player has
 	 * @param item the item value
-	 * @return the item
+	 * @return number of item
 	 */
 	public int getItem(Item item){
 		return item.getNum();
