@@ -225,6 +225,7 @@ public class NewGameWindow {
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				
 				if (leaderName.getText().equals("") || leaderName.getText().equals(null))
 				{
 					leaderName.setBackground(Color.red);
@@ -269,7 +270,8 @@ public class NewGameWindow {
 					{
 						Engine = new GameEngine(leaderName.getText(), profession, ratval, paceval, member1name.getText(), member2name.getText(), member3name.getText(), member4name.getText());
 					}
-				}
+					frame.dispose();
+				} 
 			}
 		});
 		

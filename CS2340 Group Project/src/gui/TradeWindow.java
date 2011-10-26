@@ -35,7 +35,6 @@ public class TradeWindow {
 	private JTextField BuyWheels;
 	private JTextField BuyYokes;
 	private JTextField BuyRations;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -58,6 +57,7 @@ public class TradeWindow {
 	 */
 	public TradeWindow() {
 		initialize();
+		this.frame.setVisible(true);
 	}
 
 	/**
@@ -122,15 +122,6 @@ public class TradeWindow {
 		StorePanel.setBounds(12, 40, 200, 370);
 		frame.getContentPane().add(StorePanel);
 		StorePanel.setLayout(null);
-		
-		textField = new JTextField();
-		textField.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-			}
-		});
-		textField.setColumns(10);
-		textField.setBounds(144, 312, 50, 28);
-		StorePanel.add(textField);
 		
 		BuyRations = new JTextField();
 		BuyRations.addPropertyChangeListener(new PropertyChangeListener() {
@@ -252,12 +243,6 @@ public class TradeWindow {
 		label_6.setBounds(6, 284, 65, 25);
 		StorePanel.add(label_6);
 		
-		JLabel label_7 = new JLabel("?s:");
-		label_7.setForeground(Color.GREEN);
-		label_7.setFont(new Font("American Typewriter", Font.BOLD, 12));
-		label_7.setBounds(6, 314, 55, 25);
-		StorePanel.add(label_7);
-		
 		JLabel StoreInventory = new JLabel("Store Inventory");
 		StoreInventory.setHorizontalAlignment(SwingConstants.CENTER);
 		StoreInventory.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -357,15 +342,6 @@ public class TradeWindow {
 		RationsMax.setBounds(98, 284, 50, 25);
 		StorePanel.add(RationsMax);
 		
-		JLabel ItemsMax = new JLabel("0");
-		ItemsMax.setHorizontalTextPosition(SwingConstants.CENTER);
-		ItemsMax.setHorizontalAlignment(SwingConstants.CENTER);
-		ItemsMax.setForeground(Color.GREEN);
-		ItemsMax.setFont(new Font("American Typewriter", Font.BOLD, 12));
-		ItemsMax.setAlignmentX(0.5f);
-		ItemsMax.setBounds(98, 314, 50, 25);
-		StorePanel.add(ItemsMax);
-		
 		JLabel ClothsCost = new JLabel("50");
 		ClothsCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClothsCost.setHorizontalAlignment(SwingConstants.CENTER);
@@ -429,7 +405,7 @@ public class TradeWindow {
 		RationsCost.setBounds(56, 285, 50, 25);
 		StorePanel.add(RationsCost);
 		
-		JLabel YokesCost = new JLabel("50");
+		JLabel YokesCost = new JLabel("100");
 		YokesCost.setHorizontalTextPosition(SwingConstants.CENTER);
 		YokesCost.setHorizontalAlignment(SwingConstants.CENTER);
 		YokesCost.setForeground(Color.GREEN);
@@ -437,15 +413,6 @@ public class TradeWindow {
 		YokesCost.setAlignmentX(0.5f);
 		YokesCost.setBounds(56, 255, 50, 25);
 		StorePanel.add(YokesCost);
-		
-		JLabel ItemsCost = new JLabel("0");
-		ItemsCost.setHorizontalTextPosition(SwingConstants.CENTER);
-		ItemsCost.setHorizontalAlignment(SwingConstants.CENTER);
-		ItemsCost.setForeground(Color.GREEN);
-		ItemsCost.setFont(new Font("American Typewriter", Font.BOLD, 12));
-		ItemsCost.setAlignmentX(0.5f);
-		ItemsCost.setBounds(56, 315, 50, 25);
-		StorePanel.add(ItemsCost);
 		
 		JLabel CostLabel = new JLabel("Cost");
 		CostLabel.setHorizontalTextPosition(SwingConstants.CENTER);
