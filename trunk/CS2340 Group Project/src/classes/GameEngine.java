@@ -1,7 +1,12 @@
 package classes;
 
 import gui.TradeWindow;
-
+/**
+ * This class creates and controls most of the game functions
+ * 
+ * @author Christopher Whittemore
+ *
+ */
 public class GameEngine {
 	
 	private static int gameDay;
@@ -18,7 +23,15 @@ public class GameEngine {
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
-	
+	/**
+	 * Constructor sets up the leader, members of the wagon, rations, pace, and wagon.
+	 * 
+	 * @param leader
+	 * @param profession
+	 * @param rations
+	 * @param pace
+	 * @param membernames
+	 */
 	public GameEngine(String leader, String profession, String rations, String pace, String ...membernames) {
 		gameDay = 0;
 		

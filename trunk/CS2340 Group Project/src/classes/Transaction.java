@@ -2,7 +2,8 @@ package classes;
 import gui.TradeWindow;
 
 /**
- * Does all the moving between Supplies and Store. 
+ * Does all the moving between Supplies, Store, and Transaction Window
+ * 
  * @author JeffZ
  *
  */
@@ -30,7 +31,9 @@ public class Transaction
 		this.window = window;
 		updateWindow();
 	}
-	
+	/**
+	 * Updates the transaction window after a purchase
+	 */
 	private void updateWindow(){
 		updateWindowStore();
 		updateWindowPlayer();
@@ -48,7 +51,7 @@ public class Transaction
 		window.setPlayer(playerAmts, supplies.getMoney(), supplies.getTotalWeight());
 	}
 	/**
-	 * checks to see if there is enough money for transaction and enough weight.
+	 * Checks to see if there is enough money for transaction and enough weight remaining.
 	 * @return true/false
 	 */
 	public boolean checkLegit()
@@ -60,7 +63,7 @@ public class Transaction
 		return false;
 	}
 	/**
-	 * adds item to the internal list.
+	 * Adds the purchased amount of items to player supplies
 	 * @param item the item
 	 * @param amt the amount
 	 */
@@ -80,7 +83,7 @@ public class Transaction
 	}
 
 	/**
-	 * updates the store. Use if checkLegit works!
+	 * Subtracts purchase cost from the players money
 	 * @return updated store.
 	 */
 	public void subMoney()
