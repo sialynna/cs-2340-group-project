@@ -1,28 +1,31 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Rectangle;
-import java.awt.Point;
-import javax.swing.ImageIcon;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.UIManager;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Font;
-import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EtchedBorder;
+
+import classes.Item;
+
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
-import javax.swing.JButton;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 /**
  * Creates a window to trade items between a player Supplies and a Store
  * 
@@ -31,7 +34,10 @@ import javax.swing.JButton;
  */
 public class TradeWindow {
 
-	private JFrame frame;
+	private int totalAmt;
+	private int totalWt;
+	
+	private JFrame MainFrame;
 	private JTextField BuyMoxen;
 	private JTextField BuyCloths;
 	private JTextField BuyAmmo;
@@ -41,7 +47,10 @@ public class TradeWindow {
 	private JTextField BuyYokes;
 	private JTextField BuyRations;
 	
+	private JTextField[] inputs = new JTextField[8];
+	
 	private JLabel PurchaseWt;
+	private JLabel PurchaseAmt;
 	private JLabel TransAmtLbl;
 	
 	private JLabel MoxenMax;
@@ -74,10 +83,14 @@ public class TradeWindow {
 	private JLabel PlayerRationsAmt;
 	
 	private JLabel playerTotalWeight;
+	private JLabel lblNumbersOnlyPlease;
 	
 	private JLabel[] costs = new JLabel[8];
 	private JLabel[] stAmts = new JLabel[8];
 	private JLabel[] plAmts = new JLabel[8];
+
+	private int[] prices = new int[8];
+	private int[] weights = new int[8];
 	
 	/**
 	 * Launch the application.
@@ -87,7 +100,7 @@ public class TradeWindow {
 			public void run() {
 				try {
 					TradeWindow window = new TradeWindow();
-					window.frame.setVisible(true);
+					window.MainFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -100,7 +113,7 @@ public class TradeWindow {
 	 */
 	public TradeWindow() {
 		initialize();
-		this.frame.setVisible(true);
+		this.MainFrame.setVisible(true);
 		
 		costs[0] = MoxenCost;
 		costs[1] = ClothsCost;
@@ -128,24 +141,41 @@ public class TradeWindow {
 		plAmts[5] = PlayerWheelsAmt;
 		plAmts[6] = PlayerYokesAmt;
 		plAmts[7] = PlayerRationsAmt;
+		
+		inputs[0] = BuyMoxen;
+		inputs[1] = BuyCloths;
+		inputs[2] = BuyAmmo;
+		inputs[3] = BuyMeds;
+		inputs[4] = BuyAxles;
+		inputs[5] = BuyWheels;
+		inputs[6] = BuyYokes;
+		inputs[7] = BuyRations;
+		
+		Item[] wts = Item.values();
+		
+		for (int i = 0; i < 8;i++){
+			weights[i] = wts[i].weight;
+		}
+
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setAlwaysOnTop(true);
-		frame.setLocation(new Point(0, 0));
-		frame.setBounds(new Rectangle(0, 0, 720, 480));
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 720, 480);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		MainFrame = new JFrame();
+		MainFrame.setTitle("Apocalypse Trail");
+		MainFrame.setAlwaysOnTop(true);
+		MainFrame.setLocation(new Point(0, 0));
+		MainFrame.setBounds(new Rectangle(0, 0, 720, 480));
+		MainFrame.setResizable(false);
+		MainFrame.setBounds(100, 100, 720, 480);
+		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MainFrame.getContentPane().setLayout(null);
 		
 		JPanel TransactionPanel = new JPanel();
 		TransactionPanel.setBounds(222, 218, 275, 190);
-		frame.getContentPane().add(TransactionPanel);
+		MainFrame.getContentPane().add(TransactionPanel);
 		TransactionPanel.setLayout(null);
 		
 		JButton btnBuyItems = new JButton("Buy Items");
@@ -171,7 +201,7 @@ public class TradeWindow {
 		TransWtLbl.setBounds(35, 62, 125, 25);
 		TransactionPanel.add(TransWtLbl);
 		
-		JLabel PurchaseAmt = new JLabel("0");
+		PurchaseAmt = new JLabel("0");
 		PurchaseAmt.setForeground(Color.GREEN);
 		PurchaseAmt.setFont(new Font("American Typewriter", Font.BOLD, 15));
 		PurchaseAmt.setAlignmentX(1.0f);
@@ -190,80 +220,106 @@ public class TradeWindow {
 		
 		JPanel StorePanel = new JPanel();
 		StorePanel.setBounds(12, 40, 200, 370);
-		frame.getContentPane().add(StorePanel);
+		MainFrame.getContentPane().add(StorePanel);
 		StorePanel.setLayout(null);
 		
 		BuyRations = new JTextField();
-		BuyRations.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyRations.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyRations.setText("0");
 		BuyRations.setColumns(10);
 		BuyRations.setBounds(144, 282, 50, 28);
 		StorePanel.add(BuyRations);
 		
 		BuyYokes = new JTextField();
-		BuyYokes.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyYokes.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+
+		BuyYokes.setText("0");
 		BuyYokes.setColumns(10);
 		BuyYokes.setBounds(144, 252, 50, 28);
 		StorePanel.add(BuyYokes);
 		
 		BuyWheels = new JTextField();
-		BuyWheels.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyWheels.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyWheels.setText("0");
 		BuyWheels.setColumns(10);
 		BuyWheels.setBounds(144, 222, 50, 28);
 		StorePanel.add(BuyWheels);
 		
 		BuyAxles = new JTextField();
-		BuyAxles.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyAxles.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyAxles.setText("0");
 		BuyAxles.setColumns(10);
 		BuyAxles.setBounds(144, 192, 50, 28);
 		StorePanel.add(BuyAxles);
 		
 		BuyMeds = new JTextField();
-		BuyMeds.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyMeds.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyMeds.setText("0");
 		BuyMeds.setColumns(10);
 		BuyMeds.setBounds(144, 162, 50, 28);
 		StorePanel.add(BuyMeds);
 		
 		BuyAmmo = new JTextField();
-		BuyAmmo.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyAmmo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyAmmo.setText("0");
 		BuyAmmo.setColumns(10);
 		BuyAmmo.setBounds(144, 132, 50, 28);
 		StorePanel.add(BuyAmmo);
 		
 		BuyCloths = new JTextField();
-		BuyCloths.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyCloths.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyCloths.setText("0");
 		BuyCloths.setColumns(10);
 		BuyCloths.setBounds(144, 102, 50, 28);
 		StorePanel.add(BuyCloths);
 		
 		BuyMoxen = new JTextField();
-		BuyMoxen.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
+		BuyMoxen.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				setTotals();
 			}
 		});
+		BuyMoxen.setText("0");
+		BuyMoxen.setColumns(10);
 		BuyMoxen.setBounds(144, 72, 50, 28);
 		StorePanel.add(BuyMoxen);
-		BuyMoxen.setColumns(10);
+
 		
 		JLabel StMoxenLbl = new JLabel("Moxen:");
 		StMoxenLbl.setForeground(Color.GREEN);
@@ -493,6 +549,13 @@ public class TradeWindow {
 		CostLabel.setBounds(56, 43, 50, 25);
 		StorePanel.add(CostLabel);
 		
+		lblNumbersOnlyPlease = new JLabel("Numbers only please!");
+		lblNumbersOnlyPlease.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		lblNumbersOnlyPlease.setForeground(Color.GREEN);
+		lblNumbersOnlyPlease.setVisible(false);
+		lblNumbersOnlyPlease.setBounds(28, 321, 144, 28);
+		StorePanel.add(lblNumbersOnlyPlease);
+		
 		JLabel storeback = new JLabel("");
 		storeback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
 		storeback.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
@@ -501,7 +564,7 @@ public class TradeWindow {
 		
 		JPanel PlayerPanel = new JPanel();
 		PlayerPanel.setBounds(508, 40, 200, 370);
-		frame.getContentPane().add(PlayerPanel);
+		MainFrame.getContentPane().add(PlayerPanel);
 		PlayerPanel.setLayout(null);
 		
 		PlayerMoneyAmt = new JLabel("0");
@@ -652,11 +715,12 @@ public class TradeWindow {
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TradeBackground.jpg")));
 		background.setBounds(0, 0, 720, 480);
-		frame.getContentPane().add(background);
+		MainFrame.getContentPane().add(background);
 	}
 
 	public void setStore(int[] prices, int[] quants) {
 		for (int i=0; i < 8; i++){
+			this.prices[i] = prices[i];
 			costs[i].setText(Integer.toString(prices[i]));
 			stAmts[i].setText(Integer.toString(quants[i]));
 			}
@@ -665,6 +729,28 @@ public class TradeWindow {
 	public void setPlayer(int[] quants){
 		for (int i=0; i < 8; i++){
 			plAmts[i].setText(Integer.toString(quants[i]));
+		}
+	}
+
+	public void setTotals(){
+		totalAmt = 0;
+		totalWt = 0;
+		for(int i=0; i < 8; i++){
+			if(inputs[i].getText().equals("")){
+				//do nothing
+			}else{
+				try{
+					System.out.println(Integer.parseInt(inputs[i].getText()));
+					lblNumbersOnlyPlease.setVisible(false);
+					totalAmt += Integer.parseInt(inputs[i].getText()) * prices[i];
+					totalWt += Integer.parseInt(inputs[i].getText()) * weights[i];
+					PurchaseWt.setText(Integer.toString(totalWt));
+					PurchaseAmt.setText(Integer.toString(totalAmt));
+				} catch (NumberFormatException e) {
+					lblNumbersOnlyPlease.setVisible(true);
+				}
+			}
+			PurchaseAmt.setText(Integer.toString(totalAmt));
 		}
 	}
 }

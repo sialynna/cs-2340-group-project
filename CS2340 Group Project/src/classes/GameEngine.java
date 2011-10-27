@@ -97,7 +97,8 @@ public class GameEngine {
 		TradeWindow initialTrade = new TradeWindow();
 		Store iniStore = new Store(iniPrices, iniQuant);
 		Transaction initialTrans = new Transaction(iniStore, supplies, initialTrade);
-		
 	}
+	
+	
 	
 }
