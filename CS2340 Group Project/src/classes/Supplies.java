@@ -11,18 +11,18 @@ public class Supplies {
 	private int totalWeight;
 	
 	/**
-	 * initializes Supplies.
+	 * initializes Supplies based on the player's profession
 	 */
 	public Supplies(String profession){
 		
 		if (profession.equals("Banker")){
 			this.money = 1600;
 		}
-		else if (profession.equals("Farmer")){
-			this.money = 900;
+		else if (profession.equals("Doctor")){
+			this.money = 1000;
 		}
 		else if (profession.equals("Carpenter")){
-			this.money = 1000;
+			this.money = 800;
 		}
 	}
 	

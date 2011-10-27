@@ -2,8 +2,9 @@ package classes;
 
 /**
  * Pace class
+ * Pace determines how far the wagon and members move per day
+ * and how fast the stamina of the members decreases.
  * 
- *
  */
 public class Pace 
 {

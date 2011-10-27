@@ -2,7 +2,7 @@ package classes;
 
 /**
  * Member class
- * 
+ * Members have health, stamina, and can be sick or dead.
  *
  */
 public class Member 
@@ -27,14 +27,7 @@ public class Member
 	{
 		this.name = name;
 	}
-	/**
-	 * setter for name
-	 * @param name the name
-	 */
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+	
 	/**
 	 * getter for name
 	 * @return the name.

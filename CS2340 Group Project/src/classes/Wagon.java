@@ -1,11 +1,12 @@
 package classes;
 /**
- * Represents a wagon that is responsible for holding items.
+ * Represents a wagon that is responsible for holding members and supplies
  *
  */
 public class Wagon {
 	
 	private Supplies supplies;
+	private Member[] members;
 	
 	/**
 	 * Initializes weight
