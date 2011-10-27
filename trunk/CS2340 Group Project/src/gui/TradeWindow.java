@@ -184,14 +184,16 @@ public class TradeWindow {
 				if (trans.checkLegit())
 				{
 					notEnough.setVisible(false);
-					try{
+					int[] purch = new int[8]; 
 					for(int i=0; i < 8;i++ ){
-						trans.addItems(items[i], Integer.parseInt(inputs[i].getText()));
+						try{
+							purch[i] = Integer.parseInt(inputs[i].getText());
+							trans.addItems(items[i], purch[i]);
+						} catch (NumberFormatException e){
+							lblNumbersOnlyPlease.setVisible(true);
+						}
 					}
-						trans.subMoney();
-					} catch (NumberFormatException e){
-						lblNumbersOnlyPlease.setVisible(true);
-					}
+					trans.subMoney();
 				}
 				else
 				{
