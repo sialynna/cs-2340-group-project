@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import classes.Item;
+import classes.Transaction;
 
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
@@ -26,6 +27,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
  * Creates a window to trade items between a player Supplies and a Store
  * 
@@ -36,6 +39,7 @@ public class TradeWindow {
 
 	private int totalAmt;
 	private int totalWt;
+	private Transaction trans;
 	
 	private JFrame MainFrame;
 	private JTextField BuyMoxen;
@@ -91,6 +95,8 @@ public class TradeWindow {
 
 	private int[] prices = new int[8];
 	private int[] weights = new int[8];
+	private Item[] items;
+	private JLabel notEnough;
 	
 	/**
 	 * Launch the application.
@@ -110,6 +116,7 @@ public class TradeWindow {
 
 	/**
 	 * Create the application.
+	 * @param initialTrans 
 	 */
 	public TradeWindow() {
 		initialize();
@@ -151,10 +158,10 @@ public class TradeWindow {
 		inputs[6] = BuyYokes;
 		inputs[7] = BuyRations;
 		
-		Item[] wts = Item.values();
+		items = Item.values();
 		
 		for (int i = 0; i < 8;i++){
-			weights[i] = wts[i].weight;
+			weights[i] = items[i].weight;
 		}
 
 	}
@@ -179,7 +186,27 @@ public class TradeWindow {
 		TransactionPanel.setLayout(null);
 		
 		JButton btnBuyItems = new JButton("Buy Items");
-		btnBuyItems.setBounds(35, 115, 100, 50);
+		btnBuyItems.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (trans.checkLegit())
+				{
+					notEnough.setVisible(false);
+					try{
+					for(int i=0; i < 8;i++ ){
+						trans.addItems(items[i], Integer.parseInt(inputs[i].getText()));
+					}
+						trans.subMoney();
+					} catch (NumberFormatException e){
+						lblNumbersOnlyPlease.setVisible(true);
+					}
+				}
+				else
+				{
+					notEnough.setVisible(true);
+				}
+			}
+		});
+		btnBuyItems.setBounds(35, 129, 100, 50);
 		TransactionPanel.add(btnBuyItems);
 		
 		PurchaseWt = new JLabel("0");
@@ -209,8 +236,20 @@ public class TradeWindow {
 		TransactionPanel.add(PurchaseAmt);
 		
 		JButton button = new JButton("Exit Store");
-		button.setBounds(147, 115, 100, 50);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		button.setBounds(147, 129, 100, 50);
 		TransactionPanel.add(button);
+		
+		notEnough = new JLabel("Not enough money and/or weight left!");
+		notEnough.setVisible(false);
+		notEnough.setForeground(Color.GREEN);
+		notEnough.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		notEnough.setBounds(20, 99, 234, 25);
+		TransactionPanel.add(notEnough);
 		
 		JLabel transBackground = new JLabel("");
 		transBackground.setBounds(0, 0, 275, 194);
@@ -726,13 +765,15 @@ public class TradeWindow {
 			}
 	}
 	
-	public void setPlayer(int[] quants){
+	public void setPlayer(int[] quants, int money, int weight){
 		for (int i=0; i < 8; i++){
 			plAmts[i].setText(Integer.toString(quants[i]));
 		}
+		PlayerMoneyAmt.setText(Integer.toString(money));
+		playerTotalWeight.setText(Integer.toString(weight));
 	}
 
-	public void setTotals(){
+	private void setTotals(){
 		totalAmt = 0;
 		totalWt = 0;
 		for(int i=0; i < 8; i++){
@@ -753,4 +794,14 @@ public class TradeWindow {
 			PurchaseAmt.setText(Integer.toString(totalAmt));
 		}
 	}
+	public int getTotalAmt(){
+		return totalAmt;
+	}
+	public int getTotalWt(){
+		return totalWt;
+	}
+	public void setTransaction(Transaction trans){
+		this.trans = trans;
+	}
+	
 }

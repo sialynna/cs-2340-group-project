@@ -19,10 +19,10 @@ public class Supplies {
 			this.money = 1600;
 		}
 		else if (profession.equals("Farmer")){
-			this.money = 750;
+			this.money = 900;
 		}
 		else if (profession.equals("Carpenter")){
-			this.money = 900;
+			this.money = 1000;
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class Supplies {
 		int total = 0;
 		for(Item i: Item.values())
 		{
-			total += i.weight;
+			total += i.weight * i.getNum();
 		}
 		
 		totalWeight = total;
@@ -42,14 +42,18 @@ public class Supplies {
 	public int getWeight(Item item){
 		return item.weight;
 	}	
-
+	
+	public int getTotalWeight(){
+		return totalWeight;
+	}
+	
 	/**
 	 * Gets how much weight is available before reaching maximum. 
 	 * @return remaining.
 	 */
 	public int getWeightRemaining()
 	{
-		return MAX_WEIGHT-totalWeight;
+		return MAX_WEIGHT - totalWeight;
 	}
 	
 	/**

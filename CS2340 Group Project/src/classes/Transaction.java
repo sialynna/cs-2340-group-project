@@ -14,7 +14,7 @@ public class Transaction
 	Supplies supplies;
 	TradeWindow window;
 	int totalWeight;
-	int totalCost;
+	int playerMoney;
 	int[] playerAmts = new int[8];
 	
 	/**
@@ -28,8 +28,6 @@ public class Transaction
 		this.store = store;
 		this.supplies = supplies;
 		this.window = window;
-		totalWeight = 0;
-		totalCost = 0;
 		updateWindow();
 	}
 	
@@ -47,7 +45,7 @@ public class Transaction
 		for (int i=0; i < Item.values().length; i++){
 			playerAmts[i] = items[i].getNum();
 		}
-		window.setPlayer(playerAmts);
+		window.setPlayer(playerAmts, supplies.getMoney(), supplies.getTotalWeight());
 	}
 	/**
 	 * checks to see if there is enough money for transaction and enough weight.
@@ -55,7 +53,7 @@ public class Transaction
 	 */
 	public boolean checkLegit()
 	{
-		if((supplies.getMoney() > totalCost) && supplies.getWeightRemaining() > totalWeight)
+		if((supplies.getMoney() > window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
 		{
 			return true;
 		}
@@ -66,56 +64,29 @@ public class Transaction
 	 * @param item the item
 	 * @param amt the amount
 	 */
-	public void addItem(Item item, int amt)
+	public void addItems(Item item, int amt)
 	{
 		if(store.getQuantity(item) > amt)
 		{
+			System.out.println(window.getTotalAmt());
 			supplies.addItem(item, amt);
 			store.subItem(item, amt);
-			totalWeight += supplies.getWeight(item)*amt;
-			totalCost += store.getPrice(item)*amt;
+			updateWindow();
 		}
 		else
 		{
 			//panel pops up saying "Store doesn't have this much"
 		}
 	}
-	
-	
-	/**
-	 * update the supplies. For usage if checkLegit works out!
-	 * @return updated supplies
-	 */
-	public Supplies updateSupplies()
-	{
-		supplies.subMoney(totalCost);
-		return supplies;
-	}
+
 	/**
 	 * updates the store. Use if checkLegit works!
 	 * @return updated store.
 	 */
-	public Store updateStore()
+	public void subMoney()
 	{
-		return store;
-	}
-	
-	/**
-	 * getter for total cost.
-	 * @return the total cost.
-	 */
-	public int getTotalCost()
-	{
-		return totalCost;
-	}
-	
-	/**
-	 * getter for total weight.
-	 * @return the total weight.
-	 */
-	public int getTotalWeight()
-	{
-		return totalWeight;
+		supplies.subMoney(window.getTotalAmt());
+		updateWindow();
 	}
 	
 }
