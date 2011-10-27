@@ -11,6 +11,10 @@ public class GameEngine {
 	private Pace pace;
 	private Supplies supplies;
 	private Leader ld;
+	Transaction initialTrans;
+	Store iniStore;
+	TradeWindow initialTrade;
+	
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
@@ -93,12 +97,9 @@ public class GameEngine {
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
 		
-
-		TradeWindow initialTrade = new TradeWindow();
-		Store iniStore = new Store(iniPrices, iniQuant);
-		Transaction initialTrans = new Transaction(iniStore, supplies, initialTrade);
+		iniStore = new Store(iniPrices, iniQuant);
+		initialTrade = new TradeWindow();
+		initialTrans = new Transaction(iniStore, supplies, initialTrade);
+		initialTrade.setTransaction(initialTrans);
 	}
-	
-	
-	
 }
