@@ -15,7 +15,7 @@ public class Transaction
 	TradeWindow window;
 	int totalWeight;
 	int totalCost;
-	int[] playerAmts;
+	int[] playerAmts = new int[8];
 	
 	/**
 	 * Initialize transaction
@@ -41,9 +41,7 @@ public class Transaction
 	private void updateWindowStore(){
 		window.setStore(store.getPrices(), store.getQuantities());
 	}
-	private void updateWindowTotals(){
-		
-	}
+	
 	private void updateWindowPlayer(){
 		Item[] items = Item.values();
 		for (int i=0; i < Item.values().length; i++){

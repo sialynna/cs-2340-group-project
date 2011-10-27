@@ -28,4 +28,5 @@ public class Store {
 	public void subItem(Item item, int amount){
 		quantity[item.ordinal()] -= amount;
 	}
+	
 }
