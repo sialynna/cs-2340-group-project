@@ -87,7 +87,7 @@ public class GameEngine {
 			System.out.println(member1.getName()); // for debugging
 			System.out.println(member2.getName());
 		} 
-		else if (membernames.length == 2)
+		else if (membernames.length == 3)
 		{
 			Member member1 = new Member(membernames[0]);
 			Member member2 = new Member(membernames[1]);
