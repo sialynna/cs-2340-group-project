@@ -1,23 +1,16 @@
 package gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
-import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class StartPage {
 
@@ -89,5 +82,6 @@ public class StartPage {
 		background.setIcon(new ImageIcon(StartPage.class.getResource("/gui/resources/startscreen.jpg")));
 		background.setBounds(0, 0, 450, 278);
 		frmApocalypseTrail.getContentPane().add(background);
+		frmApocalypseTrail.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{newGame, button, btnNewButton, frmApocalypseTrail.getContentPane(), background}));
 	}
 }

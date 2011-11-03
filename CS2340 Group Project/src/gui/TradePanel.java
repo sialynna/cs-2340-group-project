@@ -2,10 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -22,13 +19,9 @@ import javax.swing.border.EtchedBorder;
 
 import classes.Item;
 import classes.Transaction;
-/**
- * Creates a window to trade items between a player Supplies and a Store
- * 
- * @author Christopher
- *
- */
-public class TradeWindow {
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+public class TradePanel extends JPanel {
 
 	private int totalAmt;
 	private int totalWt;
@@ -92,96 +85,23 @@ public class TradeWindow {
 	private JLabel notEnough;
 	
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TradeWindow window = new TradeWindow();
-					window.MainFrame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public TradePanel(JFrame frame) {
+		
+		JPanel ContentPanel = new JPanel();
+		ContentPanel.setLayout(null);
+		ContentPanel.setBounds(0,0,720,480);
 
-	/**
-	 * Create the application.
-	 * @param initialTrans 
-	 */
-	public TradeWindow() {
-		initialize();
-		this.MainFrame.setVisible(true);
-		
-		costs[0] = MoxenCost;
-		costs[1] = ClothsCost;
-		costs[2] = AmmoCost;
-		costs[3] = MedsCost;
-		costs[4] = AxlesCost;
-		costs[5] = WheelsCost;
-		costs[6] = YokesCost;
-		costs[7] = RationsCost;
-		
-		stAmts[0] = MoxenMax;
-		stAmts[1] = ClothsMax;
-		stAmts[2] = AmmoMax;
-		stAmts[3] = MedsMax;
-		stAmts[4] = AxlesMax;
-		stAmts[5] = WheelsMax;
-		stAmts[6] = YokesMax;
-		stAmts[7] = RationsMax;
-		
-		plAmts[0] = PlayerMoxenAmt;
-		plAmts[1] = PlayerClothsAmt;
-		plAmts[2] = PlayerAmmoAmt;
-		plAmts[3] = PlayerMedsAmt;
-		plAmts[4] = PlayerAxlesAmt;
-		plAmts[5] = PlayerWheelsAmt;
-		plAmts[6] = PlayerYokesAmt;
-		plAmts[7] = PlayerRationsAmt;
-		
-		inputs[0] = BuyMoxen;
-		inputs[1] = BuyCloths;
-		inputs[2] = BuyAmmo;
-		inputs[3] = BuyMeds;
-		inputs[4] = BuyAxles;
-		inputs[5] = BuyWheels;
-		inputs[6] = BuyYokes;
-		inputs[7] = BuyRations;
-		
-		items = Item.values();
-		
-		for (int i = 0; i < 8;i++){
-			weights[i] = items[i].weight;
-		}
-
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		MainFrame = new JFrame();
-		MainFrame.setTitle("Apocalypse Trail");
-		MainFrame.setAlwaysOnTop(true);
-		MainFrame.setLocation(new Point(0, 0));
-		MainFrame.setBounds(new Rectangle(0, 0, 720, 480));
-		MainFrame.setResizable(false);
-		MainFrame.setBounds(100, 100, 720, 480);
-		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		MainFrame.getContentPane().setLayout(null);
-		
 		JPanel TransactionPanel = new JPanel();
 		TransactionPanel.setBounds(222, 218, 275, 190);
-		MainFrame.getContentPane().add(TransactionPanel);
+		ContentPanel.add(TransactionPanel);
 		TransactionPanel.setLayout(null);
 		
 		JButton btnBuyItems = new JButton("Buy Items");
 		btnBuyItems.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (trans.checkLegit())
+				if (trans.checkLegit(inputs))
 				{
 					notEnough.setVisible(false);
 					int[] purch = new int[8]; 
@@ -249,12 +169,13 @@ public class TradeWindow {
 		JLabel transBackground = new JLabel("");
 		transBackground.setBounds(0, 0, 275, 194);
 		transBackground.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		transBackground.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TransactionBack.jpg")));
+		transBackground.setIcon(new ImageIcon(MainFrame.class.getResource("/gui/resources/TransactionBack.jpg")));
 		TransactionPanel.add(transBackground);
+		TransactionPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnBuyItems, button, PurchaseWt, TransAmtLbl, TransWtLbl, PurchaseAmt, notEnough, transBackground}));
 		
 		JPanel StorePanel = new JPanel();
 		StorePanel.setBounds(12, 40, 200, 370);
-		MainFrame.getContentPane().add(StorePanel);
+		ContentPanel.add(StorePanel);
 		StorePanel.setLayout(null);
 		
 		BuyRations = new JTextField();
@@ -592,13 +513,14 @@ public class TradeWindow {
 		
 		JLabel storeback = new JLabel("");
 		storeback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		storeback.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
+		storeback.setIcon(new ImageIcon(MainFrame.class.getResource("/gui/resources/TextBackground.jpg")));
 		storeback.setBounds(0, 0, 200, 370);
 		StorePanel.add(storeback);
+		StorePanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{BuyMoxen, BuyCloths, BuyAmmo, BuyMeds, BuyAxles, BuyWheels, BuyYokes, BuyRations, StMoxenLbl, label, label_1, label_2, label_3, label_4, label_5, label_6, StoreInventory, BuyLabel, MaxLabel, MoxenMax, ClothsMax, AmmoMax, MedsMax, AxlesMax, WheelsMax, YokesMax, RationsMax, ClothsCost, MoxenCost, MedsCost, AmmoCost, WheelsCost, AxlesCost, RationsCost, YokesCost, CostLabel, lblNumbersOnlyPlease, storeback}));
 		
 		JPanel PlayerPanel = new JPanel();
 		PlayerPanel.setBounds(508, 40, 200, 370);
-		MainFrame.getContentPane().add(PlayerPanel);
+		ContentPanel.add(PlayerPanel);
 		PlayerPanel.setLayout(null);
 		
 		PlayerMoneyAmt = new JLabel("0");
@@ -742,14 +664,14 @@ public class TradeWindow {
 		
 		JLabel playerback = new JLabel("New label");
 		playerback.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.DARK_GRAY, null));
-		playerback.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TextBackground.jpg")));
+		playerback.setIcon(new ImageIcon(MainFrame.class.getResource("/gui/resources/TextBackground.jpg")));
 		playerback.setBounds(0, 0, 200, 370);
 		PlayerPanel.add(playerback);
 		
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon(TradeWindow.class.getResource("/gui/resources/TradeBackground.jpg")));
+		background.setIcon(new ImageIcon(MainFrame.class.getResource("/gui/resources/TradeBackground.jpg")));
 		background.setBounds(0, 0, 720, 480);
-		MainFrame.getContentPane().add(background);
+		ContentPanel.add(background);
 	}
 
 	public void setStore(int[] prices, int[] quants) {
@@ -797,6 +719,5 @@ public class TradeWindow {
 	}
 	public void setTransaction(Transaction trans){
 		this.trans = trans;
-	}
-	
+	}		
 }

@@ -1,5 +1,7 @@
 package classes;
-import gui.TradeWindow;
+import javax.swing.JTextField;
+
+import gui.MainFrame;
 
 /**
  * Does all the moving between Supplies, Store, and Transaction Window
@@ -13,7 +15,7 @@ public class Transaction
 
 	Store store;
 	Supplies supplies;
-	TradeWindow window;
+	MainFrame window;
 	int totalWeight;
 	int playerMoney;
 	int[] playerAmts = new int[8];
@@ -24,7 +26,7 @@ public class Transaction
 	 * @param supplies the supplies
 	 * @param wagon the wagon
 	 */
-	public Transaction (Store store, Supplies supplies, TradeWindow window)
+	public Transaction (Store store, Supplies supplies, MainFrame window)
 	{
 		this.store = store;
 		this.supplies = supplies;
@@ -54,14 +56,28 @@ public class Transaction
 	 * Checks to see if there is enough money for transaction and enough weight remaining.
 	 * @return true/false
 	 */
-	public boolean checkLegit()
+	public boolean checkLegit(JTextField[] inputs)
 	{
-		if((supplies.getMoney() > window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
+		Item[] items = Item.values();
+		if((supplies.getMoney() >= window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
 		{
-			return true;
-		}
+			for(int i=0; i < 8; i++)
+			{
+				if(Integer.parseInt(inputs[i].getText()) < 0)
+				{
+						if(Math.abs(Integer.parseInt(inputs[i].getText())) <= items[i].getNum()){
+							return true;
+						}
+						else 
+							return false;
+				}
+				else if (Integer.parseInt(inputs[i].getText()) >= 0)
+					return true;
+				}
+			}
 		return false;
-	}
+		}
+	
 	/**
 	 * Adds the purchased amount of items to player supplies
 	 * @param item the item
@@ -71,14 +87,9 @@ public class Transaction
 	{
 		if(store.getQuantity(item) > amt)
 		{
-			System.out.println(window.getTotalAmt());
 			supplies.addItem(item, amt);
 			store.subItem(item, amt);
 			updateWindow();
-		}
-		else
-		{
-			//panel pops up saying "Store doesn't have this much"
 		}
 	}
 

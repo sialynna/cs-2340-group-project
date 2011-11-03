@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import classes.GameEngine;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 /**
  * This class creates the New Game Window which gives the player the
@@ -468,6 +469,8 @@ public class NewGameWindow {
 		startscreen.setIcon(new ImageIcon(NewGameWindow.class.getResource("/gui/resources/newgame.jpg")));
 		startscreen.setBounds(0, 0, 450, 278);
 		frmApocalypseTrail.getContentPane().add(startscreen);
+		frmApocalypseTrail.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{leaderName, member1name, member2name, member3name, member4name, memberSelect, profSelect, paceSelect, rationSelect, btnStartGame, startscreen, namelabelBackground, lblNewLabel, label_2, label_1, label, lblHowManyOther, lblMember_1, lblMember_2, lblMember_3, lblMember_4, lblInitialPace, lblInitialRations, memberselectBack, paceBack, rationsBack, mem_1_back, mem_2_back, mem_3_back, mem_4_back, noname}));
+		frmApocalypseTrail.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{leaderName, memberSelect, member1name, member2name, member3name, member4name, profSelect, paceSelect, rationSelect, btnStartGame, frmApocalypseTrail.getContentPane(), label_1, label_2, lblNewLabel, lblHowManyOther, lblMember_1, lblMember_2, lblMember_3, lblMember_4, lblInitialPace, lblInitialRations, namelabelBackground, memberselectBack, paceBack, rationsBack, mem_1_back, mem_2_back, mem_3_back, mem_4_back, label, noname, startscreen}));
 		initDataBindings();
 	}
 	protected void initDataBindings() {
