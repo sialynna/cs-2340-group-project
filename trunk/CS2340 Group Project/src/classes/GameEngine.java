@@ -1,6 +1,6 @@
 package classes;
 
-import gui.TradeWindow;
+import gui.MainFrame;
 /**
  * This class creates and controls most of the game functions
  * 
@@ -18,8 +18,7 @@ public class GameEngine {
 	private Leader ld;
 	Transaction initialTrans;
 	Store iniStore;
-	TradeWindow initialTrade;
-	
+	MainFrame mainFrame;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
@@ -111,8 +110,16 @@ public class GameEngine {
 		System.out.println(ld.getProfession());
 		
 		iniStore = new Store(iniPrices, iniQuant);
-		initialTrade = new TradeWindow();
-		initialTrans = new Transaction(iniStore, supplies, initialTrade);
-		initialTrade.setTransaction(initialTrans);
+		mainFrame = new MainFrame();
+		initialTrans = new Transaction(iniStore, supplies, mainFrame);
+		mainFrame.setTransaction(initialTrans);
+	}
+	
+	public Event move(){
+		
+		
+		
+		return randEvent;
+		
 	}
 }
