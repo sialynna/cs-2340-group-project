@@ -59,8 +59,6 @@ public class Transaction
 	public boolean checkLegit(JTextField[] inputs)
 	{
 		Item[] items = Item.values();
-		if((supplies.getMoney() >= window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
-		{
 			for(int i=0; i < 8; i++)
 			{
 				if(Integer.parseInt(inputs[i].getText()) < 0)
@@ -72,9 +70,9 @@ public class Transaction
 							return false;
 				}
 				else if (Integer.parseInt(inputs[i].getText()) >= 0)
-					return true;
+					if((supplies.getMoney() >= window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
+						return true;
 				}
-			}
 		return false;
 		}
 	
