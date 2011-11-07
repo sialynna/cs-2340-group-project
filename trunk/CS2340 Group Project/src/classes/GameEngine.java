@@ -1,5 +1,7 @@
 package classes;
 
+import javax.swing.JPanel;
+
 import gui.MainFrame;
 /**
  * This class creates and controls most of the game functions
@@ -10,12 +12,14 @@ import gui.MainFrame;
 public class GameEngine {
 	
 	private static int gameDay;
-	private Event randEvent;
-	private Wagon wagon;
-	private Rations rations;
-	private Pace pace;
-	private Supplies supplies;
-	private Leader ld;
+	private static Event randEvent;
+	private static Wagon wagon;
+	private static Rations rations = new Rations();
+	private static Pace pace = new Pace();
+	private static Supplies supplies;
+	private static Leader ld;
+	private static Location location;
+	private static Map map;
 	Transaction initialTrans;
 	Store iniStore;
 	MainFrame mainFrame;
@@ -42,36 +46,36 @@ public class GameEngine {
 		
 		if(rations.equals("Filling"))
 		{
-			this.rations=new Rations(3);
+			GameEngine.rations.setRations(3);
 		}
 		else if(rations.equals("Normal"))
 		{
-			this.rations=new Rations(2);
+			GameEngine.rations.setRations(2);
 		}
 		else if(rations.equals("Meager"))
 		{
-				this.rations=new Rations(1);
+			GameEngine.rations.setRations(1);
 		}
 		else if(rations.equals("Starvation"))
 		{
-			this.rations=new Rations(0);
+			GameEngine.rations.setRations(0);
 		}
 		
 		if(pace.equals("Stopped"))
 		{
-			this.pace=new Pace(0);
+			GameEngine.pace.setPace(0);
 		}
 		else if(pace.equals("Easy"))
 		{
-			this.pace=new Pace(1);
+			GameEngine.pace.setPace(1);
 		}
 		else if(pace.equals("Normal"))
 		{
-			this.pace=new Pace(2);
+			GameEngine.pace.setPace(2);
 		}
 		else if(pace.equals("Grueling"))
 		{
-			this.pace=new Pace(3);
+			GameEngine.pace.setPace(3);
 		}
 		
 		if (membernames.length == 1)
@@ -109,17 +113,20 @@ public class GameEngine {
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
 		
+		location = new Location(0, GameEngine.map, GameEngine.pace);
+		
 		iniStore = new Store(iniPrices, iniQuant);
 		mainFrame = new MainFrame();
 		initialTrans = new Transaction(iniStore, supplies, mainFrame);
 		mainFrame.setTransaction(initialTrans);
+		
 	}
 	
-	public Event move(){
+	public static Event move(){
 		
+		location.updateLocation();
 		
-		
-		return randEvent;
+		return null;
 		
 	}
 }
