@@ -12,13 +12,13 @@ public class Pace
 
 	/**
 	 * constructor for pace
-	 * @param initialPace the starting value.
+	 * 
 	 */
-	public Pace(int initialPace)
-	{
-		this.pacePerDay = initialPace;
-	}
 	
+	public Pace() {
+		pacePerDay = 0;
+	}
+
 	/**
 	 * setter for pace
 	 * @param pacePerDay the amount of pace.

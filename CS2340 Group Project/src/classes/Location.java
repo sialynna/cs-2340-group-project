@@ -17,11 +17,11 @@ public class Location
 	 * @param map the map for reference
 	 * @param pace the pace
 	 */
-	public Location(int playerLocation, Map map,Pace pace)
+	public Location(int playerLocation, Map map, Pace pace)
 	{
-		this.playerLocation=playerLocation;
-		this.map=map;
-		this.pace=pace;
+		this.playerLocation = playerLocation;
+		this.map = map;
+		this.pace = pace;
 	}
 	
 	/**

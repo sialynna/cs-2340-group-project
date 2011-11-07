@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import classes.Item;
-import classes.Transaction;
+import classes.*;
+import gui.*;
 /**
  * Creates a window to trade items between a player Supplies and a Store
  * 
@@ -189,6 +189,7 @@ public class MainFrame {
 						try{
 							purch[i] = Integer.parseInt(inputs[i].getText());
 							trans.addItems(items[i], purch[i]);
+							inputs[i].setText("0");
 						} catch (NumberFormatException e){
 							lblNumbersOnlyPlease.setVisible(true);
 						}
@@ -233,8 +234,10 @@ public class MainFrame {
 		JButton button = new JButton("Exit Store");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				JPanel main = new MainPanel();
 				MainFrame.getContentPane().removeAll();
-				MainFrame.getContentPane().repaint();
+				MainFrame.getContentPane().add(main);
+				MainFrame.repaint();
 			}
 		});
 		button.setBounds(147, 129, 100, 50);

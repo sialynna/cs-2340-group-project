@@ -12,13 +12,13 @@ public class Rations
 	
 	/**
 	 * Constructor, initially set by GameEngine
-	 * @param val the value
+	 * 
 	 */
-	public Rations(int val)
-	{
-		this.rationsPerDay=val;
-	}
 	
+	public Rations() {
+		rationsPerDay = 0;
+	}
+
 	/**
 	 * getter for ration
 	 * @return the ration value
