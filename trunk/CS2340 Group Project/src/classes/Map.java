@@ -14,6 +14,17 @@ public class Map
 		distance=0;
 	}
 	
+	
+	/**
+	 * returns the landmark we need.
+	 */
+	public void getLandmark()
+	{
+		if(isLocation(distance))
+		{
+			
+		}
+	}
 	/**
 	 * checks if wagon passed a location yet.
 	 * @param distance current location
