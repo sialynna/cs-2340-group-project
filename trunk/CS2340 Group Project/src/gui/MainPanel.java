@@ -132,7 +132,7 @@ public class MainPanel extends JPanel {
 		
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(MainPanel.class.getResource("/gui/resources/Map Display.jpg")));
-		background.setBounds(0, 6, 720, 480);
+		background.setBounds(0, 0, 720, 480);
 		add(background);
 		
 
