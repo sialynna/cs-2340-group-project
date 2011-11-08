@@ -170,7 +170,6 @@ public class MainFrame {
 		MainFrame.setLocation(new Point(0, 0));
 		MainFrame.setBounds(new Rectangle(0, 0, 720, 480));
 		MainFrame.setResizable(false);
-		MainFrame.setBounds(100, 100, 720, 480);
 		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MainFrame.getContentPane().setLayout(null);
 		
