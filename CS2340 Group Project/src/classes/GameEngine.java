@@ -25,7 +25,7 @@ public class GameEngine {
 	MainFrame mainFrame;
 	Event randEvent;
 	
-	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
+	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
 	/**
 	 * Constructor sets up the leader, members of the wagon, rations, pace, and wagon.
@@ -128,8 +128,13 @@ public class GameEngine {
 	public static Event move(){
 		
 		gameDay++;
+		
 		location.updateLocation();
 		distTraveled = location.getLocation();
+		
+		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
+		supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
+		}
 		
 		if(gameDay == 31){
 			
