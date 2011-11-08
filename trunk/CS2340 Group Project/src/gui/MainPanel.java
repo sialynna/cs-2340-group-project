@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class MainPanel extends JPanel {
 
 	/**
@@ -19,6 +20,7 @@ public class MainPanel extends JPanel {
 	 */
 	public MainPanel() {
 		setLayout(null);
+		this.setVisible(true);
 		
 		JButton moveButton = new JButton("");
 		moveButton.addActionListener(new ActionListener() {

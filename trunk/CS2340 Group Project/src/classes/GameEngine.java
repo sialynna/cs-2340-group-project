@@ -1,7 +1,5 @@
 package classes;
 
-import javax.swing.JPanel;
-
 import gui.MainFrame;
 /**
  * This class creates and controls most of the game functions
@@ -12,7 +10,6 @@ import gui.MainFrame;
 public class GameEngine {
 	
 	private static int gameDay;
-	private static Event randEvent;
 	private static Wagon wagon;
 	private static Rations rations = new Rations();
 	private static Pace pace = new Pace();
@@ -23,6 +20,7 @@ public class GameEngine {
 	Transaction initialTrans;
 	Store iniStore;
 	MainFrame mainFrame;
+	Event randEvent;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 10};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
