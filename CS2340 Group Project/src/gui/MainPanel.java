@@ -28,9 +28,10 @@ public class MainPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public MainPanel() {
+		
 		setLayout(null);
 		this.setVisible(true);
-		setBounds(0, 6, 720, 480);
+		setBounds(0, 0, 720, 480);
 		
 		JButton moveButton = new JButton("");
 		moveButton.addActionListener(new ActionListener() {
@@ -144,7 +145,8 @@ public class MainPanel extends JPanel {
 		background.setIcon(new ImageIcon(MainPanel.class.getResource("/gui/resources/Map Display.jpg")));
 		background.setBounds(0, 0, 720, 480);
 		add(background);
-		
-
 	}
+	
+	
+	
 }
