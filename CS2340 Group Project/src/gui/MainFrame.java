@@ -90,6 +90,7 @@ public class MainFrame {
 	private int[] weights = new int[8];
 	private Item[] items;
 	private JLabel notEnough;
+	private JLabel noMoxen;
 	
 	/**
 	 * Launch the application.
@@ -184,6 +185,7 @@ public class MainFrame {
 				if (trans.checkLegit(inputs))
 				{
 					notEnough.setVisible(false);
+					noMoxen.setVisible(false);
 					int[] purch = new int[8]; 
 					for(int i=0; i < 8;i++ ){
 						try{
@@ -198,6 +200,7 @@ public class MainFrame {
 				}
 				else
 				{
+					noMoxen.setVisible(false);
 					notEnough.setVisible(true);
 				}
 			}
@@ -234,10 +237,18 @@ public class MainFrame {
 		JButton button = new JButton("Exit Store");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(Item.MOXEN.getNum() == 0){
+					noMoxen.setVisible(true);
+				} 
+				else
+				{
 				JPanel main = new MainPanel();
 				MainFrame.getContentPane().removeAll();
 				MainFrame.getContentPane().add(main);
-				MainFrame.repaint();
+				MainFrame.getContentPane().setVisible(true);
+				MainFrame.getContentPane().repaint();
+				}
 			}
 		});
 		button.setBounds(147, 129, 100, 50);
@@ -249,6 +260,13 @@ public class MainFrame {
 		notEnough.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		notEnough.setBounds(20, 99, 234, 25);
 		TransactionPanel.add(notEnough);
+		
+		noMoxen = new JLabel("You should buy at least 1 Moxen!");
+		noMoxen.setHorizontalAlignment(SwingConstants.CENTER);
+		noMoxen.setForeground(Color.GREEN);
+		noMoxen.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		noMoxen.setBounds(20, 99, 234, 25);
+		TransactionPanel.add(noMoxen);
 		
 		JLabel transBackground = new JLabel("");
 		transBackground.setBounds(0, 0, 275, 194);

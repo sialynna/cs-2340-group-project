@@ -28,6 +28,34 @@ public class MainPanel extends JPanel {
 				GameEngine.move();
 			}
 		});
+		
+		JLabel timeLabel = new JLabel("10:00");
+		timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		timeLabel.setForeground(Color.GREEN);
+		timeLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		timeLabel.setBounds(664, 19, 45, 16);
+		add(timeLabel);
+		
+		JLabel yearLabel = new JLabel("2021");
+		yearLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		yearLabel.setForeground(Color.GREEN);
+		yearLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		yearLabel.setBounds(618, 19, 39, 16);
+		add(yearLabel);
+		
+		JLabel monthLabel = new JLabel("JAN");
+		monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		monthLabel.setForeground(Color.GREEN);
+		monthLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		monthLabel.setBounds(576, 19, 31, 16);
+		add(monthLabel);
+		
+		JLabel dayLabel = new JLabel("1");
+		dayLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		dayLabel.setForeground(Color.GREEN);
+		dayLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		dayLabel.setBounds(545, 19, 25, 16);
+		add(dayLabel);
 		moveButton.setBorderPainted(false);
 		moveButton.setBounds(568, 60, 20, 20);
 		add(moveButton);
