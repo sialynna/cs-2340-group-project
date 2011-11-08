@@ -126,7 +126,10 @@ public class GameEngine {
 	}
 	
 	public static Event move(){
+		
 		gameDay++;
+		location.updateLocation();
+		distTraveled = location.getLocation();
 		
 		if(gameDay == 31){
 			
@@ -142,12 +145,11 @@ public class GameEngine {
 				gameMonth++;
 			}	
 		}
-		
-		location.updateLocation();
-		distTraveled = location.getLocation();
-		
 		return null;
-		
+	}
+	
+	public static int getLocation(){
+		return distTraveled;
 	}
 	
 	public static int getDay(){
@@ -158,7 +160,56 @@ public class GameEngine {
 		return rations.getRations();
 	}
 	
+	public static void setRations(String rationInput) {
+		
+		if(rationInput.equals("Filling"))
+		{
+			GameEngine.rations.setRations(3);
+		}
+		else if(rationInput.equals("Normal"))
+		{
+			GameEngine.rations.setRations(2);
+		}
+		else if(rationInput.equals("Meager"))
+		{
+			GameEngine.rations.setRations(1);
+		}
+		else if(rationInput.equals("Starvation"))
+		{
+			GameEngine.rations.setRations(0);
+		}
+	}
+	
 	public static String getPace(){
 		return pace.getPace();
 	}
+	
+	public static void setPace(String paceInput) {
+		
+		if(paceInput.equals("Stopped"))
+		{
+			GameEngine.pace.setPace(0);
+		}
+		else if(paceInput.equals("Easy"))
+		{
+			GameEngine.pace.setPace(1);
+		}
+		else if(paceInput.equals("Normal"))
+		{
+			GameEngine.pace.setPace(2);
+		}
+		else if(paceInput.equals("Grueling"))
+		{
+			GameEngine.pace.setPace(3);
+		}
+		
+	}
+
+	public static String getMonth() {
+		
+		Months[] monthsEnum = Months.values();
+		return monthsEnum[gameMonth].toString();
+	}
+
+
 }

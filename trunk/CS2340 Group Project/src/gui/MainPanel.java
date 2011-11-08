@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import classes.GameEngine;
 import classes.Item;
@@ -26,6 +27,7 @@ public class MainPanel extends JPanel {
 	JLabel rationsAmt;
 	JLabel rationsPerDay;
 	JLabel pacePerDay;
+	JLabel distTravelAmt;
 	
 	
 	/**
@@ -42,9 +44,16 @@ public class MainPanel extends JPanel {
 		moveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GameEngine.move();
-				dayLabel.setText(Integer.toString(GameEngine.getDay()));
+				updateScreen();
 			}
 		});
+		
+		JLabel distTraveled = new JLabel("Distance Travelled:");
+		distTraveled.setHorizontalAlignment(SwingConstants.CENTER);
+		distTraveled.setForeground(Color.GREEN);
+		distTraveled.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		distTraveled.setBounds(556, 271, 141, 16);
+		add(distTraveled);
 		
 		timeLabel = new JLabel("10:00");
 		timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,8 +72,8 @@ public class MainPanel extends JPanel {
 		monthLabel = new JLabel("JAN");
 		monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		monthLabel.setForeground(Color.GREEN);
-		monthLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		monthLabel.setBounds(576, 12, 31, 16);
+		monthLabel.setFont(new Font("American Typewriter", Font.BOLD, 11));
+		monthLabel.setBounds(576, 13, 31, 16);
 		add(monthLabel);
 		
 		dayLabel = new JLabel("1");
@@ -80,6 +89,10 @@ public class MainPanel extends JPanel {
 		JButton rationsButton = new JButton("");
 		rationsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String[] choices = {"Filling", "Normal", "Meager", "Starvation"};
+				String rationInput = (String) JOptionPane.showInputDialog(null, "Choose Rations", "Rations:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+				GameEngine.setPace(rationInput);
+				updateScreen();
 			}
 		});
 		rationsButton.setBorderPainted(false);
@@ -89,6 +102,10 @@ public class MainPanel extends JPanel {
 		JButton paceButton = new JButton("");
 		paceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String[] choices = {"Stopped", "Easy", "Normal", "Grueling"};
+				String paceInput = (String) JOptionPane.showInputDialog(null, "Choose Pace", "Pace:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+				GameEngine.setPace(paceInput);
+				updateScreen();
 			}
 		});
 		paceButton.setBorderPainted(false);
@@ -106,45 +123,52 @@ public class MainPanel extends JPanel {
 		
 		JLabel lblCurrentRations = new JLabel("Current Rations:");
 		lblCurrentRations.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCurrentRations.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		lblCurrentRations.setFont(new Font("American Typewriter", Font.BOLD, 12));
 		lblCurrentRations.setForeground(Color.GREEN);
-		lblCurrentRations.setBounds(568, 299, 117, 16);
+		lblCurrentRations.setBounds(568, 312, 117, 16);
 		add(lblCurrentRations);
 		
 		JLabel label = new JLabel("Rations per Day:");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.GREEN);
-		label.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		label.setBounds(568, 349, 117, 16);
+		label.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		label.setBounds(568, 360, 117, 16);
 		add(label);
 		
 		JLabel label_1 = new JLabel("Pace per Day:");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(Color.GREEN);
-		label_1.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		label_1.setBounds(568, 405, 117, 16);
+		label_1.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		label_1.setBounds(568, 413, 117, 16);
 		add(label_1);
 		
 		rationsAmt = new JLabel(Integer.toString(Item.RATIONS.getNum()));
 		rationsAmt.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsAmt.setForeground(Color.GREEN);
-		rationsAmt.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		rationsAmt.setBounds(568, 321, 117, 16);
+		rationsAmt.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		rationsAmt.setBounds(568, 334, 117, 16);
 		add(rationsAmt);
 		
 		rationsPerDay = new JLabel(GameEngine.getRations());
 		rationsPerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsPerDay.setForeground(Color.GREEN);
-		rationsPerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		rationsPerDay.setBounds(568, 377, 117, 16);
+		rationsPerDay.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		rationsPerDay.setBounds(568, 385, 117, 16);
 		add(rationsPerDay);
 		
 		pacePerDay = new JLabel(GameEngine.getPace());
 		pacePerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		pacePerDay.setForeground(Color.GREEN);
-		pacePerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));
-		pacePerDay.setBounds(568, 433, 117, 16);
+		pacePerDay.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		pacePerDay.setBounds(568, 436, 117, 16);
 		add(pacePerDay);
+		
+		distTravelAmt = new JLabel("0");
+		distTravelAmt.setHorizontalAlignment(SwingConstants.CENTER);
+		distTravelAmt.setForeground(Color.GREEN);
+		distTravelAmt.setFont(new Font("American Typewriter", Font.BOLD, 12));
+		distTravelAmt.setBounds(568, 291, 117, 16);
+		add(distTravelAmt);
 		
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(MainPanel.class.getResource("/gui/resources/Map Display.jpg")));
@@ -152,6 +176,13 @@ public class MainPanel extends JPanel {
 		add(background);
 	}
 	
-	
-	
+	private void updateScreen(){
+		
+		pacePerDay.setText(GameEngine.getPace());
+		rationsPerDay.setText(GameEngine.getRations());
+		rationsAmt.setText(Integer.toString(Item.RATIONS.getNum()));
+		distTravelAmt.setText(Integer.toString(GameEngine.getLocation()));
+		dayLabel.setText(Integer.toString(GameEngine.getDay()));
+		monthLabel.setText(GameEngine.getMonth());
+	}
 }
