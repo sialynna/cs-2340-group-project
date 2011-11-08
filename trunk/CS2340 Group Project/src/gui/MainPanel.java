@@ -28,7 +28,7 @@ public class MainPanel extends JPanel {
 	JLabel rationsPerDay;
 	JLabel pacePerDay;
 	JLabel distTravelAmt;
-	
+	JPanel main;
 	
 	/**
 	 * Create the panel.
@@ -39,6 +39,8 @@ public class MainPanel extends JPanel {
 		
 		setLayout(null);
 		setBounds(0, 0, 720, 480);
+		
+		main = this;
 		
 		JButton moveButton = new JButton("");
 		moveButton.addActionListener(new ActionListener() {
@@ -90,9 +92,11 @@ public class MainPanel extends JPanel {
 		rationsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String[] choices = {"Filling", "Normal", "Meager", "Starvation"};
-				String rationInput = (String) JOptionPane.showInputDialog(null, "Choose Rations", "Rations:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
-				GameEngine.setPace(rationInput);
+				String rationInput = (String) JOptionPane.showInputDialog(main, "Choose Rations", "Rations:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+				if ((rationInput != null) && (rationInput.length() > 0)){
+				GameEngine.setRations(rationInput);
 				updateScreen();
+				}
 			}
 		});
 		rationsButton.setBorderPainted(false);
@@ -103,9 +107,11 @@ public class MainPanel extends JPanel {
 		paceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String[] choices = {"Stopped", "Easy", "Normal", "Grueling"};
-				String paceInput = (String) JOptionPane.showInputDialog(null, "Choose Pace", "Pace:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+				String paceInput = (String) JOptionPane.showInputDialog(main, "Choose Pace", "Pace:", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+				if ((paceInput != null) && (paceInput.length() > 0)){
 				GameEngine.setPace(paceInput);
 				updateScreen();
+				}
 			}
 		});
 		paceButton.setBorderPainted(false);
