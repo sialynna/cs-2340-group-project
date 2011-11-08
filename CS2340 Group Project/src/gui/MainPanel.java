@@ -21,6 +21,7 @@ public class MainPanel extends JPanel {
 	public MainPanel() {
 		setLayout(null);
 		this.setVisible(true);
+		setBounds(0, 6, 720, 480);
 		
 		JButton moveButton = new JButton("");
 		moveButton.addActionListener(new ActionListener() {
