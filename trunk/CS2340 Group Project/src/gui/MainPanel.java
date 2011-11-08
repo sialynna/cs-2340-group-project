@@ -15,6 +15,15 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel {
 
+	JLabel timeLabel;
+	JLabel yearLabel;
+	JLabel monthLabel;
+	JLabel dayLabel;
+	JLabel rationsAmt;
+	JLabel rationsPerDay;
+	JLabel pacePerDay;
+	
+	
 	/**
 	 * Create the panel.
 	 */
@@ -27,31 +36,32 @@ public class MainPanel extends JPanel {
 		moveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GameEngine.move();
+				dayLabel.setText(Integer.toString(GameEngine.getDay()));
 			}
 		});
 		
-		JLabel timeLabel = new JLabel("10:00");
+		timeLabel = new JLabel("10:00");
 		timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		timeLabel.setForeground(Color.GREEN);
 		timeLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		timeLabel.setBounds(664, 19, 45, 16);
 		add(timeLabel);
 		
-		JLabel yearLabel = new JLabel("2021");
+		yearLabel = new JLabel("2021");
 		yearLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		yearLabel.setForeground(Color.GREEN);
 		yearLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		yearLabel.setBounds(618, 19, 39, 16);
 		add(yearLabel);
 		
-		JLabel monthLabel = new JLabel("JAN");
+		monthLabel = new JLabel("JAN");
 		monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		monthLabel.setForeground(Color.GREEN);
 		monthLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		monthLabel.setBounds(576, 19, 31, 16);
 		add(monthLabel);
 		
-		JLabel dayLabel = new JLabel("1");
+		dayLabel = new JLabel("1");
 		dayLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dayLabel.setForeground(Color.GREEN);
 		dayLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
@@ -109,21 +119,21 @@ public class MainPanel extends JPanel {
 		label_1.setBounds(568, 405, 117, 16);
 		add(label_1);
 		
-		JLabel rationsAmt = new JLabel("0");
+		rationsAmt = new JLabel("0");
 		rationsAmt.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsAmt.setForeground(Color.GREEN);
 		rationsAmt.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		rationsAmt.setBounds(568, 321, 117, 16);
 		add(rationsAmt);
 		
-		JLabel rationsPerDay = new JLabel("0");
+		rationsPerDay = new JLabel("0");
 		rationsPerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsPerDay.setForeground(Color.GREEN);
 		rationsPerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		rationsPerDay.setBounds(568, 377, 117, 16);
 		add(rationsPerDay);
 		
-		JLabel pacePerDay = new JLabel("0");
+		pacePerDay = new JLabel("0");
 		pacePerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		pacePerDay.setForeground(Color.GREEN);
 		pacePerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));

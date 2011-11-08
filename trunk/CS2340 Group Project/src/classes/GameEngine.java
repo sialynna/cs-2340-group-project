@@ -121,10 +121,14 @@ public class GameEngine {
 	}
 	
 	public static Event move(){
-		
+		gameDay++;
 		location.updateLocation();
 		
 		return null;
 		
+	}
+	
+	public static int getDay(){
+		return gameDay;
 	}
 }
