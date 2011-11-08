@@ -30,21 +30,23 @@ public class Location
 	 */
 	public int updateLocation()
 	{
-		if(pace.getPace()==1)
+		if(pace.getPaceNum()==1)
 		{
 			playerLocation+=15;
 		}
-		else if(pace.getPace()==2)
+		else if(pace.getPaceNum()==2)
 		{
 			playerLocation+=25;
 		}
-		else if(pace.getPace()==3)
+		else if(pace.getPaceNum()==3)
 		{
 			playerLocation+=40;
 		}
 		return playerLocation;
 			
+	}	
+	
+	public int getLocation(){
+		return playerLocation;
 	}
-	
-	
 }

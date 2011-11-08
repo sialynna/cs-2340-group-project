@@ -8,14 +8,17 @@ import gui.MainFrame;
  *
  */
 public class GameEngine {
-	
+	private static enum Months{JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC};
+	private static int gameMonth;
 	private static int gameDay;
+	private static int gameYear;
 	private static Wagon wagon;
 	private static Rations rations = new Rations();
 	private static Pace pace = new Pace();
 	private static Supplies supplies;
 	private static Leader ld;
 	private static Location location;
+	private static int distTraveled;
 	private static Map map;
 	Transaction initialTrans;
 	Store iniStore;
@@ -34,7 +37,9 @@ public class GameEngine {
 	 * @param membernames
 	 */
 	public GameEngine(String leader, String profession, String rations, String pace, String ...membernames) {
-		gameDay = 0;
+		gameDay = 1;
+		gameMonth = 0;
+		gameYear = 2012;
 		
 		wagon = new Wagon();
 		
@@ -122,7 +127,24 @@ public class GameEngine {
 	
 	public static Event move(){
 		gameDay++;
+		
+		if(gameDay == 31){
+			
+			gameDay = 1;
+			
+			if (gameMonth == 11)
+			{
+				gameMonth = 0;
+				gameYear++;
+			}
+			else
+			{
+				gameMonth++;
+			}	
+		}
+		
 		location.updateLocation();
+		distTraveled = location.getLocation();
 		
 		return null;
 		
@@ -130,5 +152,13 @@ public class GameEngine {
 	
 	public static int getDay(){
 		return gameDay;
+	}
+	
+	public static String getRations(){
+		return rations.getRations();
+	}
+	
+	public static String getPace(){
+		return pace.getPace();
 	}
 }

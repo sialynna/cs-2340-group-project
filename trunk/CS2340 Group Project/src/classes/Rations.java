@@ -9,6 +9,7 @@ package classes;
 public class Rations 
 {
 	private int rationsPerDay;
+	private enum rations{STARVATION,MEAGER,NORMAL,FILLING};
 	
 	/**
 	 * Constructor, initially set by GameEngine
@@ -23,8 +24,13 @@ public class Rations
 	 * getter for ration
 	 * @return the ration value
 	 */
-	public int getRations()
+	public String getRations()
 	{
+		rations[] rationsEnum = rations.values();
+		return rationsEnum[rationsPerDay].toString();
+	}
+	
+	public int getRationsNum(){
 		return rationsPerDay;
 	}
 	

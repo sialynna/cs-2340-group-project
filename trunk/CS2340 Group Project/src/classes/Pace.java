@@ -9,6 +9,7 @@ package classes;
 public class Pace 
 {
 	private int pacePerDay;
+	private enum Paces{STOPPED,EASY,NORMAL,GRULING};
 
 	/**
 	 * constructor for pace
@@ -31,8 +32,13 @@ public class Pace
 	 * getter for pace.
 	 * @return the pace.
 	 */
-	public int getPace()
+	public String getPace()
 	{
+		Paces[] paceEnum = Paces.values();
+		return paceEnum[pacePerDay].toString();
+	}
+	
+	public int getPaceNum(){
 		return pacePerDay;
 	}
 }

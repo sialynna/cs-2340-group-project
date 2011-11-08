@@ -6,11 +6,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import classes.GameEngine;
+import classes.Item;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.Rectangle;
+import java.awt.Component;
 
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel {
@@ -28,9 +32,10 @@ public class MainPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public MainPanel() {
+		setAlignmentY(Component.TOP_ALIGNMENT);
+		setAlignmentX(Component.LEFT_ALIGNMENT);
 		
 		setLayout(null);
-		this.setVisible(true);
 		setBounds(0, 0, 720, 480);
 		
 		JButton moveButton = new JButton("");
@@ -103,7 +108,7 @@ public class MainPanel extends JPanel {
 		lblCurrentRations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCurrentRations.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		lblCurrentRations.setForeground(Color.GREEN);
-		lblCurrentRations.setBounds(568, 293, 117, 16);
+		lblCurrentRations.setBounds(568, 299, 117, 16);
 		add(lblCurrentRations);
 		
 		JLabel label = new JLabel("Rations per Day:");
@@ -120,21 +125,21 @@ public class MainPanel extends JPanel {
 		label_1.setBounds(568, 405, 117, 16);
 		add(label_1);
 		
-		rationsAmt = new JLabel("0");
+		rationsAmt = new JLabel(Integer.toString(Item.RATIONS.getNum()));
 		rationsAmt.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsAmt.setForeground(Color.GREEN);
 		rationsAmt.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		rationsAmt.setBounds(568, 321, 117, 16);
 		add(rationsAmt);
 		
-		rationsPerDay = new JLabel("0");
+		rationsPerDay = new JLabel(GameEngine.getRations());
 		rationsPerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		rationsPerDay.setForeground(Color.GREEN);
 		rationsPerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		rationsPerDay.setBounds(568, 377, 117, 16);
 		add(rationsPerDay);
 		
-		pacePerDay = new JLabel("0");
+		pacePerDay = new JLabel(GameEngine.getPace());
 		pacePerDay.setHorizontalAlignment(SwingConstants.CENTER);
 		pacePerDay.setForeground(Color.GREEN);
 		pacePerDay.setFont(new Font("American Typewriter", Font.BOLD, 13));
