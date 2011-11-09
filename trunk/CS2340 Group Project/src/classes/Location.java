@@ -45,8 +45,76 @@ public class Location
 		return playerLocation;
 			
 	}	
-	
+	/**
+	 * get the location
+	 * @return the location
+	 */
 	public int getLocation(){
 		return playerLocation;
 	}
+	
+	/**
+	 * get the name of the landmark
+	 * @return the name.
+	 */
+	public String getLandmark()
+	{
+		if(playerLocation>=100&&playerLocation<=140)
+		{
+			return "Sandy Hills";
+		}
+		else if(playerLocation>=250&&playerLocation<=290)
+		{
+			return "Jetson Caverns";
+		}
+		else if(playerLocation>=420&&playerLocation<=480)
+		{
+			return "Hudsonion River";
+		}
+		else if(playerLocation>=560&&playerLocation<=600)
+		{
+			return "Sunnyville";
+		}
+		
+		else if(playerLocation>=750&&playerLocation<=790)
+		{
+			return "Johnson Creek";
+		}
+		else if(playerLocation>=900&&playerLocation<=940)
+		{
+			return "West Filli";
+		}
+		else if(playerLocation>=1100&&playerLocation<=1140)
+		{
+			return "Logsville";
+		}
+		else if(playerLocation>=1250&&playerLocation<=1290)
+		{
+			return "Satan's Alley";
+		}
+		else if(playerLocation>=1500)
+		{
+			return "Oregon";
+		}
+		else
+		{
+			return "Nothing to see here";
+		}
+	}
+//	/**
+//	 * checks if wagon passed a location yet.
+//	 * @param playerLocation current location
+//	 * @return true or false
+//	 */
+//	public boolean isLocation(int playerLocation)
+//	{
+//		this.playerLocation=playerLocation;
+//		if((playerLocation>=100&&playerLocation<=140)||(playerLocation>=250&&playerLocation<=290)||(playerLocation>=420&&playerLocation<=480)||(playerLocation>=560&&playerLocation<=600)||(playerLocation>=750&&playerLocation<=790)||(playerLocation>=900&&playerLocation<=940)||(playerLocation>=1100&&playerLocation<=1140)||(playerLocation>=1250&&playerLocation<=1290)||(playerLocation>=1500))
+//		{
+//			return true;
+//		}
+//		else 
+//			return false;
+//	}
+	
 }
