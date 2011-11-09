@@ -1,4 +1,4 @@
-package classes;
+	package classes;
 
 /**
  * 
@@ -82,7 +82,7 @@ public class Location
 		}
 		else if(playerLocation>=900&&playerLocation<=940)
 		{
-			return "West Filli";
+			return "Alpine Stream";
 		}
 		else if(playerLocation>=1100&&playerLocation<=1140)
 		{
@@ -99,6 +99,27 @@ public class Location
 		else
 		{
 			return "Nothing to see here";
+		}
+	}
+	
+	/**
+	 * gets the type for the landmark.
+	 * @param the location name.
+	 * @return the type 1)shop 2)river 3) scenery(no interaction)
+	 */
+	public int landmarkType(String string)
+	{
+		if(string.equalsIgnoreCase("Sandy Hills")||string.equalsIgnoreCase("Sunnyville")||string.equalsIgnoreCase("Johnson Creek")||string.equalsIgnoreCase("Logsville")||string.equalsIgnoreCase("Satan's Alley"))
+		{
+			return 1;
+		}
+		else if(string.equalsIgnoreCase("Hudsonion River")||string.equalsIgnoreCase("Alpine Stream"))
+		{
+			return 2;
+		}
+		else
+		{
+			return 3;
 		}
 	}
 //	/**
