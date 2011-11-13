@@ -146,17 +146,14 @@ public class GameEngine {
 		location.updateLocation();
 		distTraveled = location.getLocation();
 		
-		if (distTraveled >= 1500){
+		if (location.landmarkType() == 3){
 			//you win, calc score, show win page
 		}
-		else if (location.landmarkType() != 3){
-			
-			if (location.landmarkType() == 2){
-				//store
-			}
-			else if (location.landmarkType() == 3){
-				//river
-			}
+		else if (location.landmarkType() == 1){
+			//store
+		}
+		else if (location.landmarkType() == 2){
+			//river
 		}
 		
 		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
