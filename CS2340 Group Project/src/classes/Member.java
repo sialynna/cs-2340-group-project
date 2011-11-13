@@ -36,6 +36,10 @@ public class Member
 		return name;
 	}
 	
+	/**
+	 * checks if the guy is alive or dead.
+	 * @return status
+	 */
 	public boolean alive()
 	{
 		if(health>0)
@@ -46,6 +50,23 @@ public class Member
 		{
 			return false;
 		}
+	}
+	
+	/**
+	 * makes member sick
+	 */
+	public void sick()
+	{
+		isSick=true;
+	}
+	
+	/**
+	 * return health status of guy
+	 * @return is sick or not.
+	 */
+	public boolean isSick()
+	{
+		return isSick;
 	}
 
 }
