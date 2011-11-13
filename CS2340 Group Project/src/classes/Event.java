@@ -47,8 +47,11 @@ public class Event {
 		else
 		{
 			return 4;
+			
 		}
 	}
+	
+	
 	
 //	/**
 //	 * removes a moxen from inventory. 
