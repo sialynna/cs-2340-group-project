@@ -156,10 +156,28 @@ public class GameEngine {
 	}
 	
 	public static Event move(){
-		
+		Event event=new Event();
+		int eventType;
 		gameDay++;
 		
 		location.updateLocation();
+		eventType = event.generateEvent();
+		if(location.landmarkType()!=4)
+		{
+			eventType=4;
+		}
+		if(eventType==0) // random member sick.
+		{
+			event.ranSick();
+		}
+		else if(eventType==1&&GameEngine.pace.getPaceNum()==0) //Dust Storm days happen
+		{
+			event.dustStorm();
+		}
+		else if(eventType==3)
+		{
+			
+		}
 		
 		if (location.landmarkType() == 3){
 			//you win, calc score, show win page

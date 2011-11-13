@@ -51,6 +51,9 @@ public class Event {
 		}
 	}
 	
+	/**
+	 * random member gets sick
+	 */
 	public void ranSick()
 	{
 		int ranMember;
@@ -73,11 +76,23 @@ public class Event {
 		}
 	}
 	
+	/**
+	 * lose 3 turns.
+	 */
 	public void dustStorm()
 	{
 		GameEngine.setPace("Stopped");
 		GameEngine.move();
 		GameEngine.move();
+		GameEngine.move();
+	}
+	
+	/**
+	 * moxen dies.
+	 */
+	public void deadMox()
+	{
+		GameEngine.getSupplies().subItem(Item.MOXEN, 1);
 	}
 	
 //	/**
