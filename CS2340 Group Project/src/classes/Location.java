@@ -33,17 +33,17 @@ public class Location
 	 */
 	public int updateLocation()
 	{
-		if(pace.getPaceNum()==1)
+		if(pace.getPaceNum() == 1)
 		{
-			playerLocation+=15;
+			playerLocation += 15;
 		}
-		else if(pace.getPaceNum()==2)
+		else if(pace.getPaceNum() == 2)
 		{
-			playerLocation+=25;
+			playerLocation += 25;
 		}
-		else if(pace.getPaceNum()==3)
+		else if(pace.getPaceNum() == 3)
 		{
-			playerLocation+=40;
+			playerLocation += 40;
 		}
 		return playerLocation;
 			
@@ -55,6 +55,10 @@ public class Location
 	public int getLocation(){
 		return playerLocation;
 	}
+	public int getLandmarkAt(){
+		return playerAtLandmark;
+	}
+	
 	public int getLandmarkDist(){
 		return landmarkDistances[playerAtLandmark];
 	}
@@ -72,61 +76,60 @@ public class Location
 		if(playerLocation>=100&&playerLocation<=140)
 		{
 			setLocation(140);
-			playerAtLandmark++;
+			playerAtLandmark = 1;
 			return "Ft. Kearny";
 		}
 		else if(playerLocation>=250&&playerLocation<=290)
 		{
 			setLocation(290);
-			playerAtLandmark++;
+			playerAtLandmark = 2;
 			return "Ft. Laramie";
 		}
 		else if(playerLocation>=420&&playerLocation<=480)
 		{
 			setLocation(480);
-			playerAtLandmark++;
+			playerAtLandmark = 3;
 			return "Hudsonion River";
 		}
 		else if(playerLocation>=560&&playerLocation<=600)
 		{
 			setLocation(600);
-			playerAtLandmark++;
+			playerAtLandmark = 4;
 			return "Ft. Bridger";
 		}
 		else if(playerLocation>=750&&playerLocation<=790)
 		{
 			setLocation(790);
-			playerAtLandmark++;
+			playerAtLandmark = 5;
 			return "Ft. Hall";
 		}
 		else if(playerLocation>=900&&playerLocation<=940)
 		{
 			setLocation(940);
-			playerAtLandmark++;
+			playerAtLandmark = 6;
 			return "Alpine Stream";
 		}
 		else if(playerLocation>=1100&&playerLocation<=1140)
 		{
 			setLocation(1140);
-			playerAtLandmark++;
+			playerAtLandmark = 7;
 			return "Ft. Boise";
 		}
 		else if(playerLocation>=1250&&playerLocation<=1290)
 		{
 			setLocation(1290);
-			playerAtLandmark++;
+			playerAtLandmark = 8;
 			return "Whitman's Mission";
 		}
 		else if(playerLocation>=1440&&playerLocation<=1400)
 		{
 			setLocation(1400);
-			playerAtLandmark++;
+			playerAtLandmark = 9;
 			return "Ft. Vancouver";
 		}
 		else if(playerLocation>=1500)
 		{
 			setLocation(1500);
-			playerAtLandmark++;
 			return "Oregon";
 		}
 		else
