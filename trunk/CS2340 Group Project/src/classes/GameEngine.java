@@ -132,6 +132,13 @@ public class GameEngine {
 		location.updateLocation();
 		distTraveled = location.getLocation();
 		
+		if (distTraveled >= 1500){
+			//you win, calc score, show win page
+		}
+		else if (location.landmarkType() != 3){
+			
+		}
+		
 		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
 		supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
 		}

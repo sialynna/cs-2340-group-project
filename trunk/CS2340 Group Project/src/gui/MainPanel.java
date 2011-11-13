@@ -11,8 +11,12 @@ import classes.Item;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.geom.Point2D;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.SwingConstants;
 import java.awt.Rectangle;
 import java.awt.Component;
@@ -190,5 +194,23 @@ public class MainPanel extends JPanel {
 		distTravelAmt.setText(Integer.toString(GameEngine.getLocation()));
 		dayLabel.setText(Integer.toString(GameEngine.getDay()));
 		monthLabel.setText(GameEngine.getMonth());
+	}
+	
+	public void paint(Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		Point2D firstLoc = new Point2D.Double(436, 306);
+		Point2D secondLoc = new Point2D.Double(334, 273);
+		Point2D firstRiv = new Point2D.Double(299, 261);
+		Point2D fourthLoc = new Point2D.Double(236, 292);
+		Point2D fifthLoc = new Point2D.Double(208, 246);
+		Point2D secondRiv = new Point2D.Double(175, 237);
+		Point2D seventhLoc = new Point2D.Double(139, 227);
+		Point2D eigthLoc = new Point2D.Double(123, 160);
+		Point2D ninthLoc = new Point2D.Double(59, 155);
+		Point2D goal = new Point2D.Double(41, 145);
+		
+		
+		
+		
 	}
 }
