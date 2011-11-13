@@ -30,8 +30,7 @@ public class GameEngine {
 	static Random rn = new Random();
 	Transaction initialTrans;
 	Store iniStore;
-	static Event event=new Event();
-	static int eventType,ranMember;
+	
 	static MainFrame mainFrame;
 	Event randEvent;
 	
@@ -39,6 +38,7 @@ public class GameEngine {
 	private static Member member2;
 	private static Member member3;
 	private static Member member4;
+	private static Member[] members;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
@@ -98,25 +98,39 @@ public class GameEngine {
 		
 		if (membernames.length == 1)
 		{
-			member1 = new Member(membernames[0]);
+			members=new Member[1];
+			members[0]= new Member(membernames[0]);
+			//member1 = new Member(membernames[0]);
 		} 
 		else if (membernames.length == 2)
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
+			members=new Member[2];
+			members[0]= new Member(membernames[0]);
+			members[1]= new Member(membernames[1]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
 		} 
 		else if (membernames.length == 3)
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
-			member3 = new Member(membernames[2]);
+			members=new Member[3];
+			members[0]= new Member(membernames[0]);
+			members[1]= new Member(membernames[1]);
+			members[2]= new Member(membernames[2]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
+//			member3 = new Member(membernames[2]);
 		} 
 		else 
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
-			member3 = new Member(membernames[2]);
-			member4 = new Member(membernames[3]);
+			members=new Member[4];
+			members[0]= new Member(membernames[0]);
+			members[1]= new Member(membernames[1]);
+			members[2]= new Member(membernames[2]);
+			members[3]= new Member(membernames[3]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
+//			member3 = new Member(membernames[2]);
+//			member4 = new Member(membernames[3]);
 		}
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
@@ -141,7 +155,9 @@ public class GameEngine {
 	}
 	
 	public static Event move(){
-		
+		Event event=new Event();
+		int eventType;
+		int ranMember;
 		
 		gameDay++;
 		
