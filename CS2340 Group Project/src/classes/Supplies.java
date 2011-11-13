@@ -82,6 +82,7 @@ public class Supplies {
 	 * @param subtraction amount of money to subtract.
 	 */
 	public void subMoney(int subtraction) {
+		if(subtraction > money) subtraction = money; //prevent negative money
 		money -= subtraction;
 	}
 	/**
@@ -103,7 +104,13 @@ public class Supplies {
 		calcWeight();
 	}
 
+	/**
+	 * subtracts item value
+	 * @param item the item
+	 * @param subtraction the specific amount to subtract
+	 */
 	public void subItem(Item item, int subtraction){
+		if(subtraction > item.getNum()) subtraction = item.getNum(); //Prevent negative items
 		item.sub(subtraction);
 		calcWeight();
 	}
