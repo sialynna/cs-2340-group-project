@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Random;
+
 import javax.swing.JPanel;
 
 import gui.MainFrame;
@@ -24,8 +26,12 @@ public class GameEngine {
 	private static Location location;
 	private static int percentTraveled;
 	private static Map map;
+	private static String[] membernames;
+	static Random rn = new Random();
 	Transaction initialTrans;
 	Store iniStore;
+	static Event event=new Event();
+	static int eventType,ranMember;
 	static MainFrame mainFrame;
 	Event randEvent;
 	
@@ -49,7 +55,7 @@ public class GameEngine {
 		gameDay = 1;
 		gameMonth = 0;
 		gameYear = 2012;
-		
+		this.membernames=membernames;
 		wagon = new Wagon();
 		
 		supplies = new Supplies(profession);
@@ -136,10 +142,45 @@ public class GameEngine {
 	
 	public static Event move(){
 		
+		
 		gameDay++;
+		
 		
 		location.updateLocation();
 		percentTraveled = location.getLocation();
+		eventType = event.generateEvent();
+		if(location.landmarkType()!=4)
+		{
+			eventType=4;
+		}
+		if(eventType==0) // random member sick.
+		{
+			ranMember=rn.nextInt(membernames.length-1);
+			if(ranMember==0&&!member1.isSick())
+			{
+				member1.sick();
+			}
+			else if(ranMember==1&&!member2.isSick())
+			{
+				member2.sick();
+			}
+			else if (ranMember==2&&!member3.isSick())
+			{
+				member3.sick();
+			}
+			else if(ranMember==2&&!member4.isSick())
+			{
+				member4.sick();
+			}
+		}
+		else if(eventType==1) //Dust Storm days happen
+		{
+			gameDay+=4;
+			if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
+				supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
+				}
+		}
+		
 		
 		if (location.landmarkType() == 3){
 			//you win, calc score, show win page
