@@ -10,6 +10,8 @@ public class Location
 	private int playerLocation;
 	private Map map;
 	private Pace pace;
+	private int playerAtLandmark;
+	private int[] landmarkDistances = {140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
 	
 	/**
 	 * Constructor.
@@ -19,6 +21,7 @@ public class Location
 	 */
 	public Location(int playerLocation, Map map, Pace pace)
 	{
+		playerAtLandmark = 0;
 		this.playerLocation = playerLocation;
 		this.map = map;
 		this.pace = pace;
@@ -66,51 +69,61 @@ public class Location
 		if(playerLocation>=100&&playerLocation<=140)
 		{
 			setLocation(140);
+			playerAtLandmark++;
 			return "Ft. Kearny";
 		}
 		else if(playerLocation>=250&&playerLocation<=290)
 		{
 			setLocation(290);
+			playerAtLandmark++;
 			return "Ft. Laramie";
 		}
 		else if(playerLocation>=420&&playerLocation<=480)
 		{
 			setLocation(480);
+			playerAtLandmark++;
 			return "Hudsonion River";
 		}
 		else if(playerLocation>=560&&playerLocation<=600)
 		{
 			setLocation(600);
+			playerAtLandmark++;
 			return "Ft. Bridger";
 		}
 		else if(playerLocation>=750&&playerLocation<=790)
 		{
 			setLocation(790);
+			playerAtLandmark++;
 			return "Ft. Hall";
 		}
 		else if(playerLocation>=900&&playerLocation<=940)
 		{
 			setLocation(940);
+			playerAtLandmark++;
 			return "Alpine Stream";
 		}
 		else if(playerLocation>=1100&&playerLocation<=1140)
 		{
 			setLocation(1140);
+			playerAtLandmark++;
 			return "Ft. Boise";
 		}
 		else if(playerLocation>=1250&&playerLocation<=1290)
 		{
 			setLocation(1290);
+			playerAtLandmark++;
 			return "Whitman's Mission";
 		}
 		else if(playerLocation>=1440&&playerLocation<=1400)
 		{
 			setLocation(1400);
+			playerAtLandmark++;
 			return "Ft. Vancouver";
 		}
 		else if(playerLocation>=1500)
 		{
 			setLocation(1500);
+			playerAtLandmark++;
 			return "Oregon";
 		}
 		else

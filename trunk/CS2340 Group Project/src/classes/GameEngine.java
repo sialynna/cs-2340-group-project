@@ -22,12 +22,17 @@ public class GameEngine {
 	private static Supplies supplies;
 	private static Leader ld;
 	private static Location location;
-	private static int distTraveled;
+	private static int percentTraveled;
 	private static Map map;
 	Transaction initialTrans;
 	Store iniStore;
 	static MainFrame mainFrame;
 	Event randEvent;
+	
+	private static Member member1;
+	private static Member member2;
+	private static Member member3;
+	private static Member member4;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
@@ -134,7 +139,7 @@ public class GameEngine {
 		gameDay++;
 		
 		location.updateLocation();
-		distTraveled = location.getLocation();
+		percentTraveled = location.getLocation();
 		
 		if (location.landmarkType() == 3){
 			//you win, calc score, show win page
@@ -168,7 +173,7 @@ public class GameEngine {
 	}
 	
 	public static int getLocation(){
-		return distTraveled;
+		return location.getLocation();
 	}
 	
 	public static int getDay(){
