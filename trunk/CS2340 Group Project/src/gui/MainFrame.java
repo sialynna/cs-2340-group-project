@@ -91,6 +91,8 @@ public class MainFrame {
 	private JLabel notEnough;
 	private JLabel noMoxen;
 	
+	private JPanel currentPanel;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -819,9 +821,13 @@ public class MainFrame {
 	
 	public void swapPanel(JPanel panel)
 	{
+		currentPanel = panel;
 		MainFrame.getContentPane().removeAll();
 		MainFrame.getContentPane().add(panel);
 		MainFrame.getContentPane().setVisible(true);
 		MainFrame.getContentPane().repaint();
 	}	
+	public JPanel getPanel(){
+		return currentPanel;
+	}
 }

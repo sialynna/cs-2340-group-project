@@ -55,6 +55,9 @@ public class Location
 	public int getLocation(){
 		return playerLocation;
 	}
+	public int getLandmarkDist(){
+		return landmarkDistances[playerAtLandmark];
+	}
 	
 	private void setLocation(int loc){
 		playerLocation = loc;
