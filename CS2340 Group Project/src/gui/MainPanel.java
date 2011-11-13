@@ -212,8 +212,6 @@ public class MainPanel extends JPanel {
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
-
-		
 		
 	}
 }
