@@ -53,6 +53,10 @@ public class Location
 		return playerLocation;
 	}
 	
+	private void setLocation(int loc){
+		playerLocation = loc;
+	}
+	
 	/**
 	 * get the name of the landmark
 	 * @return the name.
@@ -61,42 +65,52 @@ public class Location
 	{
 		if(playerLocation>=100&&playerLocation<=140)
 		{
+			setLocation(140);
 			return "Ft. Kearny";
 		}
 		else if(playerLocation>=250&&playerLocation<=290)
 		{
+			setLocation(290);
 			return "Ft. Laramie";
 		}
 		else if(playerLocation>=420&&playerLocation<=480)
 		{
+			setLocation(480);
 			return "Hudsonion River";
 		}
 		else if(playerLocation>=560&&playerLocation<=600)
 		{
+			setLocation(600);
 			return "Ft. Bridger";
 		}
 		else if(playerLocation>=750&&playerLocation<=790)
 		{
+			setLocation(790);
 			return "Ft. Hall";
 		}
 		else if(playerLocation>=900&&playerLocation<=940)
 		{
+			setLocation(940);
 			return "Alpine Stream";
 		}
 		else if(playerLocation>=1100&&playerLocation<=1140)
 		{
+			setLocation(1140);
 			return "Ft. Boise";
 		}
 		else if(playerLocation>=1250&&playerLocation<=1290)
 		{
+			setLocation(1290);
 			return "Whitman's Mission";
 		}
 		else if(playerLocation>=1440&&playerLocation<=1400)
 		{
+			setLocation(1400);
 			return "Ft. Vancouver";
 		}
 		else if(playerLocation>=1500)
 		{
+			setLocation(1500);
 			return "Oregon";
 		}
 		else
