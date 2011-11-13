@@ -94,7 +94,7 @@ public class TradePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TradePanel(JFrame frame) {
+	public TradePanel() {
 		
 		JPanel ContentPanel = new JPanel();
 		ContentPanel.setLayout(null);

@@ -91,7 +91,8 @@ public class Location
 		{
 			return "Whitman's Mission";
 		}
-		else if(playerLocation>=1440&&playerLocation<=1400){
+		else if(playerLocation>=1440&&playerLocation<=1400)
+		{
 			return "Ft. Vancouver";
 		}
 		else if(playerLocation>=1500)
@@ -107,11 +108,11 @@ public class Location
 	/**
 	 * gets the type for the landmark.
 	 * @param the location name.
-	 * @return the type 1)shop 2)river 3) Oregon 4) scenery(no interaction) 
+	 * @return the type 1) Fort 2) River 3) Oregon 4) scenery(no interaction) 
 	 */
 	public int landmarkType()
 	{
-		if(getLandmark().equalsIgnoreCase("Ft. Kearny")||getLandmark().equalsIgnoreCase("Ft. Bridger")||getLandmark().equalsIgnoreCase("Ft. Hall")||getLandmark().equalsIgnoreCase("Ft. Boise")||getLandmark().equalsIgnoreCase("Whitman's Mission"))
+		if(getLandmark().equalsIgnoreCase("Ft. Kearny")||getLandmark().equalsIgnoreCase("Ft. Laramie")||getLandmark().equalsIgnoreCase("Ft. Bridger")||getLandmark().equalsIgnoreCase("Ft. Hall")||getLandmark().equalsIgnoreCase("Ft. Boise")||getLandmark().equalsIgnoreCase("Whitman's Mission")|| getLandmark().equalsIgnoreCase("Ft. Vancouver"))
 		{
 			return 1;	
 		}

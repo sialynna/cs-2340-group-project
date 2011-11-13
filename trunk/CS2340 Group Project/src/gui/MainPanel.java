@@ -11,6 +11,7 @@ import classes.Item;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.Color;
 import java.awt.Font;
@@ -186,8 +187,8 @@ public class MainPanel extends JPanel {
 		add(background);
 	}
 	
-	private void updateScreen(){
-		
+	private void updateScreen()
+	{	
 		pacePerDay.setText(GameEngine.getPace());
 		rationsPerDay.setText(GameEngine.getRations());
 		rationsAmt.setText(Integer.toString(Item.RATIONS.getNum()));
@@ -196,8 +197,10 @@ public class MainPanel extends JPanel {
 		monthLabel.setText(GameEngine.getMonth());
 	}
 	
-	public void paint(Graphics g){
+	public void drawLine(Graphics g, int percent)
+	{
 		Graphics2D g2 = (Graphics2D) g;
+		
 		Point2D firstLoc = new Point2D.Double(436, 306);
 		Point2D secondLoc = new Point2D.Double(334, 273);
 		Point2D firstRiv = new Point2D.Double(299, 261);
@@ -210,6 +213,7 @@ public class MainPanel extends JPanel {
 		Point2D goal = new Point2D.Double(41, 145);
 		
 		
+		Line2D.Double first2second = new Line2D.Double(firstLoc, secondLoc);
 		
 		
 	}
