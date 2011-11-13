@@ -34,6 +34,7 @@ public class GameEngine {
 	static MainFrame mainFrame;
 	Event randEvent;
 	static JPanel main = new MainPanel();
+	private static Member[] members;
 	
 	private static Member member1;
 	private static Member member2;
