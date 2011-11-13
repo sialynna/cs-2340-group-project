@@ -35,7 +35,7 @@ public class Event {
 	
 	/**
 	 * generates event
-	 * @return 0 = sick, 1 = dust storm, 2 = mox dies, 3 = found supplies, 
+	 * @return 0 = sick, 1 = dust storm, 2 = mox dies, 3 = found supplies, 4 = nothing happens
 	 */
 	public int generateEvent()
 	{
@@ -50,9 +50,14 @@ public class Event {
 		}
 	}
 	
-	public void moxDies(Item item,Supplies sup){
-		sup.subItem(item, 1);
-		
-	}
+//	/**
+//	 * removes a moxen from inventory. 
+//	 * @param item
+//	 * @param sup
+//	 */
+//	public void moxDies(Item item,Supplies sup){
+//		sup.subItem(item.MOXEN, 1);
+//		
+//	}
 
 }
