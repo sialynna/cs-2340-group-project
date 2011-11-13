@@ -105,21 +105,25 @@ public class Location
 	/**
 	 * gets the type for the landmark.
 	 * @param the location name.
-	 * @return the type 1)shop 2)river 3) scenery(no interaction)
+	 * @return the type 1)shop 2)river 3) Oregon 4) scenery(no interaction) 
 	 */
 	public int landmarkType(String string)
 	{
 		if(string.equalsIgnoreCase("Sandy Hills")||string.equalsIgnoreCase("Sunnyville")||string.equalsIgnoreCase("Johnson Creek")||string.equalsIgnoreCase("Logsville")||string.equalsIgnoreCase("Satan's Alley"))
 		{
-			return 1;
+			return 1;	
 		}
 		else if(string.equalsIgnoreCase("Hudsonion River")||string.equalsIgnoreCase("Alpine Stream"))
 		{
 			return 2;
 		}
-		else
+		else if(string.equalsIgnoreCase("Oregon"))
 		{
 			return 3;
+		}
+		else
+		{
+			return 4;
 		}
 	}
 //	/**
