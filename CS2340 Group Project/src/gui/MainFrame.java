@@ -243,11 +243,7 @@ public class MainFrame {
 				} 
 				else
 				{
-				JPanel main = new MainPanel();
-				MainFrame.getContentPane().removeAll();
-				MainFrame.getContentPane().add(main);
-				MainFrame.getContentPane().setVisible(true);
-				MainFrame.getContentPane().repaint();
+				GameEngine.setPanelMain();
 				}
 			}
 		});
@@ -821,4 +817,11 @@ public class MainFrame {
 		this.trans = trans;
 	}
 	
+	public void swapPanel(JPanel panel)
+	{
+		MainFrame.getContentPane().removeAll();
+		MainFrame.getContentPane().add(panel);
+		MainFrame.getContentPane().setVisible(true);
+		MainFrame.getContentPane().repaint();
+	}	
 }

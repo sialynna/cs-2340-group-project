@@ -1,6 +1,10 @@
 package classes;
 
+import javax.swing.JPanel;
+
 import gui.MainFrame;
+import gui.MainPanel;
+import gui.TradePanel;
 /**
  * This class creates and controls most of the game functions
  * 
@@ -22,7 +26,7 @@ public class GameEngine {
 	private static Map map;
 	Transaction initialTrans;
 	Store iniStore;
-	MainFrame mainFrame;
+	static MainFrame mainFrame;
 	Event randEvent;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
@@ -125,6 +129,16 @@ public class GameEngine {
 		
 	}
 	
+	public static void setPanelMain()
+	{
+		JPanel main = new MainPanel();
+		mainFrame.swapPanel(main);
+	}
+	public static void setPanelTrade(){
+		JPanel trade = new TradePanel();
+		mainFrame.swapPanel(trade);
+	}
+	
 	public static Event move(){
 		
 		gameDay++;
@@ -137,6 +151,12 @@ public class GameEngine {
 		}
 		else if (location.landmarkType() != 3){
 			
+			if (location.landmarkType() == 2){
+				//store
+			}
+			else if (location.landmarkType() == 3){
+				//river
+			}
 		}
 		
 		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
