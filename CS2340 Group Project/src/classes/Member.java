@@ -11,7 +11,6 @@ public class Member
 	private int health = 100;
 	private int stamina = 100;
 	private boolean isSick = false;
-	private boolean isDead = false;
 	private enum Health{
 		GOOD, FAIR, POOR, DEAD
 	}
@@ -35,6 +34,18 @@ public class Member
 	public String getName()
 	{
 		return name;
+	}
+	
+	public boolean alive()
+	{
+		if(health>0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
