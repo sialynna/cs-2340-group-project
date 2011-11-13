@@ -21,7 +21,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import classes.*;
-import gui.*;
 /**
  * Creates a window to trade items between a player Supplies and a Store
  * 
