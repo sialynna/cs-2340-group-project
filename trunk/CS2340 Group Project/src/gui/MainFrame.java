@@ -190,10 +190,12 @@ public class MainFrame {
 						try{
 							purch[i] = Integer.parseInt(inputs[i].getText());
 							trans.addItems(items[i], purch[i]);
-							inputs[i].setText("0");
 						} catch (NumberFormatException e){
 							lblNumbersOnlyPlease.setVisible(true);
 						}
+					}
+					for (JTextField j:inputs){
+						j.setText("0");
 					}
 					trans.subMoney();
 				}

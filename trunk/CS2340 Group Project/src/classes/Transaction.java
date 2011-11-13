@@ -56,25 +56,32 @@ public class Transaction
 	 * Checks to see if there is enough money for transaction and enough weight remaining.
 	 * @return true/false
 	 */
-	public boolean checkLegit(JTextField[] inputs)
+	public boolean checkLegit(JTextField[] inputs) throws NumberFormatException
 	{
+		
+		boolean isTrue = true;
+		try{
 		Item[] items = Item.values();
 			for(int i=0; i < 8; i++)
 			{
 				if(Integer.parseInt(inputs[i].getText()) < 0)
 				{
-						if(Math.abs(Integer.parseInt(inputs[i].getText())) <= items[i].getNum()){
-							return true;
+						if(Math.abs(Integer.parseInt(inputs[i].getText())) <= items[i].getNum())
+						{
+							isTrue = isTrue && true;
 						}
 						else 
-							return false;
+							isTrue = isTrue && false;
 				}
 				else if (Integer.parseInt(inputs[i].getText()) >= 0)
 					if((supplies.getMoney() >= window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
-						return true;
+						isTrue = isTrue && true;
 				}
-		return false;
+		}catch (NumberFormatException e){
+		
 		}
+		return isTrue;
+	}
 	
 	/**
 	 * Adds the purchased amount of items to player supplies
