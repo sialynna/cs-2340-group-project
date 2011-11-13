@@ -7,6 +7,10 @@ public class Wagon {
 	
 	private Supplies supplies;
 	private Member[] members;
+	private boolean hasMoxen;
+	private boolean hasAxle;
+	private boolean hasWheels;
+	private boolean hasYoke;
 	
 	/**
 	 * Initializes weight

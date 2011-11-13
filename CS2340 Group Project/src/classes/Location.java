@@ -61,11 +61,11 @@ public class Location
 	{
 		if(playerLocation>=100&&playerLocation<=140)
 		{
-			return "Sandy Hills";
+			return "Ft. Kearny";
 		}
 		else if(playerLocation>=250&&playerLocation<=290)
 		{
-			return "Jetson Caverns";
+			return "Ft. Laramie";
 		}
 		else if(playerLocation>=420&&playerLocation<=480)
 		{
@@ -73,12 +73,11 @@ public class Location
 		}
 		else if(playerLocation>=560&&playerLocation<=600)
 		{
-			return "Sunnyville";
+			return "Ft. Bridger";
 		}
-		
 		else if(playerLocation>=750&&playerLocation<=790)
 		{
-			return "Johnson Creek";
+			return "Ft. Hall";
 		}
 		else if(playerLocation>=900&&playerLocation<=940)
 		{
@@ -86,11 +85,14 @@ public class Location
 		}
 		else if(playerLocation>=1100&&playerLocation<=1140)
 		{
-			return "Logsville";
+			return "Ft. Boise";
 		}
 		else if(playerLocation>=1250&&playerLocation<=1290)
 		{
-			return "Satan's Alley";
+			return "Whitman's Mission";
+		}
+		else if(playerLocation>=1440&&playerLocation<=1400){
+			return "Ft. Vancouver";
 		}
 		else if(playerLocation>=1500)
 		{
@@ -107,17 +109,17 @@ public class Location
 	 * @param the location name.
 	 * @return the type 1)shop 2)river 3) Oregon 4) scenery(no interaction) 
 	 */
-	public int landmarkType(String string)
+	public int landmarkType()
 	{
-		if(string.equalsIgnoreCase("Sandy Hills")||string.equalsIgnoreCase("Sunnyville")||string.equalsIgnoreCase("Johnson Creek")||string.equalsIgnoreCase("Logsville")||string.equalsIgnoreCase("Satan's Alley"))
+		if(getLandmark().equalsIgnoreCase("Ft. Kearny")||getLandmark().equalsIgnoreCase("Ft. Bridger")||getLandmark().equalsIgnoreCase("Ft. Hall")||getLandmark().equalsIgnoreCase("Ft. Boise")||getLandmark().equalsIgnoreCase("Whitman's Mission"))
 		{
 			return 1;	
 		}
-		else if(string.equalsIgnoreCase("Hudsonion River")||string.equalsIgnoreCase("Alpine Stream"))
+		else if(getLandmark().equalsIgnoreCase("Hudsonion River")||getLandmark().equalsIgnoreCase("Alpine Stream"))
 		{
 			return 2;
 		}
-		else if(string.equalsIgnoreCase("Oregon"))
+		else if(getLandmark().equalsIgnoreCase("Oregon"))
 		{
 			return 3;
 		}
