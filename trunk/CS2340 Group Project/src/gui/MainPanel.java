@@ -35,6 +35,17 @@ public class MainPanel extends JPanel {
 	JLabel distTravelAmt;
 	JPanel main;
 	
+	Point2D firstLoc = new Point2D.Double(436, 306);
+	Point2D secondLoc = new Point2D.Double(334, 273);
+	Point2D firstRiv = new Point2D.Double(299, 261);
+	Point2D fourthLoc = new Point2D.Double(236, 292);
+	Point2D fifthLoc = new Point2D.Double(208, 246);
+	Point2D secondRiv = new Point2D.Double(175, 237);
+	Point2D seventhLoc = new Point2D.Double(139, 227);
+	Point2D eigthLoc = new Point2D.Double(123, 160);
+	Point2D ninthLoc = new Point2D.Double(59, 155);
+	Point2D goal = new Point2D.Double(41, 145);
+	
 	/**
 	 * Create the panel.
 	 */
@@ -201,19 +212,7 @@ public class MainPanel extends JPanel {
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
-		Point2D firstLoc = new Point2D.Double(436, 306);
-		Point2D secondLoc = new Point2D.Double(334, 273);
-		Point2D firstRiv = new Point2D.Double(299, 261);
-		Point2D fourthLoc = new Point2D.Double(236, 292);
-		Point2D fifthLoc = new Point2D.Double(208, 246);
-		Point2D secondRiv = new Point2D.Double(175, 237);
-		Point2D seventhLoc = new Point2D.Double(139, 227);
-		Point2D eigthLoc = new Point2D.Double(123, 160);
-		Point2D ninthLoc = new Point2D.Double(59, 155);
-		Point2D goal = new Point2D.Double(41, 145);
-		
-		
-		Line2D.Double first2second = new Line2D.Double(firstLoc, secondLoc);
+
 		
 		
 	}
