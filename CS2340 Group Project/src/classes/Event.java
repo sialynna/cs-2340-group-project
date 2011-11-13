@@ -51,7 +51,34 @@ public class Event {
 		}
 	}
 	
+	public void ranSick()
+	{
+		int ranMember;
+		ranMember=rn.nextInt(GameEngine.getMembers().length-1);
+		if(ranMember==0&&!GameEngine.getMembers()[0].isSick())
+		{
+			GameEngine.getMembers()[0].sick();
+		}
+		else if(ranMember==1&&!GameEngine.getMembers()[1].isSick())
+		{
+			GameEngine.getMembers()[1].sick();
+		}
+		else if (ranMember==2&&!GameEngine.getMembers()[2].isSick())
+		{
+			GameEngine.getMembers()[2].sick();
+		}
+		else if(ranMember==2&&!GameEngine.getMembers()[3].isSick())
+		{
+			GameEngine.getMembers()[3].sick();
+		}
+	}
 	
+	public void dustStorm()
+	{
+		GameEngine.setPace("Stopped");
+		GameEngine.move();
+		GameEngine.move();
+	}
 	
 //	/**
 //	 * removes a moxen from inventory. 
