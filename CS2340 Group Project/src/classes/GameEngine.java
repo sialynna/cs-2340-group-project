@@ -99,25 +99,40 @@ public class GameEngine {
 		
 		if (membernames.length == 1)
 		{
-			member1 = new Member(membernames[0]);
+			members=new Member[1];
+			members[0]=new Member(membernames[0]);
+			
+//			member1 = new Member(membernames[0]);
 		} 
 		else if (membernames.length == 2)
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
+			members=new Member[2];
+			members[0]=new Member(membernames[0]);
+			members[1]=new Member(membernames[1]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
 		} 
 		else if (membernames.length == 3)
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
-			member3 = new Member(membernames[2]);
+			members=new Member[3];
+			members[0]=new Member(membernames[0]);
+			members[1]=new Member(membernames[1]);
+			members[2]=new Member(membernames[2]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
+//			member3 = new Member(membernames[2]);
 		} 
 		else 
 		{
-			member1 = new Member(membernames[0]);
-			member2 = new Member(membernames[1]);
-			member3 = new Member(membernames[2]);
-			member4 = new Member(membernames[3]);
+			members=new Member[4];
+			members[0]=new Member(membernames[0]);
+			members[1]=new Member(membernames[1]);
+			members[2]=new Member(membernames[2]);
+			members[3]= new Member(membernames[3]);
+//			member1 = new Member(membernames[0]);
+//			member2 = new Member(membernames[1]);
+//			member3 = new Member(membernames[2]);
+//			member4 = new Member(membernames[3]);
 		}
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
@@ -181,7 +196,10 @@ public class GameEngine {
 		}
 		return null;
 	}
-	
+	/**
+	 * getter for day
+	 * @return day
+	 */
 	public static int getLocation(){
 		return location.getLocation();
 	}
@@ -190,10 +208,18 @@ public class GameEngine {
 		return gameDay;
 	}
 	
+	/**
+	 * getter for rations
+	 * @return the rations
+	 */
 	public static String getRations(){
 		return rations.getRations();
 	}
 	
+	/**
+	 * setter for rations
+	 * @param rationInput set rations based off input.
+	 */
 	public static void setRations(String rationInput) {
 		
 		if(rationInput.equals("Filling"))
@@ -213,11 +239,18 @@ public class GameEngine {
 			GameEngine.rations.setRations(0);
 		}
 	}
-	
+	/**
+	 * getter for pace.
+	 * @return the pace.
+	 */
 	public static String getPace(){
 		return pace.getPace();
 	}
 	
+	/**
+	 * setter for pace.
+	 * @param paceInput the pace input..
+	 */
 	public static void setPace(String paceInput) {
 		
 		if(paceInput.equals("Stopped"))
@@ -238,10 +271,22 @@ public class GameEngine {
 		}
 		
 	}
-
+	/**
+	 * getter for the month.
+	 * @return the month.
+	 */
 	public static String getMonth()
 	{	
 		Months[] monthsEnum = Months.values();
 		return monthsEnum[gameMonth].toString();
+	}
+	
+	/**
+	 * getter for members
+	 * @return the members.
+	 */
+	public static Member[] getMembers()
+	{
+		return members;
 	}
 }
