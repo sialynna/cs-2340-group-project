@@ -24,7 +24,7 @@ public class GameEngine {
 	private static Supplies supplies;
 	private static Leader ld;
 	private static Location location;
-	private static int percentTraveled;
+	protected static int percentTraveled;
 	private static Map map;
 	private static String[] membernames;
 	static Random rn = new Random();
@@ -157,14 +157,9 @@ public class GameEngine {
 	
 	public static Event move(){
 		
-		
 		gameDay++;
 		
-		
 		location.updateLocation();
-		percentTraveled = location.getLocation() / location.getLandmarkDist();
-		
-		
 		
 		if (location.landmarkType() == 3){
 			//you win, calc score, show win page
@@ -202,6 +197,12 @@ public class GameEngine {
 	 */
 	public static int getLocation(){
 		return location.getLocation();
+	}
+	public static int getNextLocation(){
+		return location.getLandmarkDist();
+	}
+	public static int getLocationAt(){
+		return location.getLandmarkAt();
 	}
 	
 	public static int getDay(){
