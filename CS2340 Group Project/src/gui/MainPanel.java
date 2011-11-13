@@ -35,6 +35,7 @@ public class MainPanel extends JPanel {
 	JLabel distTravelAmt;
 	JPanel main;
 	
+	Point2D start = new Point2D.Double(521, 342);
 	Point2D firstLoc = new Point2D.Double(436, 306);
 	Point2D secondLoc = new Point2D.Double(334, 273);
 	Point2D firstRiv = new Point2D.Double(299, 261);
@@ -208,9 +209,63 @@ public class MainPanel extends JPanel {
 		monthLabel.setText(GameEngine.getMonth());
 	}
 	
-	public void drawLine(Graphics g, int percent)
+	public void drawLine(Graphics g, int percent, int whichLine)
 	{
 		Graphics2D g2 = (Graphics2D) g;
+		double startX;
+		double startY;
+		double nextX;
+		double nextY;
+		switch(whichLine){
+			case(0): 
+				startX = start.getX();
+				startY = start.getY();
+				nextX = percent * firstLoc.getX();
+				nextY = percent * firstLoc.getY();
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(1):
+				g2.draw(new Line2D.Double(start, firstLoc));
+				startX = firstLoc.getX();
+				startY = firstLoc.getY();
+				nextX = percent * secondLoc.getX();
+				nextY = percent * secondLoc.getY();
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(2):
+				g2.draw(new Line2D.Double(start, firstLoc));
+				g2.draw(new Line2D.Double(firstLoc, secondLoc));
+				startX = secondLoc.getX();
+				startY = secondLoc.getY();
+				nextX = percent * firstRiv.getX();
+				nextY = percent * firstRiv.getY();
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(3):
+				g2.draw(new Line2D.Double(start, firstLoc));
+				g2.draw(new Line2D.Double(firstLoc, secondLoc));
+				g2.draw(new Line2D.Double(secondLoc, firstRiv));
+				startX = firstRiv.getX();
+				startY = firstRiv.getY();
+				nextX = percent * fourthLoc.getX();
+				nextY = percent * fourthLoc.getY();
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(4):
+				g2.draw(new Line2D.Double(start, firstLoc));
+				g2.draw(new Line2D.Double(firstLoc, secondLoc));
+				g2.draw(new Line2D.Double(secondLoc, firstRiv));
+				g2.draw(new Line2D.Double(firstRiv, fourthLoc));
+				startX = fourthLoc.getX();
+				startY = fourthLoc.getY();
+				nextX = percent * fifthLoc.getX();
+				nextY = percent * fifthLoc.getY();
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(5):
+			
+			case(6):
+		}
 		
 		
 	}

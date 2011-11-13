@@ -33,12 +33,12 @@ public class GameEngine {
 	
 	static MainFrame mainFrame;
 	Event randEvent;
+	static JPanel main = new MainPanel();
 	
 	private static Member member1;
 	private static Member member2;
 	private static Member member3;
 	private static Member member4;
-	private static Member[] members;
 	
 	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
 	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
@@ -55,7 +55,7 @@ public class GameEngine {
 		gameDay = 1;
 		gameMonth = 0;
 		gameYear = 2012;
-		this.membernames=membernames;
+		GameEngine.membernames = membernames;
 		wagon = new Wagon();
 		
 		supplies = new Supplies(profession);
@@ -98,39 +98,25 @@ public class GameEngine {
 		
 		if (membernames.length == 1)
 		{
-			members=new Member[1];
-			members[0]= new Member(membernames[0]);
-			//member1 = new Member(membernames[0]);
+			member1 = new Member(membernames[0]);
 		} 
 		else if (membernames.length == 2)
 		{
-			members=new Member[2];
-			members[0]= new Member(membernames[0]);
-			members[1]= new Member(membernames[1]);
-//			member1 = new Member(membernames[0]);
-//			member2 = new Member(membernames[1]);
+			member1 = new Member(membernames[0]);
+			member2 = new Member(membernames[1]);
 		} 
 		else if (membernames.length == 3)
 		{
-			members=new Member[3];
-			members[0]= new Member(membernames[0]);
-			members[1]= new Member(membernames[1]);
-			members[2]= new Member(membernames[2]);
-//			member1 = new Member(membernames[0]);
-//			member2 = new Member(membernames[1]);
-//			member3 = new Member(membernames[2]);
+			member1 = new Member(membernames[0]);
+			member2 = new Member(membernames[1]);
+			member3 = new Member(membernames[2]);
 		} 
 		else 
 		{
-			members=new Member[4];
-			members[0]= new Member(membernames[0]);
-			members[1]= new Member(membernames[1]);
-			members[2]= new Member(membernames[2]);
-			members[3]= new Member(membernames[3]);
-//			member1 = new Member(membernames[0]);
-//			member2 = new Member(membernames[1]);
-//			member3 = new Member(membernames[2]);
-//			member4 = new Member(membernames[3]);
+			member1 = new Member(membernames[0]);
+			member2 = new Member(membernames[1]);
+			member3 = new Member(membernames[2]);
+			member4 = new Member(membernames[3]);
 		}
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
@@ -146,7 +132,6 @@ public class GameEngine {
 	
 	public static void setPanelMain()
 	{
-		JPanel main = new MainPanel();
 		mainFrame.swapPanel(main);
 	}
 	public static void setPanelTrade(){
@@ -155,47 +140,14 @@ public class GameEngine {
 	}
 	
 	public static Event move(){
-		Event event=new Event();
-		int eventType;
-		int ranMember;
+		
 		
 		gameDay++;
 		
 		
 		location.updateLocation();
-		percentTraveled = location.getLocation();
-		eventType = event.generateEvent();
-		if(location.landmarkType()!=4)
-		{
-			eventType=4;
-		}
-		if(eventType==0) // random member sick.
-		{
-			ranMember=rn.nextInt(membernames.length-1);
-			if(ranMember==0&&!member1.isSick())
-			{
-				member1.sick();
-			}
-			else if(ranMember==1&&!member2.isSick())
-			{
-				member2.sick();
-			}
-			else if (ranMember==2&&!member3.isSick())
-			{
-				member3.sick();
-			}
-			else if(ranMember==2&&!member4.isSick())
-			{
-				member4.sick();
-			}
-		}
-		else if(eventType==1) //Dust Storm days happen
-		{
-			gameDay+=4;
-			if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
-				supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
-				}
-		}
+		percentTraveled = location.getLocation() / location.getLandmarkDist();
+		
 		
 		
 		if (location.landmarkType() == 3){
@@ -209,7 +161,7 @@ public class GameEngine {
 		}
 		
 		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
-		supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
+			supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
 		}
 		
 		if(gameDay == 31){
@@ -286,11 +238,9 @@ public class GameEngine {
 		
 	}
 
-	public static String getMonth() {
-		
+	public static String getMonth()
+	{	
 		Months[] monthsEnum = Months.values();
 		return monthsEnum[gameMonth].toString();
 	}
-
-
 }

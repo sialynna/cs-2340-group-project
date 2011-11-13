@@ -40,7 +40,7 @@ public class Rations
 	 */
 	public void setRations(int val)
 	{
-		this.rationsPerDay=val;
+		this.rationsPerDay = val;
 	}
 	
 }
