@@ -88,23 +88,17 @@ public class GameEngine {
 		if (membernames.length == 1)
 		{
 			Member member1 = new Member(membernames[0]);
-			System.out.println(member1.getName());  // for debugging
 		} 
 		else if (membernames.length == 2)
 		{
 			Member member1 = new Member(membernames[0]);
 			Member member2 = new Member(membernames[1]);
-			System.out.println(member1.getName()); // for debugging
-			System.out.println(member2.getName());
 		} 
 		else if (membernames.length == 3)
 		{
 			Member member1 = new Member(membernames[0]);
 			Member member2 = new Member(membernames[1]);
 			Member member3 = new Member(membernames[2]);
-			System.out.println(member1.getName()); // for debugging
-			System.out.println(member2.getName());
-			System.out.println(member3.getName());
 		} 
 		else 
 		{
@@ -112,10 +106,6 @@ public class GameEngine {
 			Member member2 = new Member(membernames[1]);
 			Member member3 = new Member(membernames[2]);
 			Member member4 = new Member(membernames[3]);
-			System.out.println(member1.getName()); // for debugging
-			System.out.println(member2.getName());
-			System.out.println(member3.getName());
-			System.out.println(member4.getName());
 		}
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
