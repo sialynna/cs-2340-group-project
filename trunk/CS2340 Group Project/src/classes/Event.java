@@ -57,6 +57,7 @@ public class Event {
 	public void ranSick()
 	{
 		int ranMember;
+		
 		ranMember=rn.nextInt(GameEngine.getMembers().length-1);
 		if(ranMember==0&&!GameEngine.getMembers()[0].isSick())
 		{
@@ -70,7 +71,7 @@ public class Event {
 		{
 			GameEngine.getMembers()[2].sick();
 		}
-		else if(ranMember==2&&!GameEngine.getMembers()[3].isSick())
+		else if(ranMember==3&&!GameEngine.getMembers()[3].isSick())
 		{
 			GameEngine.getMembers()[3].sick();
 		}

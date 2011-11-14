@@ -308,4 +308,9 @@ public class GameEngine {
 	{
 		return members;
 	}
+
+	public static Supplies getSupplies() {
+		// TODO Auto-generated method stub
+		return supplies;
+	}
 }
