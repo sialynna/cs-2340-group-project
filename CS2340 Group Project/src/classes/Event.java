@@ -57,8 +57,12 @@ public class Event {
 	public void ranSick()
 	{
 		int ranMember;
+<<<<<<< .mine
+		ranMember=rn.nextInt(GameEngine.getMembers().length);
+=======
 		
 		ranMember=rn.nextInt(GameEngine.getMembers().length-1);
+>>>>>>> .r150
 		if(ranMember==0&&!GameEngine.getMembers()[0].isSick())
 		{
 			GameEngine.getMembers()[0].sick();

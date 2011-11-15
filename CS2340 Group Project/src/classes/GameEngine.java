@@ -30,6 +30,7 @@ public class GameEngine {
 	static Random rn = new Random();
 	Transaction initialTrans;
 	Store iniStore;
+	private static Double playerLocation;
 	
 	static MainFrame mainFrame;
 	Event randEvent;
@@ -161,6 +162,7 @@ public class GameEngine {
 		gameDay++;
 		
 		location.updateLocation();
+		playerLocation = location.getLocation();
 		eventType = event.generateEvent();
 		if(location.landmarkType()!=4)
 		{
@@ -213,10 +215,10 @@ public class GameEngine {
 	 * getter for day
 	 * @return day
 	 */
-	public static int getLocation(){
-		return location.getLocation();
+	public static Double getLocation(){
+		return playerLocation;
 	}
-	public static int getNextLocation(){
+	public static Double getNextLocation(){
 		return location.getLandmarkDist();
 	}
 	public static int getLocationAt(){
