@@ -73,61 +73,61 @@ public class Location
 	 */
 	public String getLandmark()
 	{
-		if(playerLocation>=100&&playerLocation<=140)
+		if(playerLocation >= 130)
 		{
 			setLocation(140);
 			playerAtLandmark = 1;
 			return "Ft. Kearny";
 		}
-		else if(playerLocation>=250&&playerLocation<=290)
+		else if(playerLocation >= 280)
 		{
 			setLocation(290);
 			playerAtLandmark = 2;
 			return "Ft. Laramie";
 		}
-		else if(playerLocation>=420&&playerLocation<=480)
+		else if(playerLocation >= 470)
 		{
 			setLocation(480);
 			playerAtLandmark = 3;
 			return "Hudsonion River";
 		}
-		else if(playerLocation>=560&&playerLocation<=600)
+		else if(playerLocation >= 590)
 		{
 			setLocation(600);
 			playerAtLandmark = 4;
 			return "Ft. Bridger";
 		}
-		else if(playerLocation>=750&&playerLocation<=790)
+		else if(playerLocation >= 780)
 		{
 			setLocation(790);
 			playerAtLandmark = 5;
 			return "Ft. Hall";
 		}
-		else if(playerLocation>=900&&playerLocation<=940)
+		else if(playerLocation >= 930)
 		{
 			setLocation(940);
 			playerAtLandmark = 6;
 			return "Alpine Stream";
 		}
-		else if(playerLocation>=1100&&playerLocation<=1140)
+		else if(playerLocation >= 1130)
 		{
 			setLocation(1140);
 			playerAtLandmark = 7;
 			return "Ft. Boise";
 		}
-		else if(playerLocation>=1250&&playerLocation<=1290)
+		else if(playerLocation>=1280)
 		{
 			setLocation(1290);
 			playerAtLandmark = 8;
 			return "Whitman's Mission";
 		}
-		else if(playerLocation>=1440&&playerLocation<=1400)
+		else if(playerLocation >= 1390)
 		{
 			setLocation(1400);
 			playerAtLandmark = 9;
 			return "Ft. Vancouver";
 		}
-		else if(playerLocation>=1500)
+		else if(playerLocation >= 1500)
 		{
 			setLocation(1500);
 			return "Oregon";

@@ -39,7 +39,7 @@ public class MainPanel extends JPanel {
 	Point2D start = new Point2D.Double(521, 342);
 	Point2D firstLoc = new Point2D.Double(436, 306);
 	Point2D secondLoc = new Point2D.Double(334, 273);
-	Point2D firstRiv = new Point2D.Double(299, 261);
+	Point2D firstRiv = new Point2D.Double(295, 279);
 	Point2D fourthLoc = new Point2D.Double(236, 292);
 	Point2D fifthLoc = new Point2D.Double(208, 246);
 	Point2D secondRiv = new Point2D.Double(175, 237);
@@ -274,10 +274,100 @@ public class MainPanel extends JPanel {
 				nextX = firstRiv.getX() - ((firstRiv.getX() - fourthLoc.getX())*percent);
 				nextY = firstRiv.getY() - ((firstRiv.getY() - fourthLoc.getY())*percent);
 				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
 			case(4):
-			
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				startX = fourthLoc.getX();
+				startY = fourthLoc.getY();
+				nextX = fourthLoc.getX() - ((fourthLoc.getX() - fifthLoc.getX())*percent);
+				nextY = fourthLoc.getY() - ((fourthLoc.getY() - fifthLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
 			case(5):
-			
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				g2.draw(new Line2D.Double(fourthLoc.getX(), fourthLoc.getY(), fifthLoc.getX(), fifthLoc.getY()));
+				startX = fifthLoc.getX();
+				startY = fifthLoc.getY();
+				nextX = fifthLoc.getX() - ((fifthLoc.getX() - secondRiv.getX())*percent);
+				nextY = fifthLoc.getY() - ((fifthLoc.getY() - secondRiv.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(6):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				g2.draw(new Line2D.Double(fourthLoc.getX(), fourthLoc.getY(), fifthLoc.getX(), fifthLoc.getY()));
+				g2.draw(new Line2D.Double(fifthLoc.getX(), fifthLoc.getY(), secondRiv.getX(), secondRiv.getY()));
+				startX = secondRiv.getX();
+				startY = secondRiv.getY();
+				nextX = secondRiv.getX() - ((secondRiv.getX() - seventhLoc.getX())*percent);
+				nextY = secondRiv.getY() - ((secondRiv.getY() - seventhLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(7):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				g2.draw(new Line2D.Double(fourthLoc.getX(), fourthLoc.getY(), fifthLoc.getX(), fifthLoc.getY()));
+				g2.draw(new Line2D.Double(fifthLoc.getX(), fifthLoc.getY(), secondRiv.getX(), secondRiv.getY()));
+				g2.draw(new Line2D.Double(secondRiv.getX(), secondRiv.getY(), seventhLoc.getX(), seventhLoc.getY()));
+				startX = seventhLoc.getX();
+				startY = seventhLoc.getY();
+				nextX = seventhLoc.getX() - ((seventhLoc.getX() - eigthLoc.getX())*percent);
+				nextY = seventhLoc.getY() - ((seventhLoc.getY() - eigthLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(8):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				g2.draw(new Line2D.Double(fourthLoc.getX(), fourthLoc.getY(), fifthLoc.getX(), fifthLoc.getY()));
+				g2.draw(new Line2D.Double(fifthLoc.getX(), fifthLoc.getY(), secondRiv.getX(), secondRiv.getY()));
+				g2.draw(new Line2D.Double(secondRiv.getX(), secondRiv.getY(), seventhLoc.getX(), seventhLoc.getY()));
+				g2.draw(new Line2D.Double(seventhLoc.getX(), seventhLoc.getY(), eigthLoc.getX(), eigthLoc.getY()));
+				startX = eigthLoc.getX();
+				startY = eigthLoc.getY();
+				nextX = eigthLoc.getX() - ((eigthLoc.getX() - ninthLoc.getX())*percent);
+				nextY = eigthLoc.getY() - ((eigthLoc.getY() - ninthLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(9):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				g2.draw(new Line2D.Double(firstRiv.getX(), firstRiv.getY(), fourthLoc.getX(), fourthLoc.getY()));
+				g2.draw(new Line2D.Double(fourthLoc.getX(), fourthLoc.getY(), fifthLoc.getX(), fifthLoc.getY()));
+				g2.draw(new Line2D.Double(fifthLoc.getX(), fifthLoc.getY(), secondRiv.getX(), secondRiv.getY()));
+				g2.draw(new Line2D.Double(secondRiv.getX(), secondRiv.getY(), seventhLoc.getX(), seventhLoc.getY()));
+				g2.draw(new Line2D.Double(seventhLoc.getX(), seventhLoc.getY(), eigthLoc.getX(), eigthLoc.getY()));
+				g2.draw(new Line2D.Double(eigthLoc.getX(), eigthLoc.getY(), ninthLoc.getX(), ninthLoc.getY()));
+				startX = ninthLoc.getX();
+				startY = ninthLoc.getY();
+				nextX = ninthLoc.getX() - ((ninthLoc.getX() - goal.getX())*percent);
+				nextY = ninthLoc.getY() - ((ninthLoc.getY() - goal.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
 			}
 		}
 	}
