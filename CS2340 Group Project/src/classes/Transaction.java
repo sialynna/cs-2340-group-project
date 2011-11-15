@@ -76,6 +76,8 @@ public class Transaction
 				else if (Integer.parseInt(inputs[i].getText()) >= 0)
 					if((supplies.getMoney() >= window.getTotalAmt()) && supplies.getWeightRemaining() > window.getTotalWt())
 						isTrue = isTrue && true;
+					else
+						isTrue = isTrue && false;
 				}
 		}catch (NumberFormatException e){
 		
