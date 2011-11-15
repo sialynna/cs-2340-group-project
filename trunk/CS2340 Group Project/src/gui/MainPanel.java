@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,7 +23,6 @@ import javax.swing.SwingConstants;
 import java.awt.Rectangle;
 import java.awt.Component;
 
-@SuppressWarnings("serial")
 public class MainPanel extends JPanel {
 
 	JLabel timeLabel;
@@ -34,6 +34,7 @@ public class MainPanel extends JPanel {
 	JLabel pacePerDay;
 	JLabel distTravelAmt;
 	JPanel main;
+	JPanel mapProgress;
 	
 	Point2D start = new Point2D.Double(521, 342);
 	Point2D firstLoc = new Point2D.Double(436, 306);
@@ -75,6 +76,9 @@ public class MainPanel extends JPanel {
 				updateScreen();
 			}
 		});
+		
+		mapProgress = new MapProgress();
+		add(mapProgress);
 		
 		JLabel distTraveled = new JLabel("Distance Travelled:");
 		distTraveled.setHorizontalAlignment(SwingConstants.CENTER);
@@ -213,67 +217,68 @@ public class MainPanel extends JPanel {
 		pacePerDay.setText(GameEngine.getPace());
 		rationsPerDay.setText(GameEngine.getRations());
 		rationsAmt.setText(Integer.toString(Item.RATIONS.getNum()));
-		distTravelAmt.setText(Integer.toString(GameEngine.getLocation()));
+		distTravelAmt.setText(Double.toString(GameEngine.getLocation()));
 		dayLabel.setText(Integer.toString(GameEngine.getDay()));
 		monthLabel.setText(GameEngine.getMonth());
-		//repaint();
+		mapProgress.repaint();
 	}
 	
-//	public void paint(Graphics g)
-//	{
-//		Graphics2D g2 = (Graphics2D) g;
-//
-//		switch(whichLine){
-//			case(0): 
-//				startX = start.getX();
-//				startY = start.getY();
-//				nextX = percent * firstLoc.getX();
-//				nextY = percent * firstLoc.getY();
-//				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
-//				break;
-//			case(1):
-//				g2.draw(new Line2D.Double(start, firstLoc));
-//				startX = firstLoc.getX();
-//				startY = firstLoc.getY();
-//				nextX = percent * secondLoc.getX();
-//				nextY = percent * secondLoc.getY();
-//				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
-//				break;
-//			case(2):
-//				g2.draw(new Line2D.Double(start, firstLoc));
-//				g2.draw(new Line2D.Double(firstLoc, secondLoc));
-//				startX = secondLoc.getX();
-//				startY = secondLoc.getY();
-//				nextX = percent * firstRiv.getX();
-//				nextY = percent * firstRiv.getY();
-//				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
-//				break;
-//			case(3):
-//				g2.draw(new Line2D.Double(start, firstLoc));
-//				g2.draw(new Line2D.Double(firstLoc, secondLoc));
-//				g2.draw(new Line2D.Double(secondLoc, firstRiv));
-//				startX = firstRiv.getX();
-//				startY = firstRiv.getY();
-//				nextX = percent * fourthLoc.getX();
-//				nextY = percent * fourthLoc.getY();
-//				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
-//				break;
-//			case(4):
-//				g2.draw(new Line2D.Double(start, firstLoc));
-//				g2.draw(new Line2D.Double(firstLoc, secondLoc));
-//				g2.draw(new Line2D.Double(secondLoc, firstRiv));
-//				g2.draw(new Line2D.Double(firstRiv, fourthLoc));
-//				startX = fourthLoc.getX();
-//				startY = fourthLoc.getY();
-//				nextX = percent * fifthLoc.getX();
-//				nextY = percent * fifthLoc.getY();
-//				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
-//				break;
-//			case(5):
-//			
-//			case(6):
-//		}
-//		
-//		
-//	}
+	protected class MapProgress extends JPanel{
+		
+		protected MapProgress(){
+			this.setOpaque(false);
+			this.setBounds(0, 0, 720, 480);
+		}
+		public void paint(Graphics g){
+			Graphics2D g2 = (Graphics2D) g;
+			
+			switch (whichLine){
+			case(0):
+				startX = start.getX();
+				startY = start.getY();
+				nextX = start.getX() - ((start.getX() - firstLoc.getX())*percent);
+				nextY = start.getY() - ((start.getY() - firstLoc.getY())*percent);
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(1):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				startX = firstLoc.getX();
+				startY = firstLoc.getY();
+				nextX = firstLoc.getX() - ((firstLoc.getX() - secondLoc.getX())*percent);
+				nextY = firstLoc.getY() - ((firstLoc.getY() - secondLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(2):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				startX = secondLoc.getX();
+				startY = secondLoc.getY();
+				nextX = secondLoc.getX() - ((secondLoc.getX() - firstRiv.getX())*percent);
+				nextY = secondLoc.getY() - ((secondLoc.getY() - firstRiv.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+				break;
+			case(3):
+				g2.setColor(Color.GREEN);
+				g2.setStroke(new BasicStroke(3));
+				g2.draw(new Line2D.Double(start.getX(), start.getY(), firstLoc.getX(), firstLoc.getY()));
+				g2.draw(new Line2D.Double(firstLoc.getX(), firstLoc.getY(), secondLoc.getX(), secondLoc.getY()));
+				g2.draw(new Line2D.Double(secondLoc.getX(), secondLoc.getY(), firstRiv.getX(), firstRiv.getY()));
+				startX = firstRiv.getX();
+				startY = firstRiv.getY();
+				nextX = firstRiv.getX() - ((firstRiv.getX() - fourthLoc.getX())*percent);
+				nextY = firstRiv.getY() - ((firstRiv.getY() - fourthLoc.getY())*percent);
+				g2.draw(new Line2D.Double(startX, startY, nextX, nextY));
+			case(4):
+			
+			case(5):
+			
+			}
+		}
+	}
 }

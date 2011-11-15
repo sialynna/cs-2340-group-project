@@ -7,11 +7,11 @@
  */
 public class Location 
 {
-	private int playerLocation;
+	private double playerLocation;
 	private Map map;
 	private Pace pace;
 	private int playerAtLandmark;
-	private int[] landmarkDistances = {140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
+	private double[] landmarkDistances = {140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
 	
 	/**
 	 * Constructor.
@@ -31,7 +31,7 @@ public class Location
 	 * updates player location based off pace.
 	 * @return the updated location.
 	 */
-	public int updateLocation()
+	public double updateLocation()
 	{
 		if(pace.getPaceNum() == 1)
 		{
@@ -52,14 +52,14 @@ public class Location
 	 * get the location
 	 * @return the location
 	 */
-	public int getLocation(){
+	public Double getLocation(){
 		return playerLocation;
 	}
 	public int getLandmarkAt(){
 		return playerAtLandmark;
 	}
 	
-	public int getLandmarkDist(){
+	public double getLandmarkDist(){
 		return landmarkDistances[playerAtLandmark];
 	}
 	
