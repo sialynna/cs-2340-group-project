@@ -36,6 +36,7 @@ public class GameEngine {
 	Event randEvent;
 	static JPanel main = new MainPanel();
 	private static Member[] members;
+	private static String eventOutput;
 	
 	private static Member member1;
 	private static Member member2;
@@ -170,15 +171,15 @@ public class GameEngine {
 		}
 		if(eventType==0) // random member sick.
 		{
-			event.ranSick();
+			eventOutput=event.ranSick();
 		}
 		else if(eventType==1&&GameEngine.pace.getPaceNum()==0) //Dust Storm days happen
 		{
-			event.dustStorm();
+			eventOutput=event.dustStorm();
 		}
 		else if(eventType==3)
 		{
-			
+			eventOutput=event.ranItem();
 		}
 		
 		if (location.landmarkType() == 3){
