@@ -90,7 +90,7 @@ public class Transaction
 	 */
 	public void addItems(Item item, int amt)
 	{
-		if(store.getQuantity(item) > amt)
+		if(store.getQuantity(item) >= amt)
 		{
 			supplies.addItem(item, amt);
 			store.subItem(item, amt);
@@ -106,6 +106,7 @@ public class Transaction
 	{
 		supplies.subMoney(window.getTotalAmt());
 		updateWindow();
+		
 	}
 	
 }
