@@ -199,6 +199,7 @@ public class MainFrame {
 						j.setText("0");
 					}
 					trans.subMoney();
+					totalAmt = 0;
 				}
 				else
 				{
