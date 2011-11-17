@@ -1,10 +1,11 @@
 package classes;
+import java.io.Serializable;
 
 /**
  * Leader class, extension of Member
  *
  */
-public class Leader extends Member {
+public class Leader extends Member implements Serializable {
 	
 	private String profession;
 	
