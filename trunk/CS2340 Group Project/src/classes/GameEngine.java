@@ -1,5 +1,6 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import javax.swing.JPanel;
@@ -13,7 +14,7 @@ import gui.TradePanel;
  * @author Christopher Whittemore
  *
  */
-public class GameEngine {
+public class GameEngine implements Serializable {
 	private static enum Months{JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC};
 	private static int gameMonth;
 	private static int gameDay;
@@ -31,6 +32,7 @@ public class GameEngine {
 	Transaction initialTrans;
 	Store iniStore;
 	private static Double playerLocation;
+	public static GameEngine engine;
 	
 	static MainFrame mainFrame;
 	Event randEvent;
@@ -55,6 +57,7 @@ public class GameEngine {
 	 * @param membernames
 	 */
 	public GameEngine(String leader, String profession, String rations, String pace, String ...membernames) {
+		engine = this;
 		gameDay = 1;
 		gameMonth = 0;
 		gameYear = 2012;
@@ -151,6 +154,12 @@ public class GameEngine {
 	public static void setPanelMain()
 	{
 		mainFrame.swapPanel(main);
+	}
+	public static void loadPanelMain()
+	{
+		MainFrame frame = new MainFrame();
+		MainPanel panel = new MainPanel();
+		frame.swapPanel(panel);
 	}
 	public static void setPanelTrade(){
 		JPanel trade = new TradePanel();
@@ -313,7 +322,76 @@ public class GameEngine {
 	}
 
 	public static Supplies getSupplies() {
-		// TODO Auto-generated method stub
 		return supplies;
+	}
+	public void setSupplies(Supplies supplies) {
+		GameEngine.supplies = supplies;
+	}
+	public void setMap(Map map) {
+		GameEngine.map = map;
+	}
+	public void setWagon(Wagon wagon) {
+		GameEngine.wagon = wagon;
+	}
+	public void setRations(Rations rations) {
+		GameEngine.rations = rations;
+	}
+	public void setPace(Pace pace) {
+		GameEngine.pace = pace;
+	}
+	public void setLeader(Leader leader) {
+		GameEngine.ld = leader;
+	}
+	public void setLocation(Location location) {
+		GameEngine.location = location;
+	}
+	public void setFrame(MainFrame frame) {
+		GameEngine.mainFrame = frame;
+	}
+	public void setPanel(MainPanel panel) {
+		GameEngine.main = panel;
+	}
+	public Map getMap() {
+		return map;
+	}
+	public Wagon getWagon() {
+		return wagon;
+	}
+	public Leader getLeader() {
+		return ld;
+	}
+
+	public MainFrame getFrame() {
+		return mainFrame;
+	}
+	public JPanel getPanel() {
+		return main;
+	}
+	public Rations getRationsClass() {
+		return rations;
+	}
+	public Pace getPaceClass() {
+		return pace;
+	}
+	public Location getLocationClass() {
+		return location;
+	}
+//	public int getRationsAmt() {
+//		return Item.RATIONS.getNum();
+//	}
+//	public void setRationsAmt(int amount){
+//		Item.RATIONS.setNum(amount);
+//	}
+
+	public void setMembers(Member[] members) {
+		member1 = members[0];
+		if(members[1] != null)
+		member2 = members[1];
+		if(members[1] != null)
+		member3 = members[2];
+		if(members[1] != null)
+		member4 = members[3];
+		
+		this.members = members;
 	}
 }
