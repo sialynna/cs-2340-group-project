@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,7 +28,7 @@ import classes.*;
  * @author Christopher
  *
  */
-public class MainFrame {
+public class MainFrame implements Serializable{
 
 	private int totalAmt;
 	private int totalWt;
@@ -169,7 +170,7 @@ public class MainFrame {
 		MainFrame.setTitle("Apocalypse Trail");
 		MainFrame.setAlwaysOnTop(true);
 		MainFrame.setLocation(new Point(0, 0));
-		MainFrame.setBounds(new Rectangle(0, 0, 720, 480));
+		MainFrame.setBounds(new Rectangle(0, 6, 720, 480));
 		MainFrame.setResizable(false);
 		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MainFrame.getContentPane().setLayout(null);
@@ -828,6 +829,7 @@ public class MainFrame {
 		MainFrame.getContentPane().setVisible(true);
 		MainFrame.getContentPane().repaint();
 	}	
+
 	public JPanel getPanel(){
 		return currentPanel;
 	}
