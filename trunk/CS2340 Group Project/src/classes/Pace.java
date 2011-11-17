@@ -1,12 +1,15 @@
 package classes;
 
+import java.io.Serializable;
+
+
 /**
  * Pace class
  * Pace determines how far the wagon and members move per day
  * and how fast the stamina of the members decreases.
  * 
  */
-public class Pace 
+public class Pace implements Serializable 
 {
 	private int pacePerDay;
 	private enum Paces{STOPPED,EASY,NORMAL,GRULING};
