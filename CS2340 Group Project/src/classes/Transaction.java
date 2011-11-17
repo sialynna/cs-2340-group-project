@@ -1,4 +1,6 @@
 package classes;
+import java.io.Serializable;
+
 import javax.swing.JTextField;
 
 import gui.MainFrame;
@@ -10,7 +12,7 @@ import gui.MainFrame;
  *
  */
 
-public class Transaction 
+public class Transaction implements Serializable
 {
 
 	Store store;
