@@ -4,7 +4,10 @@
  */
 
 package classes;
-public class Supplies {
+
+import java.io.Serializable;
+
+public class Supplies implements Serializable {
 	
 	private int money = 0;
 	private final int MAX_WEIGHT = 3500; //total wagon capacity in pounds
