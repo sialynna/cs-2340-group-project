@@ -1,13 +1,15 @@
 package classes;
 
+import java.io.Serializable;
+
 /**
  * Member class
  * Members have health, stamina, and can be sick or dead.
  *
  */
-public class Member 
+public class Member implements Serializable
 {
-	private String name;
+	public String name;
 	private int health = 100;
 	private int stamina = 100;
 	private boolean isSick = false;
