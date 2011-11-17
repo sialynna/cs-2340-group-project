@@ -1,5 +1,7 @@
 package classes;
 
+import java.io.Serializable;
+
 /**
  * the Store class
  * Stores are created when a player hits certain milestones
@@ -8,7 +10,7 @@ package classes;
  * @author Christopher
  *
  */
-public class Store {
+public class Store implements Serializable{
 	
 	private int[] prices, quantity;
 	
