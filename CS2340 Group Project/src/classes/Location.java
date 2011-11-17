@@ -1,11 +1,13 @@
 	package classes;
 
+import java.io.Serializable;
+
 /**
  * 
  * Where the wagon is located. 
  *
  */
-public class Location 
+public class Location implements Serializable 
 {
 	private double playerLocation;
 	private Map map;
