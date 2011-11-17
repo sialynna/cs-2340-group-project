@@ -1,12 +1,14 @@
 package classes;
 
+import java.io.Serializable;
+
 /**
  * Enumeration for game items: Name(weight, player quantity)
  * 
  * @author Christopher
  *
  */
-public enum Item {
+public enum Item implements Serializable{
 	MOXEN(0,0),
 	CLOTHES(20,0),
 	AMMO(50,0),
