@@ -205,7 +205,7 @@ public class StartPage {
 						
 						
 						gEngine.setPanelMain();
-						panel.updateScreen();
+						//panel.updateScreen();
 						
 						in1.close();
 						in2.close();

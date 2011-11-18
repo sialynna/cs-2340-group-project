@@ -17,8 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import classes.Item;
-import classes.Transaction;
+import classes.*;
 
 /**
  * A GUI for the player to trade items with a store.
@@ -125,6 +124,7 @@ public class TradePanel extends JPanel {
 						j.setText("0");
 					}
 					trans.subMoney();
+					totalAmt = 0;
 				}
 				else
 				{
@@ -171,11 +171,7 @@ public class TradePanel extends JPanel {
 				} 
 				else
 				{
-				JPanel main = new MainPanel();
-				MainFrame.getContentPane().removeAll();
-				MainFrame.getContentPane().add(main);
-				MainFrame.getContentPane().setVisible(true);
-				MainFrame.getContentPane().repaint();
+				GameEngine.setPanelMain();
 				}
 			}
 		});

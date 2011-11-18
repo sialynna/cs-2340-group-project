@@ -3,6 +3,7 @@ package classes;
 import java.io.Serializable;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import gui.MainFrame;
@@ -31,7 +32,7 @@ public class GameEngine implements Serializable {
 	static Random rn = new Random();
 	Transaction initialTrans;
 	Store iniStore;
-	private static Double playerLocation;
+	private static Double playerLocation = (double) 0;
 	public static GameEngine engine;
 	
 	static MainFrame mainFrame;
@@ -147,8 +148,7 @@ public class GameEngine implements Serializable {
 		iniStore = new Store(iniPrices, iniQuant);
 		mainFrame = new MainFrame();
 		initialTrans = new Transaction(iniStore, supplies, mainFrame);
-		mainFrame.setTransaction(initialTrans);
-		
+		mainFrame.setTransaction(initialTrans);	
 	}
 	
 	public static void setPanelMain()
@@ -166,6 +166,23 @@ public class GameEngine implements Serializable {
 		mainFrame.swapPanel(trade);
 	}
 	
+	public static void playerHasArrivedFort(){
+		String[] choices = {"Yes", "No"};
+		String loc = GameEngine.getLocationName();
+		int input = (int) JOptionPane.showOptionDialog(main, "You have arrived at "+ loc + " would you like to shop?", loc, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+	}
+	public static void playerHasArrivedRiver(){
+		String[] choices = {"Ford the River", "Float Across", "Hire the Ferry"};
+		String loc = GameEngine.getLocationName();
+		int input = (int) JOptionPane.showOptionDialog(main, "You have arrived at "+ loc + " how would you like to cross?", loc, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+	}
+	public static void playerHasArrivedOregon(){
+		//JPanel winPanel = new WinPanel();
+		//mainFrame.swapPanel(winPanel);
+		JOptionPane.showMessageDialog(main, "You have arrived at OREGON! YOU WIN!");
+
+	}
+	
 	public static Event move(){
 		Event event=new Event();
 		int eventType;
@@ -173,7 +190,19 @@ public class GameEngine implements Serializable {
 		
 		location.updateLocation();
 		playerLocation = location.getLocation();
+		
+		if(location.landmarkType() == 1){
+			playerHasArrivedFort();
+		}
+		else if(location.landmarkType() == 2){
+			playerHasArrivedRiver();
+		}
+		else if(location.landmarkType() == 3){
+			playerHasArrivedOregon();
+		}
+		
 		eventType = event.generateEvent();
+		
 		if(location.landmarkType()!=4)
 		{
 			eventType=4;
@@ -191,15 +220,8 @@ public class GameEngine implements Serializable {
 			eventOutput=event.ranItem();
 		}
 		
-		if (location.landmarkType() == 3){
-			//you win, calc score, show win page
-		}
-		else if (location.landmarkType() == 1){
-			//store
-		}
-		else if (location.landmarkType() == 2){
-			//river
-		}
+
+
 		
 		if(Item.RATIONS.getNum() >= rations.getRationsNum()+1){
 			supplies.subItem(Item.RATIONS, rations.getRationsNum()+1);
@@ -221,20 +243,31 @@ public class GameEngine implements Serializable {
 		}
 		return null;
 	}
+
+	public static Double getLocation(){
+		return playerLocation;
+	}
+	
+	/**
+	 * Returns the distance to the next location
+	 * @param offset
+	 * @return
+	 */
+	public static Double getNextLocation(int offset){
+		return location.getLandmarkDist(offset);
+	}
+	
+	/**
+	 * Returns the number of the landmark the player is at
+	 * @return
+	 */
+	public static int getLocationAt(){
+		return location.getLandmarkAt();
+	}
 	/**
 	 * getter for day
 	 * @return day
 	 */
-	public static Double getLocation(){
-		return playerLocation;
-	}
-	public static Double getNextLocation(){
-		return location.getLandmarkDist();
-	}
-	public static int getLocationAt(){
-		return location.getLandmarkAt();
-	}
-	
 	public static int getDay(){
 		return gameDay;
 	}
@@ -393,5 +426,9 @@ public class GameEngine implements Serializable {
 		member4 = members[3];
 		
 		this.members = members;
+	}
+
+	public static String getLocationName() {
+		return location.getLandmarkName();
 	}
 }
