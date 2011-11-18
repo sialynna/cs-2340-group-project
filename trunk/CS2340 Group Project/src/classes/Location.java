@@ -13,7 +13,7 @@ public class Location implements Serializable
 	private Map map;
 	private Pace pace;
 	private int playerAtLandmark;
-	private double[] landmarkDistances = {140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
+	private double[] landmarkDistances = {0, 140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
 	
 	/**
 	 * Constructor.
@@ -35,6 +35,7 @@ public class Location implements Serializable
 	 */
 	public double updateLocation()
 	{
+		
 		if(pace.getPaceNum() == 1)
 		{
 			playerLocation += 15;
@@ -47,6 +48,9 @@ public class Location implements Serializable
 		{
 			playerLocation += 40;
 		}
+		
+		setLandmark();
+		
 		return playerLocation;
 			
 	}	
@@ -61,83 +65,66 @@ public class Location implements Serializable
 		return playerAtLandmark;
 	}
 	
-	public double getLandmarkDist(){
-		return landmarkDistances[playerAtLandmark];
+	public double getLandmarkDist(int offset){
+		return landmarkDistances[playerAtLandmark + offset];
 	}
 	
 	private void setLocation(int loc){
 		playerLocation = loc;
 	}
-	
-	/**
-	 * get the name of the landmark
-	 * @return the name.
-	 */
-	public String getLandmark()
+
+	private void setLandmark()
 	{
-		if(playerLocation >= 130)
+		if(playerLocation >= 130 && playerAtLandmark == 0)
 		{
 			setLocation(140);
 			playerAtLandmark = 1;
-			return "Ft. Kearny";
 		}
-		else if(playerLocation >= 280)
+		else if(playerLocation >= 280 && playerAtLandmark == 1)
 		{
 			setLocation(290);
 			playerAtLandmark = 2;
-			return "Ft. Laramie";
 		}
-		else if(playerLocation >= 470)
+		else if(playerLocation >= 470 && playerAtLandmark == 2)
 		{
 			setLocation(480);
 			playerAtLandmark = 3;
-			return "Hudsonion River";
 		}
-		else if(playerLocation >= 590)
+		else if(playerLocation >= 590 && playerAtLandmark == 3)
 		{
 			setLocation(600);
 			playerAtLandmark = 4;
-			return "Ft. Bridger";
 		}
-		else if(playerLocation >= 780)
+		else if(playerLocation >= 780 && playerAtLandmark == 4)
 		{
 			setLocation(790);
 			playerAtLandmark = 5;
-			return "Ft. Hall";
 		}
-		else if(playerLocation >= 930)
+		else if(playerLocation >= 930 && playerAtLandmark == 5)
 		{
 			setLocation(940);
 			playerAtLandmark = 6;
-			return "Alpine Stream";
 		}
-		else if(playerLocation >= 1130)
+		else if(playerLocation >= 1130 && playerAtLandmark == 6)
 		{
 			setLocation(1140);
 			playerAtLandmark = 7;
-			return "Ft. Boise";
 		}
-		else if(playerLocation>=1280)
+		else if(playerLocation>=1280 && playerAtLandmark == 7)
 		{
 			setLocation(1290);
 			playerAtLandmark = 8;
-			return "Whitman's Mission";
 		}
-		else if(playerLocation >= 1390)
+		else if(playerLocation >= 1390 && playerAtLandmark == 8)
 		{
 			setLocation(1400);
 			playerAtLandmark = 9;
-			return "Ft. Vancouver";
 		}
-		else if(playerLocation >= 1500)
+		else if(playerLocation >= 1500 && playerAtLandmark == 9)
 		{
 			setLocation(1500);
-			return "Oregon";
 		}
-		else
-		{
-			return "Nothing to see here";
-		}
+
 	}
 	
 	/**
@@ -147,21 +134,73 @@ public class Location implements Serializable
 	 */
 	public int landmarkType()
 	{
-		if(getLandmark().equalsIgnoreCase("Ft. Kearny")||getLandmark().equalsIgnoreCase("Ft. Laramie")||getLandmark().equalsIgnoreCase("Ft. Bridger")||getLandmark().equalsIgnoreCase("Ft. Hall")||getLandmark().equalsIgnoreCase("Ft. Boise")||getLandmark().equalsIgnoreCase("Whitman's Mission")|| getLandmark().equalsIgnoreCase("Ft. Vancouver"))
+		if(getLandmarkName().equalsIgnoreCase("Ft. Kearny")||getLandmarkName().equalsIgnoreCase("Ft. Laramie")||getLandmarkName().equalsIgnoreCase("Ft. Bridger")||getLandmarkName().equalsIgnoreCase("Ft. Hall")||getLandmarkName().equalsIgnoreCase("Ft. Boise")||getLandmarkName().equalsIgnoreCase("Whitman's Mission")|| getLandmarkName().equalsIgnoreCase("Ft. Vancouver"))
 		{
 			return 1;	
 		}
-		else if(getLandmark().equalsIgnoreCase("Hudsonion River")||getLandmark().equalsIgnoreCase("Alpine Stream"))
+		else if(getLandmarkName().equalsIgnoreCase("Hudsonion River")||getLandmarkName().equalsIgnoreCase("Alpine Stream"))
 		{
 			return 2;
 		}
-		else if(getLandmark().equalsIgnoreCase("Oregon"))
+		else if(getLandmarkName().equalsIgnoreCase("Oregon"))
 		{
 			return 3;
 		}
 		else
 		{
 			return 4;
+		}
+	}
+	
+	/**
+	 * get the name of the landmark
+	 * @return the name.
+	 */
+	
+	public String getLandmarkName(){
+		if (playerLocation == 140)
+		{
+			return "Ft. Kearny";
+		}
+		else if(playerLocation == 290)
+		{
+			return "Ft. Laramie";
+		}
+		else if(playerLocation == 480)
+		{
+			return "Hudsonion River";
+		}
+		else if(playerLocation == 600)
+		{
+			return "Ft. Bridger";
+		}
+		else if(playerLocation == 790)
+		{
+			return "Ft. Hall";
+		}
+		else if(playerLocation == 940)
+		{
+			return "Alpine Stream";
+		}
+		else if(playerLocation == 1140)
+		{
+			return "Ft. Boise";
+		}
+		else if(playerLocation == 1290)
+		{
+			return "Whitman's Mission";
+		}
+		else if(playerLocation == 1400)
+		{
+			return "Ft. Vancouver";
+		}
+		else if(playerLocation >= 1500)
+		{
+			return "Oregon";
+		}
+		else
+		{
+			return "Nothing to see here";
 		}
 	}
 //	/**

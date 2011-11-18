@@ -833,4 +833,5 @@ public class MainFrame implements Serializable{
 	public JPanel getPanel(){
 		return currentPanel;
 	}
+	
 }
