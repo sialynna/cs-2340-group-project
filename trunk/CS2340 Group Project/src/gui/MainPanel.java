@@ -85,6 +85,12 @@ public class MainPanel extends JPanel implements Serializable{
 		mapProgress = new MapProgress();
 		add(mapProgress);
 		
+		JLabel lblSupplies = new JLabel("Supplies");
+		lblSupplies.setForeground(Color.GREEN);
+		lblSupplies.setFont(new Font("American Typewriter", Font.BOLD, 14));
+		lblSupplies.setBounds(612, 87, 61, 16);
+		add(lblSupplies);
+		
 		JLabel distTraveled = new JLabel("Distance Travelled:");
 		distTraveled.setHorizontalAlignment(SwingConstants.CENTER);
 		distTraveled.setForeground(Color.GREEN);
@@ -153,16 +159,18 @@ public class MainPanel extends JPanel implements Serializable{
 		paceButton.setBounds(568, 142, 20, 20);
 		add(paceButton);
 		
-		JButton menuButton = new JButton("");
-		menuButton.addActionListener(new ActionListener() {
+		JButton inventoryButton = new JButton("");
+		inventoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		menuButton.setBorderPainted(false);
-		menuButton.setBounds(568, 170, 20, 20);
-		add(menuButton);
+		inventoryButton.setBorderPainted(false);
+		inventoryButton.setBounds(569, 85, 20, 20);
+		add(inventoryButton);
 
-		JButton saveButton = new JButton("Save");
+		JButton saveButton = new JButton("");
+		saveButton.setForeground(Color.GREEN);
+		saveButton.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String filename1 = "engine.ser";
@@ -280,7 +288,7 @@ public class MainPanel extends JPanel implements Serializable{
 
 		});
 		saveButton.setBorderPainted(false);
-		saveButton.setBounds(596, 196, 94, 20);
+		saveButton.setBounds(568, 197, 20, 16);
 		add(saveButton);
 
 		JLabel lblCurrentRations = new JLabel("Current Rations:");
