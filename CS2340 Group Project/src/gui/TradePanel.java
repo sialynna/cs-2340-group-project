@@ -101,7 +101,7 @@ public class TradePanel extends JPanel {
 
 		JPanel TransactionPanel = new JPanel();
 		TransactionPanel.setBounds(222, 218, 275, 190);
-		MainFrame.getContentPane().add(TransactionPanel);
+		ContentPanel.add(TransactionPanel);
 		TransactionPanel.setLayout(null);
 		
 		JButton btnBuyItems = new JButton("Buy Items");
@@ -200,7 +200,7 @@ public class TradePanel extends JPanel {
 		
 		JPanel StorePanel = new JPanel();
 		StorePanel.setBounds(12, 40, 200, 370);
-		MainFrame.getContentPane().add(StorePanel);
+		ContentPanel.add(StorePanel);
 		StorePanel.setLayout(null);
 		
 		BuyRations = new JTextField();
@@ -544,7 +544,7 @@ public class TradePanel extends JPanel {
 		
 		JPanel PlayerPanel = new JPanel();
 		PlayerPanel.setBounds(508, 40, 200, 370);
-		MainFrame.getContentPane().add(PlayerPanel);
+		ContentPanel.add(PlayerPanel);
 		PlayerPanel.setLayout(null);
 		
 		PlayerMoneyAmt = new JLabel("0");
@@ -695,7 +695,7 @@ public class TradePanel extends JPanel {
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(MainFrame.class.getResource("/gui/resources/TradeBackground.jpg")));
 		background.setBounds(0, 0, 720, 480);
-		MainFrame.getContentPane().add(background);
+		ContentPanel.add(background);
 	}
 
 	public void setStore(int[] prices, int[] quants) {
