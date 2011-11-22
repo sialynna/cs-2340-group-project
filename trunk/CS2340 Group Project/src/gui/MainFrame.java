@@ -247,7 +247,7 @@ public class MainFrame implements Serializable{
 				} 
 				else
 				{
-				GameEngine.setPanelMain();
+					GameEngine.loadPanelMain();
 				}
 			}
 		});
