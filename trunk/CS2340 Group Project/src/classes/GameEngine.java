@@ -183,6 +183,11 @@ public class GameEngine implements Serializable {
 
 	}
 	
+	public static void eventPopup(String eventOutput){
+		JOptionPane.showMessageDialog(main, eventOutput);
+	}
+	
+	
 	public static Event move(){
 		Event event=new Event();
 		int eventType;
@@ -210,15 +215,24 @@ public class GameEngine implements Serializable {
 		if(eventType==0) // random member sick.
 		{
 			eventOutput=event.ranSick();
+			eventPopup(eventOutput);
 		}
 		else if(eventType==1&&GameEngine.pace.getPaceNum()==0) //Dust Storm days happen
 		{
 			eventOutput=event.dustStorm();
+			eventPopup(eventOutput);
+		}
+		else if(eventType==2)
+		{
+			eventOutput=event.deadMox();
+			eventPopup(eventOutput);
 		}
 		else if(eventType==3)
 		{
 			eventOutput=event.ranItem();
+			eventPopup(eventOutput);
 		}
+		
 		
 
 
