@@ -37,7 +37,7 @@ public class GameEngine implements Serializable {
 	
 	static MainFrame mainFrame;
 	Event randEvent;
-	static JPanel main = new MainPanel();
+	static JPanel main;// = new MainPanel();
 	private static Member[] members;
 	private static String eventOutput;
 	
@@ -157,9 +157,8 @@ public class GameEngine implements Serializable {
 	}
 	public static void loadPanelMain()
 	{
-		MainFrame frame = new MainFrame();
-		MainPanel panel = new MainPanel();
-		frame.swapPanel(panel);
+		main = new MainPanel();
+		mainFrame.swapPanel(main);
 	}
 	public static void setPanelTrade(){
 		JPanel trade = new TradePanel();
