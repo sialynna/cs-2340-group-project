@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Pace implements Serializable 
 {
 	private int pacePerDay;
-	private enum Paces{STOPPED,EASY,NORMAL,GRULING};
+	private enum Paces{STOPPED,EASY,NORMAL,GRUELING};
 
 	/**
 	 * constructor for pace
