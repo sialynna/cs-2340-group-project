@@ -203,20 +203,4 @@ public class Location implements Serializable
 			return "Nothing to see here";
 		}
 	}
-//	/**
-//	 * checks if wagon passed a location yet.
-//	 * @param playerLocation current location
-//	 * @return true or false
-//	 */
-//	public boolean isLocation(int playerLocation)
-//	{
-//		this.playerLocation=playerLocation;
-//		if((playerLocation>=100&&playerLocation<=140)||(playerLocation>=250&&playerLocation<=290)||(playerLocation>=420&&playerLocation<=480)||(playerLocation>=560&&playerLocation<=600)||(playerLocation>=750&&playerLocation<=790)||(playerLocation>=900&&playerLocation<=940)||(playerLocation>=1100&&playerLocation<=1140)||(playerLocation>=1250&&playerLocation<=1290)||(playerLocation>=1500))
-//		{
-//			return true;
-//		}
-//		else 
-//			return false;
-//	}
-	
 }
