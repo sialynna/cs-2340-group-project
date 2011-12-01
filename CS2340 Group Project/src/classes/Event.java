@@ -110,7 +110,7 @@ public class Event {
 			return "One of your moxen has spontaniously combusted";
 		}
 		else
-			return "You feel tired. We really should get a mox at the next store.";s
+			return "You feel tired. We really should get a mox at the next store.";
 	}
 	
 	/**
