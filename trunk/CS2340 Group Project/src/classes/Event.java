@@ -55,6 +55,7 @@ public class Event {
 	
 	/**
 	 * random member gets sick
+	 * @return the change.
 	 */
 	public String ranSick()
 	{
@@ -103,8 +104,13 @@ public class Event {
 	 */
 	public String deadMox()
 	{
-		GameEngine.getSupplies().subItem(Item.MOXEN, 1);
-		return "One of your moxen has spontaniously combusted";
+		if(Item.MOXEN.getNum()>0)
+		{
+			GameEngine.getSupplies().subItem(Item.MOXEN, 1);
+			return "One of your moxen has spontaniously combusted";
+		}
+		else
+			return "You feel tired. We really should get a mox at the next store.";s
 	}
 	
 	/**
@@ -116,8 +122,9 @@ public class Event {
 		
 		if(itemType==0) //mox
 		{
+				
 			GameEngine.getSupplies().addItem(Item.MOXEN, 1);
-			return "Hey you found a moxen, chilling around. You took it.";
+			return "Hey! You found a moxen, chilling around. You took it.";
 		}
 		else if(itemType==1) //supplies
 		{
@@ -125,7 +132,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(20*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.CLOTHES, itemAmt);
-				return " Hey you found " +itemAmt+" bundle(s) of clothes!";
+				return " Hey! You found " +itemAmt+" bundle(s) of clothes!";
 			}
 			else
 			{
@@ -139,7 +146,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(50*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.AMMO, itemAmt);
-				return " Hey you found " +itemAmt+" pack(s) of ammo!";
+				return " Hey! You found " +itemAmt+" pack(s) of ammo!";
 			}
 			else
 			{
@@ -153,7 +160,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(20*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.MEDS, itemAmt);
-				return " Hey you found " +itemAmt+" pack(s) of medicine!";
+				return " Hey! You found " +itemAmt+" pack(s) of medicine!";
 			}
 			else
 			{
@@ -167,7 +174,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(150*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.AXLES, itemAmt);
-				return " Hey you found " +itemAmt+" axle!";
+				return " Hey! You found " +itemAmt+" axle!";
 			}
 			else
 			{
@@ -180,7 +187,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(100*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.WHEELS, itemAmt);
-				return " Hey you found " +itemAmt+" wheel(s)!";
+				return " Hey! You found " +itemAmt+" wheel(s)!";
 			}
 			else
 			{
@@ -193,7 +200,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(100*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.WHEELS, itemAmt);
-				return " Hey you found " +itemAmt+" wheel(s)!";
+				return " Hey! You found " +itemAmt+" wheel(s)!";
 			}
 			else
 			{
@@ -206,7 +213,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(80*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.YOKES, itemAmt);
-				return " Hey you found " +itemAmt+" yoke(s)!";
+				return " Hey! You found " +itemAmt+" yoke(s)!";
 			}
 			else
 			{
@@ -219,7 +226,7 @@ public class Event {
 			if(GameEngine.getSupplies().getWeightRemaining()>=(20*itemAmt))
 			{
 				GameEngine.getSupplies().addItem(Item.RATIONS, itemAmt);
-				return " Hey you found " +itemAmt+" box(es) of rations!";
+				return " Hey! You found " +itemAmt+" box(es) of rations!";
 			}
 			else
 			{
@@ -233,15 +240,6 @@ public class Event {
 	}
 	
 	
-	
-//	/**
-//	 * removes a moxen from inventory. 
-//	 * @param item
-//	 * @param sup
-//	 */
-//	public void moxDies(Item item,Supplies sup){
-//		sup.subItem(item.MOXEN, 1);
-//		
-//	}
+
 
 }
