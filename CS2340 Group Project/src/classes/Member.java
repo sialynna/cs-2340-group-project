@@ -11,14 +11,7 @@ public class Member implements Serializable
 {
 	public String name;
 	private int health = 100;
-	private int stamina = 100;
 	private boolean isSick = false;
-	private enum Health{
-		GOOD, FAIR, POOR, DEAD
-	}
-	private enum Stamina{
-		RESTED, TIRED, WEARY, EXHAUSTED
-	}
 	
 	/**
 	 * constructor
