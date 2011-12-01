@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class Location implements Serializable 
 {
 	private double playerLocation;
-	private Map map;
 	private Pace pace;
 	private int playerAtLandmark;
 	private double[] landmarkDistances = {0, 140, 290, 480, 600, 790, 940, 1140, 1290, 1400, 1500};
@@ -25,7 +24,6 @@ public class Location implements Serializable
 	{
 		playerAtLandmark = 0;
 		this.playerLocation = playerLocation;
-		this.map = map;
 		this.pace = pace;
 	}
 	
