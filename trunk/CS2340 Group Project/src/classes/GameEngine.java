@@ -216,19 +216,14 @@ public class GameEngine implements Serializable {
 			eventOutput=event.ranSick();
 			eventPopup(eventOutput);
 		}
-		else if(eventType==1&&GameEngine.pace.getPaceNum()==0) //Dust Storm days happen
-		{
-			eventOutput=event.dustStorm();
-			eventPopup(eventOutput);
-		}
-		else if(eventType==2)
+		else if(eventType==1)
 		{
 			eventOutput=event.deadMox();
 			eventPopup(eventOutput);
 		}
-		else if(eventType==3)
+		else if(eventType==2)
 		{
-			eventOutput=event.ranItem();
+			eventOutput=event.ranItem(false);
 			eventPopup(eventOutput);
 		}
 		
@@ -366,11 +361,33 @@ public class GameEngine implements Serializable {
 	{
 		return members;
 	}
+	public static void setMembers(int memberz)
+	{
+		if (memberz == 1)
+		{
+			members=new Member[1];
+		} 
+		else if (memberz == 2)
+		{
+			members=new Member[2];
+			
+		} 
+		else if (memberz== 3)
+		{
+			members=new Member[3];
+		} 
+		else 
+		{
+			members=new Member[4];
+			
+		}
+		
+	}
 
 	public static Supplies getSupplies() {
 		return supplies;
 	}
-	public void setSupplies(Supplies supplies) {
+	public static void setSupplies(Supplies supplies) {
 		GameEngine.supplies = supplies;
 	}
 	public void setMap(Map map) {

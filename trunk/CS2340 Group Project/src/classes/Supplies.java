@@ -49,6 +49,10 @@ public class Supplies implements Serializable {
 	public int getTotalWeight(){
 		return totalWeight;
 	}
+	public void setWeight(int weight)
+	{
+		totalWeight=weight;
+	}
 	
 	/**
 	 * Gets how much weight is available before reaching maximum. 
