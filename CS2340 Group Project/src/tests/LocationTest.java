@@ -8,7 +8,7 @@ import classes.Pace;
 
 /**
  * This test checks the updateLocation() method in the Location class
- *
+ *@author Christopher Whittemore
  */
 
 public class LocationTest extends TestCase {
