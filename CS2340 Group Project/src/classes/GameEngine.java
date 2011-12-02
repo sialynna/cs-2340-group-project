@@ -143,7 +143,7 @@ public class GameEngine implements Serializable {
 		System.out.println(ld.getName());
 		System.out.println(ld.getProfession());
 		
-		location = new Location(0, GameEngine.map, GameEngine.pace);
+		location = new Location(0, GameEngine.pace);
 		
 		iniStore = new Store(iniPrices, iniQuant);
 		mainFrame = new MainFrame();

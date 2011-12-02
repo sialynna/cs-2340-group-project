@@ -20,7 +20,7 @@ public class Location implements Serializable
 	 * @param map the map for reference
 	 * @param pace the pace
 	 */
-	public Location(int playerLocation, Map map, Pace pace)
+	public Location(int playerLocation, Pace pace)
 	{
 		playerAtLandmark = 0;
 		this.playerLocation = playerLocation;
