@@ -29,6 +29,10 @@ public enum Item implements Serializable{
 	public int getNum(){
 		return num;
 	}
+	public void setNum(int num)
+	{
+		this.num=num;
+	}
 	
 	public void add(int num){
 		this.num += num;

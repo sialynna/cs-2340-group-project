@@ -37,13 +37,13 @@ public class Event {
 	
 	/**
 	 * generates event
-	 * @return 0 = sick, 1 = dust storm, 2 = mox dies, 3 = found supplies, 4 = nothing happens
+	 * @return 0 = sick, 1 = mox dies, 2 = found supplies, 3 = nothing happens
 	 */
 	public int generateEvent()
 	{
 		if(eventChance())
 		{
-			event=rn.nextInt(3);
+			event=rn.nextInt(2);
 			return event;
 		}
 		else
@@ -87,17 +87,6 @@ public class Event {
 		}
 	}
 	
-	/**
-	 * lose 3 turns.
-	 */
-	public String dustStorm()
-	{
-		GameEngine.setPace("Stopped");
-		GameEngine.move();
-		GameEngine.move();
-		GameEngine.move();
-		return "Nuclear Duststorm has appeared. It seems like it will be around for 3 days";
-	}
 	
 	/**
 	 * moxen dies.
@@ -116,9 +105,12 @@ public class Event {
 	/**
 	 * find random item
 	 */
-	public String ranItem()
+	public String ranItem(boolean test)
 	{
-		itemType=rn.nextInt(9);
+		if(test)
+			itemType=4;
+		else if(!test)
+			itemType=rn.nextInt(9);
 		
 		if(itemType==0) //mox
 		{
