@@ -4,6 +4,8 @@ import junit.framework.TestCase;
 
 /** This class tests all of the different outcomes of the river crossing method (crossRiver()) **/
 
+
+//Written by Tom Bellitire
 public class TomTest extends TestCase {
 	RiverCrossing river = new RiverCrossing(1);
 	RiverCrossing otherRiver = new RiverCrossing(1);
