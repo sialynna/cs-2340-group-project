@@ -63,5 +63,13 @@ public class Member implements Serializable
 	{
 		return isSick;
 	}
+	/**
+	 * setter for name
+	 * @param name
+	 */
+	public void setName(String name)
+	{
+		this.name=name;
+	}
 
 }

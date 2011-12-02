@@ -7,7 +7,7 @@ public class Event {
 	private int chance;
 	private int itemType;
 	private int itemAmt;
-	Random rn = new Random();
+	Random rn = new Random(5);
 
 	/**
 	 * Random event class
