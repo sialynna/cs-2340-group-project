@@ -161,25 +161,37 @@ public class GameEngine implements Serializable {
 		mainFrame.swapPanel(main);
 	}
 	public static void setPanelTrade(){
-		JPanel trade = new TradePanel();
-		mainFrame.swapPanel(trade);
+		//JPanel trade = new TradePanel();
+		mainFrame.swapPanel(new TradePanel());
 	}
 	
 	public static void playerHasArrivedFort(){
 		String[] choices = {"Yes", "No"};
 		String loc = GameEngine.getLocationName();
 		int input = (int) JOptionPane.showOptionDialog(main, "You have arrived at "+ loc + " would you like to shop?", loc, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+		
+		if(input == 0)
+		{
+			setPanelTrade();
+		}
 	}
 	public static void playerHasArrivedRiver(){
 		String[] choices = {"Ford the River", "Float Across", "Hire the Ferry"};
 		String loc = GameEngine.getLocationName();
 		int input = (int) JOptionPane.showOptionDialog(main, "You have arrived at "+ loc + " how would you like to cross?", loc, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+	
+		RiverCrossing cross = new RiverCrossing(1);
+		int[] loss = cross.crossRiver(input);
+		
+		Item[] items = Item.values();
+		
+		supplies.subItem(items[loss[0]], loss[1]);
 	}
+	
 	public static void playerHasArrivedOregon(){
-		//JPanel winPanel = new WinPanel();
-		//mainFrame.swapPanel(winPanel);
+		JPanel winPanel = new WinPanel();
+		mainFrame.swapPanel(winPanel);
 		JOptionPane.showMessageDialog(main, "You have arrived at OREGON! YOU WIN!");
-
 	}
 	
 	public static void eventPopup(String eventOutput){
