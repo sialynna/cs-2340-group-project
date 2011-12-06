@@ -825,8 +825,8 @@ public class MainFrame implements Serializable{
 	{
 		currentPanel = panel;
 		MainFrame.getContentPane().removeAll();
-		MainFrame.getContentPane().add(panel);
-		MainFrame.getContentPane().setVisible(true);
+		MainFrame.getContentPane().add(currentPanel);
+		//MainFrame.getContentPane().setVisible(true);
 		MainFrame.getContentPane().repaint();
 	}	
 

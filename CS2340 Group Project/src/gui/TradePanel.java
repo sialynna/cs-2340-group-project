@@ -32,7 +32,6 @@ public class TradePanel extends JPanel {
 	private int totalWt;
 	private Transaction trans;
 	
-	private JFrame MainFrame;
 	private JTextField BuyMoxen;
 	private JTextField BuyCloths;
 	private JTextField BuyAmmo;
@@ -94,10 +93,16 @@ public class TradePanel extends JPanel {
 	 * Create the panel.
 	 */
 	public TradePanel() {
+		setAlignmentY(Component.TOP_ALIGNMENT);
+		setAlignmentX(Component.LEFT_ALIGNMENT);
+		setLayout(null);
+		setBounds(0, 0, 720, 480);
+		setVisible(true);
 		
 		JPanel ContentPanel = new JPanel();
 		ContentPanel.setLayout(null);
 		ContentPanel.setBounds(0,0,720,480);
+		ContentPanel.setVisible(true);
 
 		JPanel TransactionPanel = new JPanel();
 		TransactionPanel.setBounds(222, 218, 275, 190);

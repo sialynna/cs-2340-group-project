@@ -51,6 +51,7 @@ public class RiverCrossing {
 		case 2: //pay for a ferry
 			badProb = 0;
 			lost[2] = 100;
+			//what if there isn't enough money?
 			break;
 			
 		case 3: //Used to test code, guaranteed bad outcome
