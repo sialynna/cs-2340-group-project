@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Member implements Serializable
 {
 	public String name;
-	private int health = 100;
+	private int health;
 	private boolean isSick = false;
 	
 	/**
@@ -20,6 +20,7 @@ public class Member implements Serializable
 	public Member(String name)
 	{
 		this.name = name;
+		health = 100;
 	}
 	
 	/**
@@ -67,9 +68,16 @@ public class Member implements Serializable
 	 * setter for name
 	 * @param name
 	 */
+	public int getHealth()
+	{
+		return health;
+	}
 	public void setName(String name)
 	{
 		this.name=name;
 	}
-
+	public void setHealth(int health)
+	{
+		this.health=health;
+	}
 }
