@@ -48,6 +48,7 @@ public class TomTest extends TestCase {
 		
 	}
 
+	// written by Jeff Zhang
 	public void testRanSick()
 	{
 		String output="";
