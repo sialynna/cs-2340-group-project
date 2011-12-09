@@ -10,6 +10,7 @@ import classes.GameEngine;
 import classes.Item;
 import classes.Leader;
 import classes.Member;
+import classes.Save;
 import classes.Supplies;
 
 import java.awt.event.ActionListener;
@@ -173,115 +174,116 @@ public class MainPanel extends JPanel implements Serializable{
 		saveButton.setFont(new Font("American Typewriter", Font.BOLD, 13));
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String filename1 = "engine.ser";
-				String filename2 = "supplies.ser";
-				//String filename3 = "wagon.ser";
-				String filename4 = "rations.ser";
-				String filename5 = "pace.ser";
-				String filename6 = "leader.ser";
-				String filename7 = "location.ser";
-				String filename8 = "map.ser";
-				//String filename9 = "store.ser";
-				String filename10 = "mainframe.ser";
-				String filename11 = "mainpanel.ser";
-				String filename12 = "member1.ser";
-				String filename13 = "member2.ser";
-				String filename14 = "member3.ser";
-				String filename15 = "member4.ser";
-				//String filename16 = "items.ser";
-
-				ObjectOutputStream out1 = null;
-				ObjectOutputStream out2 = null;
-				//ObjectOutputStream out3 = null;
-				ObjectOutputStream out4 = null;
-				ObjectOutputStream out5 = null;
-				ObjectOutputStream out6 = null;
-				ObjectOutputStream out7 = null;
-				ObjectOutputStream out8 = null;
-				//ObjectOutputStream out9 = null;
-				ObjectOutputStream out10 = null;
-				ObjectOutputStream out11 = null;
-				ObjectOutputStream out12 = null;
-				ObjectOutputStream out13 = null;
-				ObjectOutputStream out14 = null;
-				ObjectOutputStream out15 = null;
-				//ObjectOutputStream out16 = null;
-				
-				
-				GameEngine persistEngine = GameEngine.engine;
-				
-				
-
-			
-				try
-				{
-					out1 = new ObjectOutputStream(new FileOutputStream(filename1));
-					out2 = new ObjectOutputStream(new FileOutputStream(filename2));
-					//out3 = new ObjectOutputStream(new FileOutputStream(filename3));
-					out4 = new ObjectOutputStream(new FileOutputStream(filename4));
-					out5 = new ObjectOutputStream(new FileOutputStream(filename5));
-					out6 = new ObjectOutputStream(new FileOutputStream(filename6));
-					out7 = new ObjectOutputStream(new FileOutputStream(filename7));
-					out8 = new ObjectOutputStream(new FileOutputStream(filename8));
-					//out9 = new ObjectOutputStream(new FileOutputStream(filename9));
-					out10 = new ObjectOutputStream(new FileOutputStream(filename10));
-					out11 = new ObjectOutputStream(new FileOutputStream(filename11));
-					out12 = new ObjectOutputStream(new FileOutputStream(filename12));
-					out13 = new ObjectOutputStream(new FileOutputStream(filename13));
-					out14 = new ObjectOutputStream(new FileOutputStream(filename14));
-					out15 = new ObjectOutputStream(new FileOutputStream(filename15));
-					//out16 = new ObjectOutputStream(new FileOutputStream(filename16));
-					
-					
-					out1.writeObject(persistEngine);
-					out2.writeObject(GameEngine.getSupplies());
-					//out3.writeObject(persistEngine.getWagon());
-					out4.writeObject(persistEngine.getRationsClass());
-					out5.writeObject(persistEngine.getPaceClass());
-					out6.writeObject(persistEngine.getLeader());
-					out7.writeObject(persistEngine.getLocationClass());
-					out8.writeObject(persistEngine.getMap());
-					//out9.writeObject(persistEngine.getStore());
-					out10.writeObject(persistEngine.getFrame());
-					out11.writeObject(persistEngine.getPanel());
-					out12.writeObject(GameEngine.getMembers()[0]);
-					if(GameEngine.getMembers().length ==2)
-						out13.writeObject(GameEngine.getMembers()[1]);
-					if(GameEngine.getMembers().length ==3 ){
-						out13.writeObject(GameEngine.getMembers()[1]);
-						out14.writeObject(GameEngine.getMembers()[2]);}
-					if(GameEngine.getMembers().length ==4 ){
-						out13.writeObject(GameEngine.getMembers()[1]);
-						out14.writeObject(GameEngine.getMembers()[2]);
-						out15.writeObject(GameEngine.getMembers()[3]);}
-					//out16.writeObject(Item.RATIONS);
-					
-					out1.close();
-					out2.close();
-					//out3.close();
-					out4.close();
-					out5.close();
-					out6.close();
-					out7.close();
-					out8.close();
-					//out9.close();
-					out10.close();
-					out11.close();
-					out12.close();			
-					out13.close();	
-					out14.close();	
-					out15.close();
-					//out16.close();
-					
-					
-					System.out.println("Saved...");
-				}
-
-				catch(IOException ex)
-				{
-					ex.printStackTrace();
-					System.out.println("ERROR saving");
-				}
+				Save.save();
+//				String filename1 = "engine.ser";
+//				String filename2 = "supplies.ser";
+//				//String filename3 = "wagon.ser";
+//				String filename4 = "rations.ser";
+//				String filename5 = "pace.ser";
+//				String filename6 = "leader.ser";
+//				String filename7 = "location.ser";
+//				String filename8 = "map.ser";
+//				//String filename9 = "store.ser";
+//				String filename10 = "mainframe.ser";
+//				String filename11 = "mainpanel.ser";
+//				String filename12 = "member1.ser";
+//				String filename13 = "member2.ser";
+//				String filename14 = "member3.ser";
+//				String filename15 = "member4.ser";
+//				//String filename16 = "items.ser";
+//
+//				ObjectOutputStream out1 = null;
+//				ObjectOutputStream out2 = null;
+//				//ObjectOutputStream out3 = null;
+//				ObjectOutputStream out4 = null;
+//				ObjectOutputStream out5 = null;
+//				ObjectOutputStream out6 = null;
+//				ObjectOutputStream out7 = null;
+//				ObjectOutputStream out8 = null;
+//				//ObjectOutputStream out9 = null;
+//				ObjectOutputStream out10 = null;
+//				ObjectOutputStream out11 = null;
+//				ObjectOutputStream out12 = null;
+//				ObjectOutputStream out13 = null;
+//				ObjectOutputStream out14 = null;
+//				ObjectOutputStream out15 = null;
+//				//ObjectOutputStream out16 = null;
+//				
+//				
+//				GameEngine persistEngine = GameEngine.engine;
+//				
+//				
+//
+//			
+//				try
+//				{
+//					out1 = new ObjectOutputStream(new FileOutputStream(filename1));
+//					out2 = new ObjectOutputStream(new FileOutputStream(filename2));
+//					//out3 = new ObjectOutputStream(new FileOutputStream(filename3));
+//					out4 = new ObjectOutputStream(new FileOutputStream(filename4));
+//					out5 = new ObjectOutputStream(new FileOutputStream(filename5));
+//					out6 = new ObjectOutputStream(new FileOutputStream(filename6));
+//					out7 = new ObjectOutputStream(new FileOutputStream(filename7));
+//					out8 = new ObjectOutputStream(new FileOutputStream(filename8));
+//					//out9 = new ObjectOutputStream(new FileOutputStream(filename9));
+//					out10 = new ObjectOutputStream(new FileOutputStream(filename10));
+//					out11 = new ObjectOutputStream(new FileOutputStream(filename11));
+//					out12 = new ObjectOutputStream(new FileOutputStream(filename12));
+//					out13 = new ObjectOutputStream(new FileOutputStream(filename13));
+//					out14 = new ObjectOutputStream(new FileOutputStream(filename14));
+//					out15 = new ObjectOutputStream(new FileOutputStream(filename15));
+//					//out16 = new ObjectOutputStream(new FileOutputStream(filename16));
+//					
+//					
+//					out1.writeObject(persistEngine);
+//					out2.writeObject(GameEngine.getSupplies());
+//					//out3.writeObject(persistEngine.getWagon());
+//					out4.writeObject(persistEngine.getRationsClass());
+//					out5.writeObject(persistEngine.getPaceClass());
+//					out6.writeObject(persistEngine.getLeader());
+//					out7.writeObject(persistEngine.getLocationClass());
+//					out8.writeObject(persistEngine.getMap());
+//					//out9.writeObject(persistEngine.getStore());
+//					out10.writeObject(persistEngine.getFrame());
+//					out11.writeObject(persistEngine.getPanel());
+//					out12.writeObject(GameEngine.getMembers()[0]);
+//					if(GameEngine.getMembers().length ==2)
+//						out13.writeObject(GameEngine.getMembers()[1]);
+//					if(GameEngine.getMembers().length ==3 ){
+//						out13.writeObject(GameEngine.getMembers()[1]);
+//						out14.writeObject(GameEngine.getMembers()[2]);}
+//					if(GameEngine.getMembers().length ==4 ){
+//						out13.writeObject(GameEngine.getMembers()[1]);
+//						out14.writeObject(GameEngine.getMembers()[2]);
+//						out15.writeObject(GameEngine.getMembers()[3]);}
+//					//out16.writeObject(Item.RATIONS);
+//					
+//					out1.close();
+//					out2.close();
+//					//out3.close();
+//					out4.close();
+//					out5.close();
+//					out6.close();
+//					out7.close();
+//					out8.close();
+//					//out9.close();
+//					out10.close();
+//					out11.close();
+//					out12.close();			
+//					out13.close();	
+//					out14.close();	
+//					out15.close();
+//					//out16.close();
+//					
+//					
+//					System.out.println("Saved...");
+//				}
+//
+//				catch(IOException ex)
+//				{
+//					ex.printStackTrace();
+//					System.out.println("ERROR saving");
+//				}
 
 			}
 
