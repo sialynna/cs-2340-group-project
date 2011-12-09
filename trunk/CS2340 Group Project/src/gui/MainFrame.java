@@ -170,7 +170,7 @@ public class MainFrame implements Serializable{
 		MainFrame.setTitle("Apocalypse Trail");
 		MainFrame.setAlwaysOnTop(true);
 		MainFrame.setLocation(new Point(0, 0));
-		MainFrame.setBounds(new Rectangle(0, 6, 720, 480));
+		MainFrame.setBounds(new Rectangle(0, 0, 720, 480));
 		MainFrame.setResizable(false);
 		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MainFrame.getContentPane().setLayout(null);
@@ -825,7 +825,7 @@ public class MainFrame implements Serializable{
 	{
 		currentPanel = panel;
 		MainFrame.getContentPane().removeAll();
-		MainFrame.getContentPane().add(currentPanel);
+		MainFrame.getContentPane().add(panel);
 		//MainFrame.getContentPane().setVisible(true);
 		MainFrame.getContentPane().repaint();
 	}	

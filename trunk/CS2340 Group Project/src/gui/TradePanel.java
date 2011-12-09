@@ -31,6 +31,7 @@ public class TradePanel extends JPanel {
 	private int totalAmt;
 	private int totalWt;
 	private Transaction trans;
+	JPanel trade;
 	
 	private JTextField BuyMoxen;
 	private JTextField BuyCloths;
@@ -98,6 +99,7 @@ public class TradePanel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 720, 480);
 		setVisible(true);
+		trade = this;
 		
 		JPanel ContentPanel = new JPanel();
 		ContentPanel.setLayout(null);

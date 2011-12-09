@@ -342,6 +342,15 @@ public class MainPanel extends JPanel implements Serializable{
 		distTravelAmt.setBounds(568, 291, 117, 16);
 		add(distTravelAmt);
 		
+		JLabel lblNewLabel = new JLabel("Save");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(50, 205, 50));
+		lblNewLabel.setFont(new Font("American Typewriter", Font.BOLD, 13));
+		lblNewLabel.setBackground(new Color(0, 51, 102));
+		lblNewLabel.setBounds(598, 198, 89, 16);
+		add(lblNewLabel);
+		
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(MainPanel.class.getResource("/gui/resources/Map Display.jpg")));
 		background.setBounds(0, 0, 720, 480);

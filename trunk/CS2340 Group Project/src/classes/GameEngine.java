@@ -46,8 +46,8 @@ public class GameEngine implements Serializable {
 	private static Member member3;
 	private static Member member4;
 
-	private int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
-	private int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
+	private static int[] iniPrices ={150, 50, 80, 200, 120, 20, 100, 1};
+	private static int[] iniQuant ={99, 99, 99, 99, 99, 99, 99, 99};
 	/**
 	 * Constructor sets up the leader, members of the wagon, rations, pace, and wagon.
 	 * 
@@ -167,9 +167,9 @@ public class GameEngine implements Serializable {
 		main = new MainPanel();
 		mainFrame.swapPanel(main);
 	}
-	public static void setPanelTrade(){
+	public static void setPanelTrade(TradePanel panel){
 		//JPanel trade = new TradePanel();
-		mainFrame.swapPanel(new TradePanel());
+		mainFrame.swapPanel(panel);
 	}
 
 	public static void playerHasArrivedFort(){
@@ -179,7 +179,11 @@ public class GameEngine implements Serializable {
 
 		if(input == 0)
 		{
-			setPanelTrade();
+			Store newStore = new Store(iniPrices, iniQuant);
+			Transaction newTrans = new Transaction(newStore, supplies, mainFrame);
+			TradePanel trade = new TradePanel();
+			trade.setTransaction(newTrans);
+			setPanelTrade(trade);
 		}
 	}
 	public static void playerHasArrivedRiver(){
